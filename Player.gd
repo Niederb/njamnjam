@@ -1,7 +1,6 @@
 extends Node2D
 
 var direction = Vector2()
-var move = true
 var length = Globals.START_LENGTH
 var dead = false
 var new_bodypart_position = Vector2()
@@ -21,23 +20,8 @@ func run_combo(start_index, combo_size):
 		$Body.remove_child(body_part)
 	get_tree().call_group("Gamestate", "trigger_combo", combo_size)
 	
-func check_combo():
-	var in_a_row = 0
-	var old_color_index = -1
-	var start_index = 0
-	var index = 0
-	for body_part in $Body.get_children():
-		var new_color_index = body_part.get_color_index()
-		#var goodies = get_adjacent_goodies
-		if old_color_index != new_color_index:
-			if in_a_row >= Globals.MIN_COMBO_SIZE:
-				run_combo(start_index, in_a_row)
-			in_a_row = 1
-			old_color_index = new_color_index
-			start_index = index
-		else:
-			in_a_row += 1
-		index += 1
+func get_body_parts():
+	return $Body.get_children()
 
 func move_body():
 	var start_position = $Head.global_position
@@ -52,11 +36,9 @@ func move_body():
 	new_bodypart_position = start_position
 	return false
 
-func _physics_process(_delta):
-	if move and !dead and direction.length() > 0:
+func move():
+	if !dead and direction.length() > 0:
 		var dead = move_body()		
-		move = false
-		check_combo()
 
 func _input(_delta):
 	if Input.is_action_just_pressed("left"):
@@ -67,9 +49,6 @@ func _input(_delta):
 		direction = Vector2(0, 1)
 	elif Input.is_action_just_pressed("up"):
 		direction = Vector2(0, -1)
-
-func move_again():
-	move = true
 
 func increase_length(color_index):
 	length += 1

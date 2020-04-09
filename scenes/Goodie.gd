@@ -1,7 +1,6 @@
-extends Node2D
+extends "res://Cell.gd"
 
 var taken = false
-var color_index = 0
 
 func init(position, new_color_index):
 	color_index = new_color_index
@@ -15,7 +14,7 @@ func _on_Area2D_body_entered(body):
 		get_tree().call_group("Gamestate", "eaten_goodie", color_index)
 		taken = true
 		$Sprite.visible = false
-		queue_free()
+		die()
 
-func contains_point(point):
-	$Area2D/CollisionShape2D.c
+func die():
+	queue_free()
