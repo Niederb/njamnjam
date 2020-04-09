@@ -16,3 +16,6 @@ func _on_Area2D_body_entered(body):
 		taken = true
 		$Sprite.visible = false
 		queue_free()
+
+func contains_point(point):
+	$Area2D/CollisionShape2D.c

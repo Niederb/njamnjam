@@ -10,13 +10,9 @@ func get_adjacent_goodies(position, color):
 			
 	return goodies
 	
-func create_new_goodie():
+func create_new_goodie(position):
 	var body_part = load("res://scenes/Goodie.tscn").instance()
 	add_child(body_part)
-	randomize()
-	var x = randi() % 19 + 1
-	var y = randi() % 12 + 1
+
 	var color_index = randi() % Globals.N_COLORS
-	
-	var position = Vector2(Globals.CELL_SIZE * x, Globals.CELL_SIZE * y)
 	body_part.init(position, color_index)

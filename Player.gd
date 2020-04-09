@@ -43,6 +43,7 @@ func move_body():
 	var start_position = $Head.global_position
 	var collision = $Head.move_and_collide(Globals.CELL_SIZE * direction)
 	if collision:
+		dead = true
 		return true
 	for body_part in $Body.get_children():
 		var temp_position = body_part.global_position
@@ -53,9 +54,7 @@ func move_body():
 
 func _physics_process(_delta):
 	if move and !dead and direction.length() > 0:
-		var dead = move_body()
-		if dead:
-			return
+		var dead = move_body()		
 		move = false
 		check_combo()
 
@@ -69,7 +68,7 @@ func _input(_delta):
 	elif Input.is_action_just_pressed("up"):
 		direction = Vector2(0, -1)
 
-func _on_Timer_timeout():
+func move_again():
 	move = true
 
 func increase_length(color_index):
