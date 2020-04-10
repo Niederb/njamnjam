@@ -1,7 +1,5 @@
 extends "res://Cell.gd"
 
-var taken = false
-
 func init(position, new_color_index):
 	color_index = new_color_index
 	var color = Globals.colors[color_index]
@@ -10,9 +8,9 @@ func init(position, new_color_index):
 	$Light.color = color
 	
 func _on_Area2D_body_entered(body):
-	if not taken:
+	if active:
 		get_tree().call_group("Gamestate", "eaten_goodie", color_index)
-		taken = true
+		active = false
 		$Sprite.visible = false
 		die()
 
