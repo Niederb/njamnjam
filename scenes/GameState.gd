@@ -38,18 +38,11 @@ func get_adjacent_goodies(position, color_index, goodies):
 	for g in goodies:
 		var distance = (g.global_position - position).length()
 		var head_distance = ($Player/Head.global_position - position).length()
-		
 		if head_distance > Globals.CELL_SIZE and distance <= Globals.CELL_SIZE and g.get_color_index() == color_index and g.is_active():
 			adjacent.push_back(g)
-		elif distance < Globals.CELL_SIZE + 10:
-			print("Very close: %s" % distance)
-	if adjacent.size() > 0:
-		print("Found adjacent: %s" % adjacent.size())
 	return adjacent
-			
 
 func check_combo():
-	print("Check combo")
 	var combo_size = 0
 	var old_color_index = -1
 	var start_index = 0
@@ -70,7 +63,6 @@ func check_combo():
 				for g in combo_goodies:
 					g.die()
 					add_goodie()
-				print("Combo: %s/%s" % [combo_size, sequential_body_parts])
 				$Player.run_combo(start_index, sequential_body_parts)
 			combo_goodies = []
 			combo_size = 1
@@ -86,12 +78,8 @@ func check_combo():
 		combo_goodies += adjacent_goodies
 		
 		index += 1
-	print("Colors %s" % PoolStringArray(color_indices).join(", "))
-	#var cells = body_parts + goodies
-	#var sub_graphs = get_sub_graphs(cells, Globals.MIN_COMBO_SIZE)
 
 func eaten_goodie(color):
-	print("Eaten goodie")
 	score += 10
 	$Player.increase_length(color)
 	add_goodie()
