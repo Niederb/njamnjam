@@ -1,6 +1,4 @@
 extends Node2D
-
-var score = 0
 	
 func _ready():
 	add_to_group("Gamestate")
@@ -60,7 +58,7 @@ func check_combo():
 				for g in combo_goodies:
 					g.die()
 					add_goodie()
-				$Player.run_combo(start_index, sequential_body_parts)
+				$Player.run_combo(start_index, combo_size, sequential_body_parts)
 			combo_goodies = []
 			combo_size = 1
 			sequential_body_parts = 1
@@ -77,17 +75,20 @@ func check_combo():
 		index += 1
 
 func eaten_goodie(color):
-	score += 10
+	$"/root/Globals".score += 10
 	$Player.increase_length(color)
 	add_goodie()
-	$GUI.update_score(score)
+	$GUI.update_score($"/root/Globals".score)
 
 func trigger_combo(combo_size):
-	score += 10 * combo_size
-	$GUI.update_score(score)
+	$"/root/Globals".score += 10 * combo_size
+	$GUI.update_score($"/root/Globals".score)
 
 func _physics_process(_delta):
 	if $Player.move_finished():
 		check_combo()
 	$Player.move()
 	$GUI.update_fps()
+
+func game_over():
+	get_tree().change_scene("res://scenes/GameOver.tscn")

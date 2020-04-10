@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://GUI.gd" type="Script" id=1]
-[ext_resource path="res://gfx/candles_.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://gfx/kenvector_future.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 size = 45
@@ -24,15 +24,15 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_right = 236.0
-margin_bottom = 58.0
+margin_right = 252.0
+margin_bottom = 52.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ScoreLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
-margin_right = 149.0
-margin_bottom = 58.0
+margin_right = 211.0
+margin_bottom = 52.0
 custom_fonts/font = SubResource( 1 )
 text = "Score: "
 __meta__ = {
@@ -40,9 +40,9 @@ __meta__ = {
 }
 
 [node name="Score" type="Label" parent="VBoxContainer/HBoxContainer"]
-margin_left = 153.0
-margin_right = 183.0
-margin_bottom = 58.0
+margin_left = 215.0
+margin_right = 252.0
+margin_bottom = 52.0
 custom_fonts/font = SubResource( 2 )
 text = "0"
 __meta__ = {
@@ -50,16 +50,16 @@ __meta__ = {
 }
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 62.0
-margin_right = 236.0
-margin_bottom = 120.0
+margin_top = 56.0
+margin_right = 252.0
+margin_bottom = 108.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="FpsLabel" type="Label" parent="VBoxContainer/HBoxContainer2"]
-margin_right = 128.0
-margin_bottom = 58.0
+margin_right = 137.0
+margin_bottom = 52.0
 custom_fonts/font = SubResource( 1 )
 text = "FPS: "
 __meta__ = {
@@ -67,9 +67,9 @@ __meta__ = {
 }
 
 [node name="FPS" type="Label" parent="VBoxContainer/HBoxContainer2"]
-margin_left = 132.0
-margin_right = 201.0
-margin_bottom = 58.0
+margin_left = 141.0
+margin_right = 230.0
+margin_bottom = 52.0
 custom_fonts/font = SubResource( 1 )
 text = "0.0"
 __meta__ = {

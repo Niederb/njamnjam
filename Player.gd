@@ -14,8 +14,9 @@ func _ready():
 		body_part.global_position.y -= position_offset
 		$Body.add_child(body_part)
 
-func run_combo(start_index, combo_size):
-	for _i in range(start_index, start_index+combo_size):
+func run_combo(start_index, combo_size, sequential_cells):
+	$ComboSFX.play()
+	for _i in range(start_index, start_index+sequential_cells):
 		var body_part = $Body.get_child(start_index)
 		body_part.die()
 		$Body.remove_child(body_part)
@@ -28,14 +29,18 @@ func move_body():
 	var start_position = global_position
 	#var collision = $Head.move_and_slide(Globals.CELL_SIZE * direction)
 	var end_position = global_position + Globals.CELL_SIZE * direction
+	var space_state = get_world_2d().get_direct_space_state()
+	var intersection = space_state.intersect_point(end_position)
+	if intersection:
+		get_tree().call_group("Gamestate", "game_over")
+		$DieSFX.play()
+		dead = true
+		return
 	$Tween.interpolate_property(self, "global_position",
 		start_position, end_position, Globals.TIME_INTERVAL,
-		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	
+		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)	
 	tween_done = false
-	var collision = false
-	if collision:
-		dead = true
+
 	for body_part in $Body.get_children():
 		start_position = body_part.move_to($Tween, start_position)
 	new_bodypart_position = start_position
@@ -56,6 +61,7 @@ func _input(_delta):
 		direction = Vector2(0, -1)
 
 func increase_length(color_index):
+	$GoodieSFX.play()
 	length += 1
 	var body_part = load("res://scenes/BodyPart.tscn").instance()
 	body_part.modulate_color(color_index)

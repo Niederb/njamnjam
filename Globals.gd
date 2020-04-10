@@ -9,3 +9,8 @@ const TIME_INTERVAL = 0.25
 var colors = [ Color(1, 0, 0), Color(0, 1, 0), Color(0, 0, 1), Color(0, 1, 1)]
 
 enum CellType { WALL, GOODIE, SNAKE, EMPTY }
+
+var score = 0
+
+func _ready():
+	score = 0
