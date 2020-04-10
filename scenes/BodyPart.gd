@@ -7,3 +7,11 @@ func modulate_color(new_color_index):
 
 func die():
 	queue_free()
+
+func move_to(tween, new_position):
+	var current_position = global_position
+	tween.interpolate_property(self, "global_position",
+		current_position, new_position, Globals.TIME_INTERVAL,
+		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	#$Tween.start()
+	return current_position

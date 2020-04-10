@@ -4,6 +4,7 @@ var direction = Vector2()
 var length = Globals.START_LENGTH
 var dead = false
 var new_bodypart_position = Vector2()
+var tween_done = true
 
 func _ready():
 	var position_offset = 0
@@ -24,20 +25,26 @@ func get_body_parts():
 	return $Body.get_children()
 
 func move_body():
-	var start_position = $Head.global_position
-	var collision = $Head.move_and_collide(Globals.CELL_SIZE * direction)
+	var start_position = global_position
+	#var collision = $Head.move_and_slide(Globals.CELL_SIZE * direction)
+	var end_position = global_position + Globals.CELL_SIZE * direction
+	$Tween.interpolate_property(self, "global_position",
+		start_position, end_position, Globals.TIME_INTERVAL,
+		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	
+	tween_done = false
+	var collision = false
 	if collision:
 		dead = true
 		return true
 	for body_part in $Body.get_children():
-		var temp_position = body_part.global_position
-		body_part.global_position = start_position
-		start_position = temp_position
+		start_position = body_part.move_to($Tween, start_position)
 	new_bodypart_position = start_position
+	$Tween.start()
 	return false
 
 func move():
-	if !dead and direction.length() > 0:
+	if tween_done and !dead and direction.length() > 0:
 		var dead = move_body()		
 
 func _input(_delta):
@@ -55,4 +62,10 @@ func increase_length(color_index):
 	var body_part = load("res://scenes/BodyPart.tscn").instance()
 	body_part.modulate_color(color_index)
 	$Body.add_child(body_part)
-	body_part.global_position = new_bodypart_position
+	#body_part.global_position = new_bodypart_position
+
+func move_finished():
+	return tween_done
+
+func _on_Tween_tween_all_completed():
+	tween_done = true

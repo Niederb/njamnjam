@@ -1,7 +1,6 @@
 extends Node2D
 
 var score = 0
-var move = true
 	
 func _ready():
 	add_to_group("Gamestate")
@@ -90,10 +89,7 @@ func trigger_combo(combo_size):
 	$GUI.update_score(score)
 
 func _physics_process(_delta):
-	if move:
-		$Player.move()
+	if $Player.move_finished():
 		check_combo()
-		move = false
-
-func _on_Timer_timeout():
-	move = true
+	$Player.move()
+	$GUI.update_fps()

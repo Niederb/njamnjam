@@ -30,6 +30,7 @@ Globals="*res://Globals.gd"
 
 [display]
 
+window/vsync/use_vsync=false
 window/stretch/aspect="keep"
 
 [input]
