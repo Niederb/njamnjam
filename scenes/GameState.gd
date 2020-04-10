@@ -4,7 +4,7 @@ var score = 0
 	
 func _ready():
 	add_to_group("Gamestate")
-	for i in range(Globals.N_GOODIES):
+	for _i in range(Globals.N_GOODIES):
 		add_goodie()
 
 func add_goodie():
@@ -14,13 +14,11 @@ func add_goodie():
 func get_valid_position():
 	randomize()
 	var space_state = get_world_2d().get_direct_space_state()
-	var tries = 0
 	while (true):
 		var x = randi() % 19 + 1.5
 		var y = randi() % 12 + 1.5
 		var position = Vector2(Globals.CELL_SIZE * x, Globals.CELL_SIZE * y)
 		var intersection = space_state.intersect_point(position)
-		tries += 1
 		if !intersection:
 			return position
 	return Vector2()

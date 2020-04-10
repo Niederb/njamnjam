@@ -36,16 +36,14 @@ func move_body():
 	var collision = false
 	if collision:
 		dead = true
-		return true
 	for body_part in $Body.get_children():
 		start_position = body_part.move_to($Tween, start_position)
 	new_bodypart_position = start_position
 	$Tween.start()
-	return false
 
 func move():
 	if tween_done and !dead and direction.length() > 0:
-		var dead = move_body()		
+		move_body()		
 
 func _input(_delta):
 	if Input.is_action_just_pressed("left"):
@@ -62,7 +60,6 @@ func increase_length(color_index):
 	var body_part = load("res://scenes/BodyPart.tscn").instance()
 	body_part.modulate_color(color_index)
 	$Body.add_child(body_part)
-	#body_part.global_position = new_bodypart_position
 
 func move_finished():
 	return tween_done
