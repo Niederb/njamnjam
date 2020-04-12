@@ -6,7 +6,7 @@
 [ext_resource path="res://sfx/highDown.ogg" type="AudioStream" id=4]
 
 [sub_resource type="OccluderPolygon2D" id=1]
-polygon = PoolVector2Array( 13.5745, -9.80124, 9.38091, -13.589, -8.74606, -13.4537, -13.4807, -9.39541, -13.616, 9.13738, -9.69299, 13.6015, 9.38091, 13.7368, 13.7097, 8.461 )
+polygon = PoolVector2Array( 13, -11, 11, -13, -11, -13, -13, -11, -13, 11, -11, 13, 11, 13, 13, 11 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 16, 16 )

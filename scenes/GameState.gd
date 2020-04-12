@@ -9,6 +9,9 @@ func add_goodie():
 	var position = get_valid_position()
 	$Goodies.create_new_goodie(position)
 
+func head_distance(point):
+	return ($Player/Head.global_position - point).length()
+	
 func get_valid_position():
 	randomize()
 	var space_state = get_world_2d().get_direct_space_state()
@@ -17,7 +20,7 @@ func get_valid_position():
 		var y = randi() % 12 + 1.5
 		var position = Vector2(Globals.CELL_SIZE * x, Globals.CELL_SIZE * y)
 		var intersection = space_state.intersect_point(position)
-		if !intersection:
+		if !intersection and head_distance(position) > 2*Globals.CELL_SIZE:
 			return position
 	return Vector2()
 
@@ -25,8 +28,7 @@ func find_sub_graph(cell, cells, graph_index, graphs):
 	for current_cell in cells:
 		if !current_cell.processed():
 			var distance = (current_cell.global_position - cell.global_position).length()
-			var head_distance = ($Player/Head.global_position - current_cell.global_position).length()
-			if head_distance > Globals.CELL_SIZE and distance <= Globals.CELL_SIZE and current_cell.get_color_index() == cell.get_color_index():
+			if head_distance(current_cell.global_position) > Globals.CELL_SIZE and distance <= Globals.CELL_SIZE and current_cell.get_color_index() == cell.get_color_index():
 				current_cell.sub_graph_id = graph_index
 				graphs[graph_index].push_back(current_cell.id)
 				find_sub_graph(current_cell, cells, graph_index, graphs)
@@ -58,8 +60,7 @@ func get_adjacent_goodies(position, color_index, goodies):
 	var adjacent = []
 	for g in goodies:
 		var distance = (g.global_position - position).length()
-		var head_distance = ($Player/Head.global_position - position).length()
-		if head_distance > Globals.CELL_SIZE and distance <= Globals.CELL_SIZE and g.get_color_index() == color_index and g.is_active():
+		if head_distance(position) > Globals.CELL_SIZE and distance <= Globals.CELL_SIZE and g.get_color_index() == color_index and g.is_active():
 			adjacent.push_back(g)
 	return adjacent
 

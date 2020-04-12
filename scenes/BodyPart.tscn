@@ -1,10 +1,10 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://gfx/bla.png" type="Texture" id=1]
+[ext_resource path="res://gfx/body_part.png" type="Texture" id=1]
 [ext_resource path="res://scenes/BodyPart.gd" type="Script" id=2]
 
 [sub_resource type="OccluderPolygon2D" id=1]
-polygon = PoolVector2Array( -12.0182, -9.12181, -12.3165, 8.08134, -8.63723, 12.0589, 8.76479, 12.1584, 12.4441, 8.28022, 12.0463, -9.61901, 8.06871, -12.4033, -8.93555, -12.0056 )
+polygon = PoolVector2Array( -13, -11, -13, 11, -11, 13, 11, 13, 13, 11, 13, -11, 11, -13, -11, -13 )
 
 [sub_resource type="RectangleShape2D" id=2]
 
