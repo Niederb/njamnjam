@@ -25,7 +25,8 @@ func find_sub_graph(cell, cells, graph_index, graphs):
 	for current_cell in cells:
 		if !current_cell.processed():
 			var distance = (current_cell.global_position - cell.global_position).length()
-			if distance <= Globals.CELL_SIZE and current_cell.get_color_index() == cell.get_color_index():
+			var head_distance = ($Player/Head.global_position - current_cell.global_position).length()
+			if head_distance > Globals.CELL_SIZE and distance <= Globals.CELL_SIZE and current_cell.get_color_index() == cell.get_color_index():
 				current_cell.sub_graph_id = graph_index
 				graphs[graph_index].push_back(current_cell.id)
 				find_sub_graph(current_cell, cells, graph_index, graphs)
@@ -97,6 +98,7 @@ func eaten_goodie(color):
 func trigger_combo(n_body_parts, n_goodies):
 	$"/root/Globals".score += 10 * n_body_parts * (n_goodies + 1)
 	$GUI.update_score($"/root/Globals".score)
+	$ComboSFX.play()
 
 func _physics_process(_delta):
 	if $Player.move_finished():
