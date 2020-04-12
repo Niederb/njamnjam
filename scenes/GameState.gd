@@ -21,11 +21,36 @@ func get_valid_position():
 			return position
 	return Vector2()
 
-func get_sub_graphs(cells, min_size):
+func find_sub_graph(cell, cells, graph_index, graphs):
+	for current_cell in cells:
+		if !current_cell.processed():
+			var distance = (current_cell.global_position - cell.global_position).length()
+			if distance <= Globals.CELL_SIZE and current_cell.get_color_index() == cell.get_color_index():
+				current_cell.sub_graph_id = graph_index
+				graphs[graph_index].push_back(current_cell.id)
+				find_sub_graph(current_cell, cells, graph_index, graphs)
+
+func determine_sub_graphs(cells, min_size):
 	var sub_graphs = []
-	for cell in cells.len():
-		pass
-		#find_neighbor(cell, cells)
+	var id = 0
+	for cell in cells:
+		cell.reset(id)
+		id += 1
+		
+	var graph_index = 0
+	for cell in cells:
+		if cell.processed():
+			continue
+		var graph = []
+		sub_graphs.push_back(graph)
+		sub_graphs[graph_index].push_back(cell.id)
+		cell.sub_graph_id = graph_index
+		
+		find_sub_graph(cell, cells, graph_index, sub_graphs)
+		graph_index += 1
+	
+	print("Subgraphs")
+	print(sub_graphs)
 	return sub_graphs
 
 func get_adjacent_goodies(position, color_index, goodies):
@@ -46,33 +71,22 @@ func check_combo():
 	
 	var body_parts = $Player.get_body_parts()
 	var all_goodies = $Goodies.get_current_goodies()
-	var combo_goodies = []
-	var color_indices = []
-	
-	for body_part in body_parts:
-		var position = body_part.global_position
-		var new_color_index = body_part.get_color_index()
-		color_indices.push_back(new_color_index)
-		if old_color_index != new_color_index:
-			if combo_size >= Globals.MIN_COMBO_SIZE:
-				for g in combo_goodies:
-					g.die()
+	var cells = body_parts + all_goodies
+	var sub_graphs = determine_sub_graphs(cells, Globals.MIN_COMBO_SIZE)
+	for graph in sub_graphs:
+		if graph.size() >= Globals.MIN_COMBO_SIZE:
+			$Player.remove_body_parts(graph)
+			var n_goodies = 0
+			var n_body_parts = 0
+			for cell_index in graph:
+				var cell = cells[cell_index]
+				if cell_index >= body_parts.size():
+					n_goodies += 1
+					cell.die()
 					add_goodie()
-				$Player.run_combo(start_index, combo_size, sequential_body_parts)
-			combo_goodies = []
-			combo_size = 1
-			sequential_body_parts = 1
-			old_color_index = new_color_index
-			start_index = index
-		else:
-			combo_size += 1
-			sequential_body_parts += 1
-		
-		var adjacent_goodies = get_adjacent_goodies(position, new_color_index, all_goodies)
-		combo_size += adjacent_goodies.size()
-		combo_goodies += adjacent_goodies
-		
-		index += 1
+				else:
+					n_body_parts += 1
+			trigger_combo(n_body_parts, n_goodies)
 
 func eaten_goodie(color):
 	$"/root/Globals".score += 10
@@ -80,8 +94,8 @@ func eaten_goodie(color):
 	add_goodie()
 	$GUI.update_score($"/root/Globals".score)
 
-func trigger_combo(combo_size):
-	$"/root/Globals".score += 10 * combo_size
+func trigger_combo(n_body_parts, n_goodies):
+	$"/root/Globals".score += 10 * n_body_parts * (n_goodies + 1)
 	$GUI.update_score($"/root/Globals".score)
 
 func _physics_process(_delta):

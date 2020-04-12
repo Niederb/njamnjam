@@ -5,6 +5,9 @@ var visited = false
 var cell_coordinates
 var sub_graph_id = -1
 
-func init(new_cell, new_cell_coordinates):
-	cell = new_cell
-	cell_coordinates = new_cell_coordinates
+func init(cell, cell_coordinates):
+	self.cell = cell
+	self.cell_coordinates = cell_coordinates
+
+func is_visited():
+	return visited

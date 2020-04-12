@@ -14,13 +14,14 @@ func _ready():
 		body_part.global_position.y -= position_offset
 		$Body.add_child(body_part)
 
-func run_combo(start_index, combo_size, sequential_cells):
-	$ComboSFX.play()
-	for _i in range(start_index, start_index+sequential_cells):
-		var body_part = $Body.get_child(start_index)
-		body_part.die()
-		$Body.remove_child(body_part)
-	get_tree().call_group("Gamestate", "trigger_combo", combo_size)
+func remove_body_parts(indeces):
+	var children = []
+	for i in indeces:
+		if i < $Body.get_child_count():
+			children.push_back($Body.get_child(i))
+	for c in children:
+		c.die()
+		$Body.remove_child(c)
 	
 func get_body_parts():
 	return $Body.get_children()

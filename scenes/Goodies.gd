@@ -9,3 +9,6 @@ func create_new_goodie(position):
 
 func get_current_goodies():
 	return get_children()
+
+func die():
+	queue_free()
