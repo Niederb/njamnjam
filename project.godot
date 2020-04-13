@@ -25,8 +25,8 @@ Globals="*res://Globals.gd"
 
 [display]
 
-window/size/width=1600
-window/size/height=1024
+window/size/width=1344
+window/size/height=960
 window/vsync/use_vsync=false
 window/stretch/aspect="keep"
 
