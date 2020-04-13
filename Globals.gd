@@ -1,7 +1,7 @@
 extends Node
 
 const START_LENGTH = 0
-const CELL_SIZE = 32
+const CELL_SIZE = 64
 const N_COLORS = 3
 const N_GOODIES = 3
 const MIN_COMBO_SIZE = 3

@@ -4,7 +4,7 @@
 [ext_resource path="res://scenes/BodyPart.gd" type="Script" id=2]
 
 [sub_resource type="OccluderPolygon2D" id=1]
-polygon = PoolVector2Array( -13, -12, -13, 12, -12, 13, 12, 13, 13, 12, 13, -12, 12, -13, -12, -13 )
+polygon = PoolVector2Array( -26, -23, -26, 23, -23, 26, 23, 26, 26, 23, 26, -23, 23, -26, -23, -26 )
 
 [sub_resource type="RectangleShape2D" id=2]
 
