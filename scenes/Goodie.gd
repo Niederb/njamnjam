@@ -8,7 +8,7 @@ func init(position, new_color_index):
 	$Light.color = color
 	$AnimationPlayer.play()
 	
-func _on_Area2D_body_entered(body):
+func _on_Area2D_body_entered(_body):
 	if active:
 		get_tree().call_group("Gamestate", "eaten_goodie", color_index)
 		active = false

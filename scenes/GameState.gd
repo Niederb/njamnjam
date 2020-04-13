@@ -39,7 +39,7 @@ func find_sub_graph(cell, cells, graph_index, graphs):
 				graphs[graph_index].push_back(current_cell.id)
 				find_sub_graph(current_cell, cells, graph_index, graphs)
 
-func determine_sub_graphs(cells, min_size):
+func determine_sub_graphs(cells):
 	var sub_graphs = []
 	var id = 0
 	for cell in cells:
@@ -71,17 +71,11 @@ func get_adjacent_goodies(position, color_index, goodies):
 	return adjacent
 
 func check_combo():
-	var combo_size = 0
-	var old_color_index = -1
-	var start_index = 0
-	var index = 0
-	var sequential_body_parts = 0
-	
 	var body_parts = $Player.get_body_parts()
 	var all_goodies = $Goodies.get_current_goodies()
 	var all_blocks = $Blocks.get_children()
 	var cells = body_parts + all_goodies + all_blocks
-	var sub_graphs = determine_sub_graphs(cells, Globals.MIN_COMBO_SIZE)
+	var sub_graphs = determine_sub_graphs(cells)
 	for graph in sub_graphs:
 		if graph.size() >= Globals.MIN_COMBO_SIZE:
 			$Player.remove_body_parts(graph)
