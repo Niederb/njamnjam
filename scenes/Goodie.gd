@@ -6,6 +6,7 @@ func init(position, new_color_index):
 	global_position = position
 	$Sprite.modulate = color
 	$Light.color = color
+	$AnimationPlayer.play()
 	
 func _on_Area2D_body_entered(body):
 	if active:

@@ -8,7 +8,7 @@
 [ext_resource path="res://scenes/GUI.tscn" type="PackedScene" id=6]
 [ext_resource path="res://gfx/empty-tile.png" type="Texture" id=7]
 [ext_resource path="res://scenes/Goodies.gd" type="Script" id=8]
-[ext_resource path="res://sfx/jingles_HIT10.ogg" type="AudioStream" id=9]
+[ext_resource path="res://sfx/powerUp4.ogg" type="AudioStream" id=9]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
@@ -131,3 +131,5 @@ volume_db = -6.0
 [node name="ComboSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
 pitch_scale = 2.0
+
+[node name="Blocks" type="Node" parent="."]

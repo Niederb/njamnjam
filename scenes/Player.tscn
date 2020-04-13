@@ -2,7 +2,7 @@
 
 [ext_resource path="res://gfx/player.png" type="Texture" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
-[ext_resource path="res://sfx/impactBell_heavy_000.ogg" type="AudioStream" id=3]
+[ext_resource path="res://sfx/laser5.ogg" type="AudioStream" id=3]
 [ext_resource path="res://sfx/highDown.ogg" type="AudioStream" id=4]
 
 [sub_resource type="OccluderPolygon2D" id=1]
@@ -31,6 +31,7 @@ shape = SubResource( 2 )
 
 [node name="GoodieSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+volume_db = -6.0
 pitch_scale = 2.0
 
 [node name="DieSFX" type="AudioStreamPlayer" parent="."]

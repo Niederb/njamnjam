@@ -28,7 +28,6 @@ func get_body_parts():
 
 func move_body():
 	var start_position = global_position
-	#var collision = $Head.move_and_slide(Globals.CELL_SIZE * direction)
 	var end_position = global_position + Globals.CELL_SIZE * direction
 	var space_state = get_world_2d().get_direct_space_state()
 	var intersection = space_state.intersect_point(end_position)

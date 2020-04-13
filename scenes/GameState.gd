@@ -4,6 +4,12 @@ func _ready():
 	add_to_group("Gamestate")
 	for _i in range(Globals.N_GOODIES):
 		add_goodie()
+	randomize_blocks()
+
+func randomize_blocks():
+	for b in $Blocks.get_children():
+		var color_index = randi() % Globals.N_COLORS
+		b.modulate_color(color_index)
 
 func add_goodie():
 	var position = get_valid_position()
@@ -73,7 +79,8 @@ func check_combo():
 	
 	var body_parts = $Player.get_body_parts()
 	var all_goodies = $Goodies.get_current_goodies()
-	var cells = body_parts + all_goodies
+	var all_blocks = $Blocks.get_children()
+	var cells = body_parts + all_goodies + all_blocks
 	var sub_graphs = determine_sub_graphs(cells, Globals.MIN_COMBO_SIZE)
 	for graph in sub_graphs:
 		if graph.size() >= Globals.MIN_COMBO_SIZE:
