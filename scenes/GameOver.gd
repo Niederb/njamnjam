@@ -4,6 +4,7 @@ func _ready():
 	$CenterContainer/VBoxContainer/HBoxContainer/FinalScore.text = str($"/root/Globals".score)
 
 func _on_TryAgainButton_pressed():
-	Globals.MIN_COMBO_SIZE = int($GridContainer/MinimalComboSize.text)
+	$CenterContainer/VBoxContainer/Options.apply()
+	
 	Globals.score = 0
 	get_tree().change_scene("res://scenes/LevelTemplate.tscn")

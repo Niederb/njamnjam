@@ -92,14 +92,14 @@ func check_combo():
 			trigger_combo(n_body_parts, n_goodies)
 
 func eaten_goodie(color):
-	$"/root/Globals".score += 10
+	Globals.score += 10
 	$Player.increase_length(color)
 	add_goodie()
-	$GUI.update_score($"/root/Globals".score)
+	$GUI.update_score(Globals.score)
 
 func trigger_combo(n_body_parts, n_goodies):
-	$"/root/Globals".score += 10 * n_body_parts * (n_goodies + 1)
-	$GUI.update_score($"/root/Globals".score)
+	Globals.score += 10 * n_body_parts * (n_goodies + 1)
+	$GUI.update_score(Globals.score)
 	$ComboSFX.play()
 
 func _physics_process(_delta):

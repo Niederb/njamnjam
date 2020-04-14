@@ -1,0 +1,120 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://scenes/Options.gd" type="Script" id=1]
+[ext_resource path="res://gfx/kenvector_future.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 25
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 20
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 25
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 20
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 25
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 20
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 25
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 20
+use_filter = true
+font_data = ExtResource( 2 )
+
+[node name="Options" type="GridContainer"]
+rect_min_size = Vector2( 300, 0 )
+custom_constants/vseparation = 10
+custom_constants/hseparation = 50
+columns = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MinimalComboSizeLabel" type="Label" parent="."]
+margin_top = 2.0
+margin_right = 332.0
+margin_bottom = 31.0
+custom_fonts/font = SubResource( 1 )
+text = "Minimal combo size:"
+
+[node name="MinimalComboSize" type="LineEdit" parent="."]
+margin_left = 382.0
+margin_right = 452.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 5 )
+text = "3"
+align = 2
+
+[node name="NumberColorsLabel" type="Label" parent="."]
+margin_top = 45.0
+margin_right = 332.0
+margin_bottom = 74.0
+custom_fonts/font = SubResource( 2 )
+text = "Number of Colors:"
+
+[node name="NumberColors" type="LineEdit" parent="."]
+margin_left = 382.0
+margin_top = 43.0
+margin_right = 452.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 0, 30 )
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 8 )
+text = "3"
+align = 2
+
+[node name="NumberGoodiesLabel" type="Label" parent="."]
+margin_top = 88.0
+margin_right = 332.0
+margin_bottom = 117.0
+custom_fonts/font = SubResource( 3 )
+text = "Number of goodies:"
+
+[node name="NumberGoodies" type="LineEdit" parent="."]
+margin_left = 382.0
+margin_top = 86.0
+margin_right = 452.0
+margin_bottom = 119.0
+rect_min_size = Vector2( 20, 0 )
+custom_fonts/font = SubResource( 6 )
+text = "3"
+align = 2
+
+[node name="MovementSpeedLabel" type="Label" parent="."]
+margin_top = 131.0
+margin_right = 332.0
+margin_bottom = 160.0
+custom_fonts/font = SubResource( 4 )
+text = "Movement speed:"
+
+[node name="MovementSpeed" type="LineEdit" parent="."]
+margin_left = 382.0
+margin_top = 129.0
+margin_right = 452.0
+margin_bottom = 162.0
+custom_fonts/font = SubResource( 7 )
+text = "4"
+align = 2
