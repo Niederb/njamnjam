@@ -1,4 +1,4 @@
-extends "res://Cell.gd"
+extends "res://scenes/Cell.gd"
 
 func init(position, new_color_index):
 	color_index = new_color_index
