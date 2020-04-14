@@ -37,7 +37,7 @@ func move_body():
 		dead = true
 		return
 	$Tween.interpolate_property(self, "global_position",
-		start_position, end_position, Globals.TIME_INTERVAL,
+		start_position, end_position, Globals.get_time_interval(),
 		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)	
 	tween_done = false
 

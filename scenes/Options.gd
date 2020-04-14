@@ -1,26 +1,22 @@
 extends GridContainer
 
 func _ready():
+	update_GUI()
+	
+func update_GUI():
 	$MinimalComboSize.text = str(Globals.MIN_COMBO_SIZE)
 	$NumberColors.text = str(Globals.N_COLORS)
 	$NumberGoodies.text = str(Globals.N_GOODIES)
-	$MovementSpeed.text = str(1.0 / Globals.TIME_INTERVAL)
-	
+	$MovementSpeed.text = str(Globals.MOVEMENT_SPEED)
 
 func apply():
-	Globals.MIN_COMBO_SIZE = get_minimal_combo_size()
-	Globals.N_COLORS = get_number_of_colors()
-	Globals.N_GOODIES = get_number_of_goodies()
-	Globals.TIME_INTERVAL = 1.0 / get_movement_speed()
+	Globals.MIN_COMBO_SIZE = convert_to_int($MinimalComboSize.text, Globals.MIN_COMBO_SIZE)
+	Globals.N_COLORS = convert_to_int($NumberColors.text, Globals.N_COLORS)
+	Globals.N_GOODIES = convert_to_int($NumberGoodies.text, Globals.N_GOODIES)
+	Globals.MOVEMENT_SPEED = convert_to_int($MovementSpeed.text, Globals.MOVEMENT_SPEED)
 
-func get_minimal_combo_size():
-	return int($MinimalComboSize.text)
-
-func get_number_of_colors():
-	return int($NumberColors.text)
-
-func get_movement_speed():
-	return int($MovementSpeed.text)
-
-func get_number_of_goodies():
-	return int($NumberGoodies.text)
+func convert_to_int(text, default):
+	if text.is_valid_integer():
+		return int(text)
+	else:
+		return default
