@@ -26,6 +26,19 @@ func remove_body_parts(indeces):
 func get_body_parts():
 	return $Body.get_children()
 
+func wrap_position(position):
+	var ZERO = Vector2()
+	var MAX = Globals.LEVEL_SIZE * Globals.CELL_SIZE
+	if position.x < ZERO.x:
+		position.x = MAX.x + position.x
+	if position.y < ZERO.y:
+		position.y = MAX.y + position.y
+	if position.x > MAX.x:
+		position.x = ZERO.x - position.x
+	if position.y > MAX.y:
+		position.y = ZERO.y - position.y
+	return position
+		
 func move_body():
 	var start_position = global_position
 	var end_position = global_position + Globals.CELL_SIZE * direction
@@ -71,4 +84,7 @@ func move_finished():
 	return tween_done
 
 func _on_Tween_tween_all_completed():
+#	$Head.global_position = wrap_position($Head.global_position)
+#	for body_part in $Body.get_children():
+#		body_part.global_position = wrap_position(body_part.global_position)
 	tween_done = true

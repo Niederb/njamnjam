@@ -22,8 +22,8 @@ func get_valid_position():
 	randomize()
 	var space_state = get_world_2d().get_direct_space_state()
 	while (true):
-		var x = randi() % 19 + 1.5
-		var y = randi() % 12 + 1.5
+		var x = randi() % int(Globals.LEVEL_SIZE.x) + 0.5
+		var y = randi() % int(Globals.LEVEL_SIZE.y) + 0.5
 		var position = Vector2(Globals.CELL_SIZE * x, Globals.CELL_SIZE * y)
 		var intersection = space_state.intersect_point(position)
 		if !intersection and head_distance(position) > 2*Globals.CELL_SIZE:
@@ -81,14 +81,19 @@ func check_combo():
 			$Player.remove_body_parts(graph)
 			var n_goodies = 0
 			var n_body_parts = 0
+			var n_blocks = 0
 			for cell_index in graph:
 				var cell = cells[cell_index]
-				if cell_index >= body_parts.size():
+				if cell_index < body_parts.size():
+					n_body_parts += 1
+				elif cell_index < (body_parts.size() + all_goodies.size()):
 					n_goodies += 1
 					cell.die()
 					add_goodie()
 				else:
-					n_body_parts += 1
+					n_blocks += 1
+					cell.die()
+					
 			trigger_combo(n_body_parts, n_goodies)
 
 func eaten_goodie(color):
@@ -107,6 +112,8 @@ func _physics_process(_delta):
 		check_combo()
 	$Player.move()
 	$GUI.update_fps()
-
+	if $WinCondition.check_win():
+		get_tree().change_scene("res://scenes/GameOver.tscn")
+		
 func game_over():
 	get_tree().change_scene("res://scenes/GameOver.tscn")
