@@ -113,7 +113,8 @@ func _physics_process(_delta):
 	$Player.move()
 	$GUI.update_fps()
 	if $WinCondition.check_win():
-		get_tree().change_scene("res://scenes/GameOver.tscn")
+		var scene = load("res://scenes/GameOver.tscn")
+		get_tree().change_scene(scene)
 		
 func game_over():
 	get_tree().change_scene("res://scenes/GameOver.tscn")
