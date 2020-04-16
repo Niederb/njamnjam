@@ -3,12 +3,15 @@ extends Node2D
 var level_number
 var level_defeated: bool = false
 var pause_movement: bool = true
+const WAIT_COUNT_DOWN:int  = 3
+var count_down: int = WAIT_COUNT_DOWN
 	
 func _ready():
 	add_to_group("Gamestate")
 	for _i in range(Globals.N_GOODIES):
 		add_goodie()
 	randomize_blocks()
+	$UI/CountdownLabel.text = str(count_down)
 
 func randomize_blocks():
 	for b in $Blocks.get_children():
@@ -104,29 +107,29 @@ func eaten_goodie(color):
 	Globals.score += 10
 	$Player.increase_length(color)
 	add_goodie()
-	$GUI.update_score(Globals.score)
+	$HUD.update_score(Globals.score)
 
 func trigger_combo(n_body_parts, n_goodies):
 	Globals.score += 10 * n_body_parts * (n_goodies + 1)
-	$GUI.update_score(Globals.score)
+	$HUD.update_score(Globals.score)
 	$ComboSFX.play()
 
 func _physics_process(_delta):
 	if pause_movement:
-		return
+		$Player.direction = Vector2()
 		
 	if $Player.move_finished():
 		check_combo()
 	$Player.move()
-	$GUI.update_fps()
-	if $WinCondition.check_win():
+	$HUD.update_fps()
+	if $WinCondition.check_win() and !level_defeated:
 		Globals.score = 0
 		level_defeated = true
 		pause_movement = true
 		var text = "Level defeated. Congratulations!"
-		$IntroductionText.text = text
-		$IntroductionText.visible = true
-		$Timer.start()
+		$UI/IntroductionText.text = text
+		$UI.visible = true
+		$UI/Timer.start()
 		
 func game_over():
 	get_tree().change_scene("res://scenes/GameOver.tscn")
@@ -135,16 +138,24 @@ func get_next_scene():
 	return "res://scenes/levels/Level%s.tscn" % (level_number + 1)
 
 func _on_Timer_timeout():
-	if level_defeated:
-		var next_scene = get_next_scene()
-		get_tree().change_scene(next_scene)
+	if count_down == 0:
+		$UI/Timer.stop()
+		count_down = WAIT_COUNT_DOWN
+		if level_defeated:
+			var next_scene = get_next_scene()
+			get_tree().change_scene(next_scene)
+		else:
+			pause_movement = false
+			$UI.visible = false
+
 	else:
-		pause_movement = false
-		$IntroductionText.visible = false
+		$UI/CountdownLabel.text = str(count_down)
+		count_down -= 1
 
 func start_game():
+	$UI/LevelLabel.text = "Level %s" % level_number
 	var intro_text = $WinCondition.get_introduction_text()
-	$IntroductionText.text = intro_text
+	$UI/IntroductionText.text = intro_text
 
 func load_map(map_name):
 	var new_map = load("res://scenes/Maps/%s.tscn" % map_name)
