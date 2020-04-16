@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://gfx/wall.png" type="Texture" id=1]
 [ext_resource path="res://gfx/background.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://sfx/Chiptune_Adventures_1.ogg" type="AudioStream" id=4]
 [ext_resource path="res://scenes/GameState.gd" type="Script" id=5]
 [ext_resource path="res://scenes/GUI.tscn" type="PackedScene" id=6]
+[ext_resource path="res://gfx/UITheme.tres" type="Theme" id=7]
 [ext_resource path="res://scenes/Goodies.gd" type="Script" id=8]
 [ext_resource path="res://sfx/powerUp4.ogg" type="AudioStream" id=9]
 [ext_resource path="res://scenes/WinCondition.gd" type="Script" id=10]
@@ -108,3 +109,24 @@ position = Vector2( 672, 416 )
 
 [node name="WinCondition" type="Node" parent="."]
 script = ExtResource( 10 )
+
+[node name="IntroductionText" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 456.0
+margin_top = 296.0
+margin_right = 956.0
+margin_bottom = 496.0
+rect_min_size = Vector2( 500, 200 )
+theme = ExtResource( 7 )
+text = "hello world"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

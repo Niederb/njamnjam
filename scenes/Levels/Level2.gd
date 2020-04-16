@@ -1,5 +1,5 @@
 extends "res://scenes/GameState.gd"
 
 func _ready():
-	$WinCondition.min_length = 3
+	set_win_condition(3)
 	level_number = 2

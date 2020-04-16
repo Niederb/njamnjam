@@ -1,6 +1,8 @@
 extends Node2D
 
 var level_number
+var level_defeated: bool = false
+var pause_movement: bool = true
 	
 func _ready():
 	add_to_group("Gamestate")
@@ -110,17 +112,36 @@ func trigger_combo(n_body_parts, n_goodies):
 	$ComboSFX.play()
 
 func _physics_process(_delta):
+	if pause_movement:
+		return
+		
 	if $Player.move_finished():
 		check_combo()
 	$Player.move()
 	$GUI.update_fps()
 	if $WinCondition.check_win():
-		var next_scene = get_next_scene()
-		#var scene = load(next_scene)
-		get_tree().change_scene(next_scene)
+		level_defeated = true
+		pause_movement = true
+		var text = "Level defeated. Congratulations!"
+		$IntroductionText.text = text
+		$IntroductionText.visible = true
+		$Timer.start()
 		
 func game_over():
 	get_tree().change_scene("res://scenes/GameOver.tscn")
 
 func get_next_scene():
 	return "res://scenes/levels/Level%s.tscn" % (level_number + 1)
+
+func _on_Timer_timeout():
+	if level_defeated:
+		var next_scene = get_next_scene()
+		get_tree().change_scene(next_scene)
+	else:
+		pause_movement = false
+		$IntroductionText.visible = false
+
+func set_win_condition(length: int):
+	$WinCondition.min_length = length
+	var text = "Create a snake with %s blocks to beat the level" % length
+	$IntroductionText.text = text
