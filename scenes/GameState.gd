@@ -126,10 +126,11 @@ func _physics_process(_delta):
 		Globals.score = 0
 		level_defeated = true
 		pause_movement = true
-		var text = "Level defeated. Congratulations!"
+		var text = "Level defeated. Congratulations! \n Next level coming up..."
 		$UI/IntroductionText.text = text
+		$UI/CountdownLabel.visible = false
 		$UI.visible = true
-		$UI/Timer.start()
+		$UI/NextLevelTimer.start()
 		
 func game_over():
 	Globals.level_scene = get_scene(level_number)
@@ -140,19 +141,15 @@ func get_scene(level_number):
 
 func _on_Timer_timeout():
 	if count_down == 0:
-		$UI/Timer.stop()
+		$UI/CountdownTimer.stop()
+		$UI/StartSFX.play()
 		count_down = WAIT_COUNT_DOWN
-		$UI/CountdownLabel.text = str(count_down)
-		if level_defeated:
-			var next_scene = get_scene(level_number + 1)
-			get_tree().change_scene(next_scene)
-		else:
-			pause_movement = false
-			$UI.visible = false
-
+		pause_movement = false
+		$UI.visible = false
 	else:
-		$UI/CountdownLabel.text = str(count_down)
 		count_down -= 1
+		$UI/CountdownSFX.play()
+	$UI/CountdownLabel.text = str(count_down)
 
 func start_game():
 	for _i in range(Globals.level_config.n_goodies):
@@ -166,3 +163,9 @@ func load_map(map_name):
 	var new_map = load("res://scenes/Maps/%s.tscn" % map_name)
 	var new_instance = new_map.instance()
 	$Map.replace_by(new_instance)
+
+
+func _on_NextLevelTimer_timeout():
+	if level_defeated:
+		var next_scene = get_scene(level_number + 1)
+		get_tree().change_scene(next_scene)

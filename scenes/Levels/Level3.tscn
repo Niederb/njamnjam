@@ -12,7 +12,7 @@ position = Vector2( 288, 352 )
 color_index = 0
 
 [node name="Goodie2" parent="Goodies" index="1" instance=ExtResource( 3 )]
-position = Vector2( 1056, 544 )
+position = Vector2( 1056, 480 )
 color_index = 0
 
 [node name="Goodie3" parent="Goodies" index="2" instance=ExtResource( 3 )]
