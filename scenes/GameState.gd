@@ -126,7 +126,7 @@ func _physics_process(_delta):
 		Globals.score = 0
 		level_defeated = true
 		pause_movement = true
-		var text = "Level defeated. Congratulations! \n Next level coming up..."
+		var text = get_success_text()
 		$UI/IntroductionText.text = text
 		$UI/CountdownLabel.visible = false
 		$UI.visible = true
@@ -136,6 +136,9 @@ func game_over():
 	Globals.level_scene = get_scene(level_number)
 	get_tree().change_scene("res://scenes/GameOver.tscn")
 
+func get_success_text():
+	return "Level defeated. Congratulations! \n Next level coming up..."
+	
 func get_scene(level_number):
 	return "res://scenes/levels/Level%s.tscn" % (level_number)
 
