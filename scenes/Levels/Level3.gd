@@ -1,5 +1,6 @@
 extends "res://scenes/GameState.gd"
 
 func _ready():
-	set_win_condition(5)
 	level_number = 3
+	$WinCondition.config.score = 100
+	start_game()

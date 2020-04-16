@@ -120,6 +120,7 @@ func _physics_process(_delta):
 	$Player.move()
 	$GUI.update_fps()
 	if $WinCondition.check_win():
+		Globals.score = 0
 		level_defeated = true
 		pause_movement = true
 		var text = "Level defeated. Congratulations!"
@@ -141,10 +142,9 @@ func _on_Timer_timeout():
 		pause_movement = false
 		$IntroductionText.visible = false
 
-func set_win_condition(length: int):
-	$WinCondition.min_length = length
-	var text = "Create a snake with %s blocks to beat the level" % length
-	$IntroductionText.text = text
+func start_game():
+	var intro_text = $WinCondition.get_introduction_text()
+	$IntroductionText.text = intro_text
 
 func load_map(map_name):
 	var new_map = load("res://scenes/Maps/%s.tscn" % map_name)
