@@ -1,12 +1,19 @@
 extends "res://scenes/Cell.gd"
 
+func _ready():
+	if color_index != -1:
+		update_color()
+
 func init(position, new_color_index):
 	color_index = new_color_index
-	var color = Globals.colors[color_index]
+	update_color()
 	global_position = position
+	$AnimationPlayer.play()
+	
+func update_color():
+	var color = Globals.colors[color_index]
 	$Sprite.modulate = color
 	$Light.color = color
-	$AnimationPlayer.play()
 	
 func _on_Area2D_body_entered(_body):
 	if active:

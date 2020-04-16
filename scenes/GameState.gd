@@ -3,14 +3,13 @@ extends Node2D
 var level_number
 var level_defeated: bool = false
 var pause_movement: bool = true
+var combo_count = 0
+
 const WAIT_COUNT_DOWN:int  = 3
 var count_down: int = WAIT_COUNT_DOWN
-	
+
 func _ready():
 	add_to_group("Gamestate")
-	for _i in range(Globals.level_config.n_goodies):
-		add_goodie()
-	randomize_blocks()
 	$UI/CountdownLabel.text = str(count_down)
 
 func randomize_blocks():
@@ -19,6 +18,8 @@ func randomize_blocks():
 		b.modulate_color(color_index)
 
 func add_goodie():
+	if $Goodies.get_child_count() >= Globals.level_config.n_goodies:
+		return
 	var position = get_valid_position()
 	var color_index = randi() % Globals.level_config.n_colors
 	$Goodies.create_new_goodie(position, color_index)
@@ -111,6 +112,7 @@ func trigger_combo(n_body_parts, n_goodies):
 	Globals.score += 10 * n_body_parts * (n_goodies + 1)
 	$HUD.update_score(Globals.score)
 	$ComboSFX.play()
+	combo_count += 1
 
 func _physics_process(_delta):
 	if pause_movement:
@@ -151,6 +153,9 @@ func _on_Timer_timeout():
 		count_down -= 1
 
 func start_game():
+	for _i in range(Globals.level_config.n_goodies):
+		add_goodie()
+	randomize_blocks()
 	$UI/LevelLabel.text = "Level %s" % level_number
 	var intro_text = $WinCondition.get_introduction_text()
 	$UI/IntroductionText.text = intro_text

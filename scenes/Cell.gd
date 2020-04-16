@@ -1,7 +1,7 @@
 extends Node2D
 
 var sub_graph_id = -1
-var color_index = -1
+export var color_index = -1
 var active = true
 var id = -1
 
