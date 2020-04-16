@@ -1,4 +1,6 @@
 extends Node2D
+
+var level_number
 	
 func _ready():
 	add_to_group("Gamestate")
@@ -113,8 +115,12 @@ func _physics_process(_delta):
 	$Player.move()
 	$GUI.update_fps()
 	if $WinCondition.check_win():
-		var scene = load("res://scenes/GameOver.tscn")
-		get_tree().change_scene(scene)
+		var next_scene = get_next_scene()
+		#var scene = load(next_scene)
+		get_tree().change_scene(next_scene)
 		
 func game_over():
 	get_tree().change_scene("res://scenes/GameOver.tscn")
+
+func get_next_scene():
+	return "res://scenes/levels/Level%s.tscn" % (level_number + 1)
