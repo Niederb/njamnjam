@@ -4,16 +4,16 @@ func _ready():
 	update_GUI()
 	
 func update_GUI():
-	$MinimalComboSize.text = str(Globals.MIN_COMBO_SIZE)
-	$NumberColors.text = str(Globals.N_COLORS)
-	$NumberGoodies.text = str(Globals.N_GOODIES)
-	$MovementSpeed.text = str(Globals.MOVEMENT_SPEED)
+	$NumberColors.text = str(Globals.level_config.n_colors)
+	$NumberGoodies.text = str(Globals.level_config.n_goodies)
+	$MinimalComboSize.text = str(Globals.level_config.min_combo_size)
+	$MovementSpeed.text = str(Globals.level.config.movement_speed)
 
-func apply():
-	Globals.MIN_COMBO_SIZE = convert_to_int($MinimalComboSize.text, Globals.MIN_COMBO_SIZE)
-	Globals.N_COLORS = convert_to_int($NumberColors.text, Globals.N_COLORS)
-	Globals.N_GOODIES = convert_to_int($NumberGoodies.text, Globals.N_GOODIES)
-	Globals.MOVEMENT_SPEED = convert_to_int($MovementSpeed.text, Globals.MOVEMENT_SPEED)
+func get_config():
+	Globals.level_config.n_colors = convert_to_int($NumberColors.text, Globals.level_config.n_colors)
+	Globals.level_config.n_goodies = convert_to_int($NumberGoodies.text, Globals.level_config.n_goodies)
+	Globals.level_config.min_combo_size = convert_to_int($MinimalComboSize.text, Globals.level_config.min_combo_size)
+	Globals.level.config.movement_speed = convert_to_int($MovementSpeed.text, Globals.level.config.movement_speed)
 
 func convert_to_int(text, default):
 	if text.is_valid_integer():

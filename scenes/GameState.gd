@@ -8,19 +8,20 @@ var count_down: int = WAIT_COUNT_DOWN
 	
 func _ready():
 	add_to_group("Gamestate")
-	for _i in range(Globals.N_GOODIES):
+	for _i in range(Globals.level_config.n_goodies):
 		add_goodie()
 	randomize_blocks()
 	$UI/CountdownLabel.text = str(count_down)
 
 func randomize_blocks():
 	for b in $Blocks.get_children():
-		var color_index = randi() % Globals.N_COLORS
+		var color_index = randi() % Globals.level_config.n_colors
 		b.modulate_color(color_index)
 
 func add_goodie():
 	var position = get_valid_position()
-	$Goodies.create_new_goodie(position)
+	var color_index = randi() % Globals.level_config.n_colors
+	$Goodies.create_new_goodie(position, color_index)
 
 func head_distance(point):
 	return ($Player/Head.global_position - point).length()
@@ -64,9 +65,6 @@ func determine_sub_graphs(cells):
 		
 		find_sub_graph(cell, cells, graph_index, sub_graphs)
 		graph_index += 1
-	
-	print("Subgraphs")
-	print(sub_graphs)
 	return sub_graphs
 
 func get_adjacent_goodies(position, color_index, goodies):
@@ -84,7 +82,7 @@ func check_combo():
 	var cells = body_parts + all_goodies + all_blocks
 	var sub_graphs = determine_sub_graphs(cells)
 	for graph in sub_graphs:
-		if graph.size() >= Globals.MIN_COMBO_SIZE:
+		if graph.size() >= Globals.level_config.min_combo_size:
 			$Player.remove_body_parts(graph)
 			var n_goodies = 0
 			var n_body_parts = 0

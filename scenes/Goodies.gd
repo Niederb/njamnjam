@@ -1,10 +1,9 @@
 extends Node
 
-func create_new_goodie(position):
+func create_new_goodie(position, color_index):
 	var body_part = load("res://scenes/Goodie.tscn").instance()
 	add_child(body_part)
 
-	var color_index = randi() % Globals.N_COLORS
 	body_part.init(position, color_index)
 
 func get_current_goodies():
