@@ -18,7 +18,7 @@ func randomize_blocks():
 		b.modulate_color(color_index)
 
 func add_goodie():
-	if $Goodies.get_child_count() >= Globals.level_config.n_goodies:
+	if $Goodies.get_child_count() > Globals.level_config.n_goodies:
 		return
 	var position = get_valid_position()
 	var color_index = randi() % Globals.level_config.n_colors
@@ -132,17 +132,19 @@ func _physics_process(_delta):
 		$UI/Timer.start()
 		
 func game_over():
+	Globals.level_scene = get_scene(level_number)
 	get_tree().change_scene("res://scenes/GameOver.tscn")
 
-func get_next_scene():
-	return "res://scenes/levels/Level%s.tscn" % (level_number + 1)
+func get_scene(level_number):
+	return "res://scenes/levels/Level%s.tscn" % (level_number)
 
 func _on_Timer_timeout():
 	if count_down == 0:
 		$UI/Timer.stop()
 		count_down = WAIT_COUNT_DOWN
+		$UI/CountdownLabel.text = str(count_down)
 		if level_defeated:
-			var next_scene = get_next_scene()
+			var next_scene = get_scene(level_number + 1)
 			get_tree().change_scene(next_scene)
 		else:
 			pause_movement = false

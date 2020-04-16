@@ -10,8 +10,11 @@ enum CellType { WALL, GOODIE, SNAKE, EMPTY }
 
 var score = 0
 var level_config
+var level_scene: String
 	
 func _ready():
 	var level_config_class = preload("LevelConfig.gd")
 	level_config = level_config_class.new()
 	score = 0
+
+
