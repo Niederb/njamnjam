@@ -145,3 +145,8 @@ func set_win_condition(length: int):
 	$WinCondition.min_length = length
 	var text = "Create a snake with %s blocks to beat the level" % length
 	$IntroductionText.text = text
+
+func load_map(map_name):
+	var new_map = load("res://scenes/Maps/%s.tscn" % map_name)
+	var new_instance = new_map.instance()
+	$Map.replace_by(new_instance)
