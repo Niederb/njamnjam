@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/LevelTemplate.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Levels/Level5.gd" type="Script" id=2]
+[ext_resource path="res://scenes/Block.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Goodie.tscn" type="PackedScene" id=4]
+
+[node name="Level5" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Goodie" parent="Goodies" index="0" instance=ExtResource( 4 )]
+position = Vector2( 224, 160 )
+color_index = 0
+
+[node name="Goodie2" parent="Goodies" index="1" instance=ExtResource( 4 )]
+position = Vector2( 1120, 160 )
+color_index = 0
+
+[node name="Goodie3" parent="Goodies" index="2" instance=ExtResource( 4 )]
+position = Vector2( 864, 608 )
+color_index = 0
+
+[node name="Goodie4" parent="Goodies" index="3" instance=ExtResource( 4 )]
+position = Vector2( 1120, 608 )
+color_index = 0
+
+[node name="Goodie5" parent="Goodies" index="4" instance=ExtResource( 4 )]
+position = Vector2( 1056, 160 )
+color_index = 0
+
+[node name="Block" parent="Blocks" index="0" instance=ExtResource( 3 )]
+position = Vector2( 352, 416 )
+
+[node name="LevelLabel" parent="UI" index="0"]
+anchor_top = 0.0
+anchor_bottom = 0.0
+
+[node name="IntroductionText" parent="UI" index="1"]
+anchor_top = 0.0
+anchor_bottom = 0.0
