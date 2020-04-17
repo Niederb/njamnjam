@@ -1,9 +1,9 @@
 extends Node
 
 class WinConfiguration:
-	var snake_length = 0
-	var score = 0
-	var combo_count = 0
+	var snake_length: int = 0
+	var score: int = 0
+	var combo_count: int = 0
 	
 	func no_goal():
 		return snake_length == 0 and score == 0 and combo_count == 0

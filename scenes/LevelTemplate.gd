@@ -17,7 +17,7 @@ func randomize_blocks() -> void:
 		var color_index = randi() % Globals.level_config.n_colors
 		b.modulate_color(color_index)
 
-func add_goodie():
+func add_goodie() -> void:
 	if $Goodies.get_child_count() > Globals.level_config.n_goodies:
 		return
 	var position = get_valid_position()
@@ -160,6 +160,7 @@ func get_level_name() -> String:
 func start_game():
 	for _i in range(Globals.level_config.n_goodies):
 		add_goodie()
+	$Player.init(Globals.level_config.start_length)
 	randomize_blocks()
 	$UI/LevelLabel.text = get_level_name()
 	var intro_text = $WinCondition.get_introduction_text()

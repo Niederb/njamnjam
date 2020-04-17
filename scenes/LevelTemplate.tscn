@@ -56,12 +56,16 @@ __meta__ = {
 }
 
 [node name="LevelLabel" type="Label" parent="UI"]
+anchor_top = -0.0383275
+anchor_bottom = -0.0383275
 margin_right = 500.0
 margin_bottom = 29.0
 text = "Level 0"
 align = 1
 
 [node name="IntroductionText" type="Label" parent="UI"]
+anchor_top = -0.0348432
+anchor_bottom = -0.0348432
 margin_top = 33.0
 margin_right = 500.0
 margin_bottom = 233.0

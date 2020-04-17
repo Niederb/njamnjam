@@ -1,19 +1,20 @@
 extends Node2D
 
-var direction = Vector2()
-var length = Globals.START_LENGTH
-var dead = false
-var new_bodypart_position = Vector2()
-var tween_done = true
+var direction := Vector2()
+var length: int = 0
+var dead: bool = false
+var new_bodypart_position := Vector2()
+var tween_done: bool = true
 
-func _ready():
+func init(length):
+	self.length = length
 	var position_offset = 0
 	for _i in range(length):
 		var body_part = load("res://scenes/BodyPart.tscn").instance()
 		position_offset += Globals.CELL_SIZE
 		body_part.global_position.y -= position_offset
 		$Body.add_child(body_part)
-
+		
 func remove_body_parts(indeces):
 	var children = []
 	for i in indeces:
