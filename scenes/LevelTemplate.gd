@@ -1,18 +1,18 @@
 extends Node2D
 
-var level_number
+var level_number: int
 var level_defeated: bool = false
 var pause_movement: bool = true
-var combo_count = 0
+var combo_count: int = 0
 
-const WAIT_COUNT_DOWN:int  = 3
+const WAIT_COUNT_DOWN: int  = 3
 var count_down: int = WAIT_COUNT_DOWN
 
 func _ready():
 	add_to_group("Gamestate")
 	$UI/CountdownLabel.text = str(count_down)
 
-func randomize_blocks():
+func randomize_blocks() -> void:
 	for b in $Blocks.get_children():
 		var color_index = randi() % Globals.level_config.n_colors
 		b.modulate_color(color_index)
@@ -24,10 +24,10 @@ func add_goodie():
 	var color_index = randi() % Globals.level_config.n_colors
 	$Goodies.create_new_goodie(position, color_index)
 
-func head_distance(point):
+func head_distance(point) -> float:
 	return ($Player/Head.global_position - point).length()
 	
-func get_valid_position():
+func get_valid_position() -> Vector2:
 	randomize()
 	var space_state = get_world_2d().get_direct_space_state()
 	while (true):
@@ -136,10 +136,10 @@ func game_over():
 	Globals.level_scene = get_scene(level_number)
 	get_tree().change_scene("res://scenes/GameOver.tscn")
 
-func get_success_text():
+func get_success_text() -> String:
 	return "Level defeated. Congratulations! \n Next level coming up..."
 	
-func get_scene(level_number):
+func get_scene(level_number) -> String:
 	return "res://scenes/Levels/Level%s.tscn" % (level_number)
 
 func _on_Timer_timeout():
@@ -154,7 +154,7 @@ func _on_Timer_timeout():
 		$UI/CountdownSFX.play()
 	$UI/CountdownLabel.text = str(count_down)
 
-func get_level_name():
+func get_level_name() -> String:
 	return "Level %s" % level_number
 
 func start_game():

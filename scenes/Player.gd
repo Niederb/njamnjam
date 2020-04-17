@@ -80,7 +80,7 @@ func increase_length(color_index):
 	body_part.modulate_color(color_index)
 	$Body.add_child(body_part)
 
-func move_finished():
+func move_finished() -> bool:
 	return tween_done
 
 func _on_Tween_tween_all_completed():

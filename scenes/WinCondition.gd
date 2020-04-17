@@ -10,7 +10,7 @@ class WinConfiguration:
 
 var config: WinConfiguration = WinConfiguration.new()
 
-func get_introduction_text():
+func get_introduction_text() -> String:
 	if config.snake_length > 0:
 		return "Create a snake with %s blocks to beat the level" % config.snake_length 
 	elif config.score > 0:
@@ -19,7 +19,7 @@ func get_introduction_text():
 		return "Trigger %s combos" % config.combo_count
 	return "Collect as many points as possible!"
 
-func check_win():
+func check_win() -> bool:
 	if config.no_goal():
 		return false
 	var snake_length = get_parent().get_node("Player").length >= config.snake_length;
