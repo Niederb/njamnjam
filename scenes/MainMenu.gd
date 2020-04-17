@@ -8,3 +8,7 @@ func _on_Campaign_pressed():
 
 func _on_IndividualGame_pressed():
 	get_tree().change_scene("res://scenes/IndividualGame.tscn")
+
+
+func _on_Exit_pressed():
+	get_tree().quit(0)

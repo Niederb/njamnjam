@@ -76,9 +76,9 @@ __meta__ = {
 }
 
 [node name="CountdownLabel" type="Label" parent="UI"]
-margin_top = 236.0
+margin_top = 237.0
 margin_right = 500.0
-margin_bottom = 286.0
+margin_bottom = 287.0
 rect_min_size = Vector2( 50, 50 )
 theme = ExtResource( 7 )
 text = "3"

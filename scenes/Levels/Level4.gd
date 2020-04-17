@@ -14,4 +14,4 @@ func get_scene(level_number):
 	if level_number == self.level_number + 1:
 		return "res://scenes/MainMenu.tscn"
 	else:
-		return "res://scenes/levels/Level%s.tscn" % (level_number)
+		return "res://scenes/Levels/Level%s.tscn" % (level_number)

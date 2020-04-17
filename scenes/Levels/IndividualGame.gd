@@ -5,4 +5,4 @@ func _ready():
 	start_game()
 	
 func get_scene(level_number):
-	return "res://scenes/levels/IndividualGame.tscn"
+	return "res://scenes/Levels/IndividualGame.tscn"

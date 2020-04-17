@@ -140,7 +140,7 @@ func get_success_text():
 	return "Level defeated. Congratulations! \n Next level coming up..."
 	
 func get_scene(level_number):
-	return "res://scenes/levels/Level%s.tscn" % (level_number)
+	return "res://scenes/Levels/Level%s.tscn" % (level_number)
 
 func _on_Timer_timeout():
 	if count_down == 0:
