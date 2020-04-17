@@ -154,11 +154,14 @@ func _on_Timer_timeout():
 		$UI/CountdownSFX.play()
 	$UI/CountdownLabel.text = str(count_down)
 
+func get_level_name():
+	return "Level %s" % level_number
+
 func start_game():
 	for _i in range(Globals.level_config.n_goodies):
 		add_goodie()
 	randomize_blocks()
-	$UI/LevelLabel.text = "Level %s" % level_number
+	$UI/LevelLabel.text = get_level_name()
 	var intro_text = $WinCondition.get_introduction_text()
 	$UI/IntroductionText.text = intro_text
 
@@ -166,7 +169,6 @@ func load_map(map_name):
 	var new_map = load("res://scenes/Maps/%s.tscn" % map_name)
 	var new_instance = new_map.instance()
 	$Map.replace_by(new_instance)
-
 
 func _on_NextLevelTimer_timeout():
 	if level_defeated:

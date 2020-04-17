@@ -1,4 +1,4 @@
-extends "res://scenes/GameState.gd"
+extends "res://scenes/LevelTemplate.gd"
 
 func _ready():
 	load_map("TwoHMap")
