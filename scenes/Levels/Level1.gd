@@ -6,3 +6,6 @@ func _ready():
 	level_number = 1
 	$WinCondition.config.snake_length = 2
 	start_game()
+
+func get_tutorial_text():
+	return "Collect the round goodies to make your snake longer"

@@ -14,8 +14,11 @@ func _ready():
 
 func randomize_blocks() -> void:
 	for b in $Blocks.get_children():
-		var color_index = randi() % Globals.level_config.n_colors
-		b.modulate_color(color_index)
+		if b.color_index == -1:
+			var color_index = randi() % Globals.level_config.n_colors
+			b.modulate_color(color_index)
+		else:
+			b.apply_color()
 
 func add_goodie() -> void:
 	if $Goodies.get_child_count() > Globals.level_config.n_goodies:
@@ -127,20 +130,14 @@ func _physics_process(_delta):
 		level_defeated = true
 		pause_movement = true
 		var text = get_success_text()
-		$UI/IntroductionText.text = text
+		$UI/GoalLabel.text = text
 		$UI/CountdownLabel.visible = false
+		$UI/TutorialLabel.visible = false
 		$UI.visible = true
 		$UI/NextLevelTimer.start()
 		
 func game_over():
-	Globals.level_scene = get_scene(level_number)
-	get_tree().change_scene("res://scenes/GameOver.tscn")
-
-func get_success_text() -> String:
-	return "Level defeated. Congratulations! \n Next level coming up..."
-	
-func get_scene(level_number) -> String:
-	return "res://scenes/Levels/Level%s.tscn" % (level_number)
+	Globals.change_scene("res://scenes/GameOver.tscn")
 
 func _on_Timer_timeout():
 	if count_down == 0:
@@ -154,17 +151,17 @@ func _on_Timer_timeout():
 		$UI/CountdownSFX.play()
 	$UI/CountdownLabel.text = str(count_down)
 
-func get_level_name() -> String:
-	return "Level %s" % level_number
-
 func start_game():
+	if Globals.level_config.start_cell.length() > 0:
+		$Player.global_position = Globals.CELL_SIZE * (Globals.level_config.start_cell + Vector2(0.5, 0.5))
 	for _i in range(Globals.level_config.n_goodies):
 		add_goodie()
 	$Player.init(Globals.level_config.start_length)
 	randomize_blocks()
 	$UI/LevelLabel.text = get_level_name()
 	var intro_text = $WinCondition.get_introduction_text()
-	$UI/IntroductionText.text = intro_text
+	$UI/GoalLabel.text = intro_text
+	$UI/TutorialLabel.text = get_tutorial_text()
 
 func load_map(map_name):
 	var new_map = load("res://scenes/Maps/%s.tscn" % map_name)
@@ -173,5 +170,14 @@ func load_map(map_name):
 
 func _on_NextLevelTimer_timeout():
 	if level_defeated:
-		var next_scene = get_scene(level_number + 1)
-		get_tree().change_scene(next_scene)
+		var next_scene = Globals.get_scene(level_number + 1)
+		Globals.change_level(next_scene)
+
+func get_success_text() -> String:
+	return "Level defeated. Congratulations! \n Next level coming up..."
+	
+func get_level_name() -> String:
+	return "Level %s" % level_number
+
+func get_tutorial_text() -> String:
+	return ""

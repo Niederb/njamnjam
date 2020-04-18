@@ -30,11 +30,4 @@ color_index = 0
 
 [node name="Block" parent="Blocks" index="0" instance=ExtResource( 3 )]
 position = Vector2( 352, 416 )
-
-[node name="LevelLabel" parent="UI" index="0"]
-anchor_top = 0.0
-anchor_bottom = 0.0
-
-[node name="IntroductionText" parent="UI" index="1"]
-anchor_top = 0.0
-anchor_bottom = 0.0
+color_index = 0

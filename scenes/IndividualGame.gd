@@ -1,8 +1,8 @@
 extends Control
 
 func _on_MainMenuButton_pressed():
-	get_tree().change_scene("res://scenes/MainMenu.tscn")
+	Globals.change_scene("res://scenes/MainMenu.tscn")
 
 func _on_StartButton_pressed():
 	$CenterContainer/VBoxContainer/Options.apply()
-	get_tree().change_scene("res://scenes/Levels/IndividualGameLevel.tscn")
+	Globals.change_level("res://scenes/Levels/IndividualGameLevel.tscn")
