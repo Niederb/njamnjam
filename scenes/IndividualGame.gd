@@ -1,5 +1,8 @@
 extends Control
 
+func _ready():
+	$CenterContainer/VBoxContainer/HBoxContainer2/HighScore.text = str(Globals.save_game.get_high_score())
+	
 func _on_MainMenuButton_pressed():
 	Globals.change_scene("res://scenes/MainMenu.tscn")
 

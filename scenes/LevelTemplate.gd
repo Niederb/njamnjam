@@ -137,6 +137,7 @@ func _physics_process(_delta):
 		$UI/NextLevelTimer.start()
 		
 func game_over():
+	Globals.set_new_score(Globals.score)
 	Globals.change_scene("res://scenes/GameOver.tscn")
 
 func _on_Timer_timeout():
@@ -152,6 +153,7 @@ func _on_Timer_timeout():
 	$UI/CountdownLabel.text = str(count_down)
 
 func start_game():
+	Globals.score = 0
 	if Globals.level_config.start_cell.length() > 0:
 		$Player.global_position = Globals.CELL_SIZE * (Globals.level_config.start_cell + Vector2(0.5, 0.5))
 	for _i in range(Globals.level_config.n_goodies):
