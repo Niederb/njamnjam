@@ -11,6 +11,7 @@ polygon = PoolVector2Array( -13, -12, -13, 12, -12, 13, 12, 13, 13, 12, 13, -12,
 extents = Vector2( 29, 29 )
 
 [node name="Block" type="KinematicBody2D"]
+collision_layer = 4
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
