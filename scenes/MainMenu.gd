@@ -1,7 +1,7 @@
 extends Control
 
 func _on_Campaign_pressed():
-	Globals.change_level("res://scenes/Levels/Level1.tscn")
+	Globals.change_level("res://scenes/LevelSelection.tscn")
 
 func _on_IndividualGame_pressed():
 	Globals.change_level("res://scenes/IndividualGame.tscn")
