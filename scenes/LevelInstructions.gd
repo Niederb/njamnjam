@@ -25,8 +25,8 @@ func _on_CountdownTimer_timeout():
 		$StartSFX.play()
 		count_down = WAIT_COUNT_DOWN
 		visible = false
+		get_tree().call_group("Gamestate", "start_movement")
 	else:
 		count_down -= 1
 		$CountdownSFX.play()
 	$CountdownLabel.text = str(count_down)
-	get_tree().call_group("Gamestate", "start_movement")
