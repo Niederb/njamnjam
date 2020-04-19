@@ -5,12 +5,8 @@ var level_defeated: bool = false
 var pause_movement: bool = true
 var combo_count: int = 0
 
-const WAIT_COUNT_DOWN: int  = 3
-var count_down: int = WAIT_COUNT_DOWN
-
 func _ready():
 	add_to_group("Gamestate")
-	$UI/CountdownLabel.text = str(count_down)
 
 func randomize_blocks() -> void:
 	for b in $Blocks.get_children():
@@ -130,27 +126,12 @@ func _physics_process(_delta):
 		level_defeated = true
 		pause_movement = true
 		var text = get_success_text()
-		$UI/GoalLabel.text = text
-		$UI/CountdownLabel.visible = false
-		$UI/TutorialLabel.visible = false
-		$UI.visible = true
-		$UI/NextLevelTimer.start()
+		$LevelInstructions.show_text(text)
+		$NextLevelTimer.start()
 		
 func game_over():
-	Globals.set_new_score(Globals.score)
-	Globals.change_scene("res://scenes/GameOver.tscn")
-
-func _on_Timer_timeout():
-	if count_down == 0:
-		$UI/CountdownTimer.stop()
-		$UI/StartSFX.play()
-		count_down = WAIT_COUNT_DOWN
-		pause_movement = false
-		$UI.visible = false
-	else:
-		count_down -= 1
-		$UI/CountdownSFX.play()
-	$UI/CountdownLabel.text = str(count_down)
+	$LevelInstructions.show_text("Ooops :-( \n Try again!")
+	$NextLevelTimer.start()
 
 func start_game():
 	Globals.score = 0
@@ -160,10 +141,8 @@ func start_game():
 		add_goodie()
 	$Player.init(Globals.level_config.start_length)
 	randomize_blocks()
-	$UI/LevelLabel.text = get_level_name()
 	var intro_text = $WinCondition.get_introduction_text()
-	$UI/GoalLabel.text = intro_text
-	$UI/TutorialLabel.text = get_tutorial_text()
+	$LevelInstructions.show_level_start(get_level_name(), intro_text, get_tutorial_text())
 
 func load_map(map_name):
 	var new_map = load("res://scenes/Maps/%s.tscn" % map_name)
@@ -177,6 +156,12 @@ func _on_NextLevelTimer_timeout():
 			Globals.save_game.save()
 		var next_scene = Globals.get_scene(level_number + 1)
 		Globals.change_level(next_scene)
+	else:
+		Globals.set_new_score(Globals.score)
+		Globals.change_scene("res://scenes/GameOver.tscn")
+
+func start_movement():
+	pause_movement = false
 
 func get_success_text() -> String:
 	return "Level defeated. Congratulations! \n Next level coming up..."
