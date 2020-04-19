@@ -172,6 +172,9 @@ func load_map(map_name):
 
 func _on_NextLevelTimer_timeout():
 	if level_defeated:
+		if is_campaign_level():
+			Globals.save_game.set_reached_level(level_number + 1)
+			Globals.save_game.save()
 		var next_scene = Globals.get_scene(level_number + 1)
 		Globals.change_level(next_scene)
 
@@ -183,3 +186,6 @@ func get_level_name() -> String:
 
 func get_tutorial_text() -> String:
 	return ""
+
+func is_campaign_level() -> bool:
+	return true

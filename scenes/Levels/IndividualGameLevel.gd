@@ -9,3 +9,6 @@ func get_scene(level_number):
 
 func get_level_name():
 	return "Individual game"
+
+func is_campaign_level() -> bool:
+	return false

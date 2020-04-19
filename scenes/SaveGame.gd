@@ -11,7 +11,7 @@ func set_high_score(high_score: int) -> void:
 func get_reached_level() -> int:
 	if data.has("reached_level"):
 		return data["reached_level"]
-	return 0
+	return 1
 
 func get_high_score() -> int:
 	if data.has("high_score"):
