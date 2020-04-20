@@ -6,7 +6,7 @@ func modulate_color(new_color_index):
 	
 func apply_color():
 	var color = Globals.colors[color_index]
-	$Sprite.modulate = color
+	$Sprite.self_modulate = color
 	$Light.color = color
 
 func die():
