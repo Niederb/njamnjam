@@ -121,7 +121,7 @@ func _physics_process(_delta):
 		check_combo()
 	$Player.move()
 	$HUD.update_fps()
-	if $WinCondition.check_win() and !level_defeated:
+	if $WinCondition.check_win() == 1 and !level_defeated:
 		Globals.score = 0
 		level_defeated = true
 		pause_movement = true

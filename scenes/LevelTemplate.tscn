@@ -21,7 +21,7 @@ position = Vector2( 672, 416 )
 [node name="Goodies" type="Node2D" parent="."]
 script = ExtResource( 8 )
 
-[node name="Blocks" type="Node" parent="."]
+[node name="Blocks" type="Node2D" parent="."]
 
 [node name="WinCondition" type="Node" parent="."]
 script = ExtResource( 10 )
@@ -34,6 +34,13 @@ margin_right = 608.0
 margin_bottom = 840.0
 
 [node name="LevelInstructions" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = 368.0
+margin_top = 192.0
+margin_right = 968.0
+margin_bottom = 592.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )

@@ -1,5 +1,7 @@
 extends Node
 
+enum WinStatus { CONTINUE = 0, FAILED = -1, SUCCESS = 1 }
+
 class WinConfiguration:
 	var snake_length: int = 0
 	var score: int = 0
@@ -22,13 +24,15 @@ func get_introduction_text() -> String:
 		return "Remove all blocks"
 	return "Collect as many points as possible!"
 
-func check_win() -> bool:
+func check_win() -> int:
 	if config.no_goal():
-		return false
+		return WinStatus.CONTINUE
 	var snake_length = get_parent().get_node("Player").length >= config.snake_length;
 	var score = Globals.score >= config.score;
 	var combo = get_parent().combo_count >= config.combo_count;
 	var remove_blocks = true
 	if config.remove_all_blocks:
 		remove_blocks = get_parent().get_node("Blocks").get_child_count() == 0
-	return snake_length and score and combo and remove_blocks
+	if snake_length and score and combo and remove_blocks:
+		return WinStatus.SUCCESS
+	return WinStatus.CONTINUE
