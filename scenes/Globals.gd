@@ -2,7 +2,8 @@ extends Node
 
 const CELL_SIZE: int = 64
 
-var colors = [ Color(1, 0, 0), Color(0, 1, 0), Color(0, 0, 1), Color(0, 1, 1), Color(1, 0, 1), Color(1, 1, 0)]
+#var colors = [ Color(1, 0, 0), Color(0, 1, 0), Color(0, 0, 1), Color(0, 1, 1), Color(1, 0, 1), Color(1, 1, 0)]
+var colors = [ Color("AA3939"), Color("29506D"), Color("91A437"), Color(0, 1, 1), Color(1, 0, 1), Color(1, 1, 0)]
 const LEVEL_SIZE = Vector2(21, 13)
 const NUMBER_OF_LEVELS = 6
 
