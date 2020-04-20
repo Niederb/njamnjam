@@ -40,15 +40,20 @@ func wrap_position(position):
 		position.y = ZERO.y - position.y
 	return position
 		
-func move_body():
-	var start_position = global_position
-	var end_position = global_position + Globals.CELL_SIZE * direction
+func check_collision(position):
 	var space_state = get_world_2d().get_direct_space_state()
-	var intersection = space_state.intersect_point(end_position)
+	var intersection = space_state.intersect_point(position)
 	if intersection:
 		get_tree().call_group("Gamestate", "game_over")
 		$DieSFX.play()
 		dead = true
+		return
+
+func move_body():
+	var start_position = global_position
+	var end_position = global_position + Globals.CELL_SIZE * direction
+	check_collision(end_position)
+	if dead:
 		return
 	$Tween.interpolate_property(self, "global_position",
 		start_position, end_position, Globals.level_config.get_time_interval(),

@@ -130,8 +130,10 @@ func _physics_process(_delta):
 		$NextLevelTimer.start()
 		
 func game_over():
+	$Player.dead = true
 	$LevelInstructions.show_text("Ooops :-( \n Try again!")
-	$NextLevelTimer.start()
+	if $NextLevelTimer.is_stopped():
+		$NextLevelTimer.start()
 
 func start_game():
 	Globals.score = 0
