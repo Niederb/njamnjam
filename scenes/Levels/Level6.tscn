@@ -9,17 +9,17 @@
 script = ExtResource( 2 )
 
 [node name="Goodie" parent="Goodies" index="0" instance=ExtResource( 3 )]
-position = Vector2( 96, 224 )
+position = Vector2( 64, 192 )
 color_index = 0
 
 [node name="Goodie2" parent="Goodies" index="1" instance=ExtResource( 3 )]
-position = Vector2( 96, 416 )
+position = Vector2( 64, 384 )
 color_index = 1
 
 [node name="Goodie3" parent="Goodies" index="2" instance=ExtResource( 3 )]
-position = Vector2( 96, 544 )
+position = Vector2( 64, 512 )
 color_index = 0
 
 [node name="Block" parent="Blocks" index="0" instance=ExtResource( 4 )]
-position = Vector2( 928, 480 )
+position = Vector2( 896, 448 )
 color_index = 0

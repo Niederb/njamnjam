@@ -3,8 +3,8 @@ extends Node2D
 var direction := Vector2()
 var length: int = 0
 var dead: bool = false
-var new_bodypart_position := Vector2()
 var tween_done: bool = true
+export var player_id: int = 1
 
 func init(length):
 	self.length = length
@@ -12,7 +12,7 @@ func init(length):
 	for _i in range(length):
 		var body_part = load("res://scenes/BodyPart.tscn").instance()
 		position_offset += Globals.CELL_SIZE
-		body_part.global_position.y -= position_offset
+		body_part.position.y -= position_offset
 		$Body.add_child(body_part)
 		
 func remove_body_parts(indeces):
@@ -42,6 +42,7 @@ func wrap_position(position):
 		
 func check_collision(position):
 	var space_state = get_world_2d().get_direct_space_state()
+	#var globalpos = self.global_position
 	var intersection = space_state.intersect_point(position)
 	if intersection:
 		get_tree().call_group("Gamestate", "game_over")
@@ -50,19 +51,18 @@ func check_collision(position):
 		return
 
 func move_body():
-	var start_position = global_position
-	var end_position = global_position + Globals.CELL_SIZE * direction
-	check_collision(end_position)
+	var start_position = $Head.position
+	var end_position = $Head.position + Globals.CELL_SIZE * direction
+	check_collision(self.global_position + end_position)
 	if dead:
 		return
-	$Tween.interpolate_property(self, "global_position",
+	$Tween.interpolate_property($Head, "position",
 		start_position, end_position, Globals.level_config.get_time_interval(),
 		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)	
 	tween_done = false
 
 	for body_part in $Body.get_children():
 		start_position = body_part.move_to($Tween, start_position)
-	new_bodypart_position = start_position
 	$Tween.start()
 
 func move():
@@ -70,20 +70,20 @@ func move():
 		move_body()		
 
 func _input(_delta):
-	if Input.is_action_just_pressed("left"):
+	if Input.is_action_just_pressed("left_%s"%player_id):
 		direction = Vector2(-1, 0)
-	elif Input.is_action_just_pressed("right"):
+	elif Input.is_action_just_pressed("right_%s"%player_id):
 		direction = Vector2(1, 0)
-	elif Input.is_action_just_pressed("down"):
+	elif Input.is_action_just_pressed("down_%s"%player_id):
 		direction = Vector2(0, 1)
-	elif Input.is_action_just_pressed("up"):
+	elif Input.is_action_just_pressed("up_%s"%player_id):
 		direction = Vector2(0, -1)
 
 func increase_length(color_index):
 	$GoodieSFX.play()
 	length += 1
 	var body_part = load("res://scenes/BodyPart.tscn").instance()
-	body_part.modulate_color(color_index)
+	body_part.initialize($Head.position, color_index)
 	$Body.add_child(body_part)
 
 func move_finished() -> bool:

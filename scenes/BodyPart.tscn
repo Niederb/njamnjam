@@ -7,6 +7,7 @@
 polygon = PoolVector2Array( -26, -23, -26, 23, -23, 26, 23, 26, 26, 23, 26, -23, 23, -26, -23, -26 )
 
 [sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 24, 24 )
 
 [node name="BodyPart" type="KinematicBody2D"]
 script = ExtResource( 2 )

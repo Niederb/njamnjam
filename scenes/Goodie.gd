@@ -7,7 +7,7 @@ func _ready():
 func init(position, new_color_index):
 	color_index = new_color_index
 	update_color()
-	global_position = position
+	self.position = position
 	$AnimationPlayer.play()
 	
 func update_color():

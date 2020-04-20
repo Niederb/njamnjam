@@ -8,25 +8,25 @@
 script = ExtResource( 2 )
 
 [node name="Goodie" parent="Goodies" index="0" instance=ExtResource( 3 )]
-position = Vector2( 288, 352 )
+position = Vector2( 256, 320 )
 color_index = 0
 
 [node name="Goodie2" parent="Goodies" index="1" instance=ExtResource( 3 )]
-position = Vector2( 1056, 480 )
+position = Vector2( 1024, 448 )
 color_index = 0
 
 [node name="Goodie3" parent="Goodies" index="2" instance=ExtResource( 3 )]
-position = Vector2( 288, 672 )
+position = Vector2( 256, 640 )
 color_index = 0
 
 [node name="Goodie4" parent="Goodies" index="3" instance=ExtResource( 3 )]
-position = Vector2( 1056, 672 )
+position = Vector2( 1024, 640 )
 color_index = 0
 
 [node name="Goodie5" parent="Goodies" index="4" instance=ExtResource( 3 )]
-position = Vector2( 1056, 160 )
+position = Vector2( 1024, 128 )
 color_index = 0
 
 [node name="Goodie6" parent="Goodies" index="5" instance=ExtResource( 3 )]
-position = Vector2( 288, 160 )
+position = Vector2( 256, 128 )
 color_index = 0

@@ -24,25 +24,27 @@ func add_goodie() -> void:
 	$Goodies.create_new_goodie(position, color_index)
 
 func head_distance(point) -> float:
-	return ($Player/Head.global_position - point).length()
+	return $Players/Player/Head.position.distance_to(point)
 	
 func get_valid_position() -> Vector2:
 	randomize()
 	var space_state = get_world_2d().get_direct_space_state()
+	var offset = Vector2(Globals.CELL_SIZE/2, Globals.CELL_SIZE/2)
 	while (true):
-		var x = randi() % int(Globals.LEVEL_SIZE.x) + 0.5
-		var y = randi() % int(Globals.LEVEL_SIZE.y) + 0.5
+		var x = randi() % int(Globals.LEVEL_SIZE.x)
+		var y = randi() % int(Globals.LEVEL_SIZE.y)
 		var position = Vector2(Globals.CELL_SIZE * x, Globals.CELL_SIZE * y)
-		var intersection = space_state.intersect_point(position)
+		var intersection = space_state.intersect_point(position + offset)
 		if !intersection and head_distance(position) > 2*Globals.CELL_SIZE:
+			#print(position)
 			return position
 	return Vector2()
 
 func find_sub_graph(cell, cells, graph_index, graphs):
 	for current_cell in cells:
 		if !current_cell.processed():
-			var distance = (current_cell.global_position - cell.global_position).length()
-			if head_distance(current_cell.global_position) > Globals.CELL_SIZE and distance <= Globals.CELL_SIZE and current_cell.get_color_index() == cell.get_color_index():
+			var distance = (current_cell.position - cell.position).length()
+			if head_distance(current_cell.position) > Globals.CELL_SIZE and distance <= Globals.CELL_SIZE and current_cell.get_color_index() == cell.get_color_index():
 				current_cell.sub_graph_id = graph_index
 				graphs[graph_index].push_back(current_cell.id)
 				find_sub_graph(current_cell, cells, graph_index, graphs)
@@ -70,20 +72,20 @@ func determine_sub_graphs(cells):
 func get_adjacent_goodies(position, color_index, goodies):
 	var adjacent = []
 	for g in goodies:
-		var distance = (g.global_position - position).length()
+		var distance = (g.position - position).length()
 		if head_distance(position) > Globals.CELL_SIZE and distance <= Globals.CELL_SIZE and g.get_color_index() == color_index and g.is_active():
 			adjacent.push_back(g)
 	return adjacent
 
 func check_combo():
-	var body_parts = $Player.get_body_parts()
+	var body_parts = $Players/Player.get_body_parts()
 	var all_goodies = $Goodies.get_current_goodies()
 	var all_blocks = $Blocks.get_children()
 	var cells = body_parts + all_goodies + all_blocks
 	var sub_graphs = determine_sub_graphs(cells)
 	for graph in sub_graphs:
 		if graph.size() >= Globals.level_config.min_combo_size:
-			$Player.remove_body_parts(graph)
+			$Players/Player.remove_body_parts(graph)
 			var n_goodies = 0
 			var n_body_parts = 0
 			var n_blocks = 0
@@ -103,7 +105,7 @@ func check_combo():
 
 func eaten_goodie(color):
 	Globals.score += 10
-	$Player.increase_length(color)
+	$Players/Player.increase_length(color)
 	add_goodie()
 	$HUD.update_score(Globals.score)
 
@@ -115,11 +117,11 @@ func trigger_combo(n_body_parts, n_goodies):
 
 func _physics_process(_delta):
 	if pause_movement:
-		$Player.direction = Vector2()
+		$Players/Player.direction = Vector2()
 		
-	if $Player.move_finished():
+	if $Players/Player.move_finished():
 		check_combo()
-	$Player.move()
+	$Players/Player.move()
 	$HUD.update_fps()
 	if $WinCondition.check_win() == 1 and !level_defeated:
 		Globals.score = 0
@@ -130,7 +132,7 @@ func _physics_process(_delta):
 		$NextLevelTimer.start()
 		
 func game_over():
-	$Player.dead = true
+	$Players/Player.dead = true
 	$LevelInstructions.show_text("Ooops :-( \n Try again!")
 	if $NextLevelTimer.is_stopped():
 		$NextLevelTimer.start()
@@ -138,10 +140,10 @@ func game_over():
 func start_game():
 	Globals.score = 0
 	if Globals.level_config.start_cell.length() > 0:
-		$Player.global_position = Globals.CELL_SIZE * (Globals.level_config.start_cell + Vector2(0.5, 0.5))
+		$Players/Player.position = Globals.CELL_SIZE * (Globals.level_config.start_cell + Vector2(0.5, 0.5))
 	for _i in range(Globals.level_config.n_goodies):
 		add_goodie()
-	$Player.init(Globals.level_config.start_length)
+	$Players/Player.init(Globals.level_config.start_length)
 	randomize_blocks()
 	var intro_text = $WinCondition.get_introduction_text()
 	$LevelInstructions.show_level_start(get_level_name(), intro_text, get_tutorial_text())

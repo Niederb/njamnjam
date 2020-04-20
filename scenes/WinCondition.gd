@@ -27,7 +27,7 @@ func get_introduction_text() -> String:
 func check_win() -> int:
 	if config.no_goal():
 		return WinStatus.CONTINUE
-	var snake_length = get_parent().get_node("Player").length >= config.snake_length;
+	var snake_length = get_parent().get_node("Players/Player").length >= config.snake_length;
 	var score = Globals.score >= config.score;
 	var combo = get_parent().combo_count >= config.combo_count;
 	var remove_blocks = true

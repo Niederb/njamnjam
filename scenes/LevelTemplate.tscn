@@ -14,14 +14,20 @@
 script = ExtResource( 5 )
 
 [node name="Map" parent="." instance=ExtResource( 1 )]
+collision_mask = 7
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 672, 416 )
+[node name="Players" type="Node2D" parent="."]
+position = Vector2( 32, 32 )
+
+[node name="Player" parent="Players" instance=ExtResource( 3 )]
+position = Vector2( 640, 384 )
 
 [node name="Goodies" type="Node2D" parent="."]
+position = Vector2( 32, 32 )
 script = ExtResource( 8 )
 
 [node name="Blocks" type="Node2D" parent="."]
+position = Vector2( 32, 32 )
 
 [node name="WinCondition" type="Node" parent="."]
 script = ExtResource( 10 )
