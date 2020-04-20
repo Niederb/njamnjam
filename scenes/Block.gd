@@ -11,3 +11,7 @@ func apply_color():
 
 func die():
 	queue_free()
+
+
+func _on_Block_body_entered(body):
+	get_tree().call_group("Gamestate", "game_over")

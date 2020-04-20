@@ -1,18 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://gfx/UITheme.tres" type="Theme" id=1]
 [ext_resource path="res://scenes/LevelSelection.gd" type="Script" id=2]
+[ext_resource path="res://scenes/Menu.tscn" type="PackedScene" id=4]
 
-[node name="LevelSelection" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="LevelSelection" instance=ExtResource( 4 )]
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="." index="1"]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -672.0
@@ -22,26 +18,27 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" index="0"]
 margin_left = 518.0
 margin_top = 398.0
 margin_right = 826.0
 margin_bottom = 562.0
 custom_constants/separation = 50
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" index="0"]
 margin_right = 308.0
 margin_bottom = 29.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Available Levels"
 align = 1
 
-[node name="Levels" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+[node name="Levels" type="VBoxContainer" parent="CenterContainer/VBoxContainer" index="1"]
 margin_top = 79.0
 margin_right = 308.0
 margin_bottom = 79.0
 custom_constants/separation = 15
 
-[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer" index="2"]
 margin_top = 129.0
 margin_right = 308.0
 margin_bottom = 164.0
