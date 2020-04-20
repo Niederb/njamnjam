@@ -8,3 +8,7 @@ func _on_IndividualGame_pressed():
 
 func _on_Exit_pressed():
 	get_tree().quit(0)
+
+
+func _on_TwoPlayer_pressed():
+	Globals.change_level("res://scenes/Splitscreen.tscn")
