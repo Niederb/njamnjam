@@ -94,9 +94,9 @@ func _on_Tween_tween_all_completed():
 func _on_Head_body_entered(body):
 	if body.collision_layer == 8:
 		die()
-	print(body)
 
 func _on_Head_area_entered(area):
-	if area.collision_layer == 4:
+	if area.collision_layer == 1:
+		die()	
+	elif area.collision_layer == 4:
 		die()
-	print(area)

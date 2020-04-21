@@ -7,9 +7,9 @@
 polygon = PoolVector2Array( -26, -23, -26, 23, -23, 26, 23, 26, 26, 23, 26, -23, 23, -26, -23, -26 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 24, 24 )
+extents = Vector2( 8, 8 )
 
-[node name="BodyPart" type="KinematicBody2D"]
+[node name="BodyPart" type="Area2D"]
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -20,3 +20,6 @@ occluder = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -57,3 +57,4 @@ shadow_enabled = true
 autoplay = "Create"
 anims/Create = SubResource( 2 )
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
