@@ -43,8 +43,8 @@ func get_valid_position() -> Vector2:
 func find_sub_graph(cell, cells, graph_index, graphs):
 	for current_cell in cells:
 		if !current_cell.processed():
-			var distance = (current_cell.position - cell.position).length()
-			if head_distance(current_cell.position) > Globals.CELL_SIZE and distance <= Globals.CELL_SIZE and current_cell.get_color_index() == cell.get_color_index():
+			var distance = (current_cell.global_position - cell.global_position).length()
+			if head_distance(current_cell.global_position) > Globals.CELL_SIZE and distance <= Globals.CELL_SIZE and current_cell.get_color_index() == cell.get_color_index():
 				current_cell.sub_graph_id = graph_index
 				graphs[graph_index].push_back(current_cell.id)
 				find_sub_graph(current_cell, cells, graph_index, graphs)
@@ -68,14 +68,6 @@ func determine_sub_graphs(cells):
 		find_sub_graph(cell, cells, graph_index, sub_graphs)
 		graph_index += 1
 	return sub_graphs
-
-func get_adjacent_goodies(position, color_index, goodies):
-	var adjacent = []
-	for g in goodies:
-		var distance = (g.position - position).length()
-		if head_distance(position) > Globals.CELL_SIZE and distance <= Globals.CELL_SIZE and g.get_color_index() == color_index and g.is_active():
-			adjacent.push_back(g)
-	return adjacent
 
 func check_combo():
 	var body_parts = $Players/Player.get_body_parts()
@@ -140,7 +132,7 @@ func game_over():
 func start_game():
 	Globals.score = 0
 	if Globals.level_config.start_cell.length() > 0:
-		$Players/Player.position = Globals.CELL_SIZE * (Globals.level_config.start_cell + Vector2(0.5, 0.5))
+		$Players/Player.position = Globals.CELL_SIZE * (Globals.level_config.start_cell)
 	for _i in range(Globals.level_config.n_goodies):
 		add_goodie()
 	$Players/Player.init(Globals.level_config.start_length)

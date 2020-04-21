@@ -3,7 +3,9 @@ extends Node
 var data = {}
 
 func set_reached_level(level: int) -> void:
-	if data.has("reached_level") and data["reached_level"] >= level and level <= Globals.NUMBER_OF_LEVELS:
+	if (data.has("reached_level") and data["reached_level"] >= level):
+		return
+	if level > Globals.NUMBER_OF_LEVELS:
 		return
 	data["reached_level"] = level
 
