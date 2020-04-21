@@ -16,12 +16,12 @@ func randomize_blocks() -> void:
 		else:
 			b.apply_color()
 
-func add_goodie() -> void:
-	if $Goodies.get_child_count() > Globals.level_config.n_goodies:
-		return
-	var position = get_valid_position()
-	var color_index = randi() % Globals.level_config.n_colors
-	$Goodies.create_new_goodie(position, color_index)
+func add_goodies() -> void:
+	var child_count = $Goodies.get_child_count()
+	for _i in range(child_count, Globals.level_config.n_goodies):
+		var position = get_valid_position()
+		var color_index = randi() % Globals.level_config.n_colors
+		$Goodies.create_new_goodie(position, color_index)
 
 func head_distance(point) -> float:
 	return $Players/Player/Head.position.distance_to(point)
@@ -87,7 +87,6 @@ func check_combo():
 				elif cell_index < (body_parts.size() + all_goodies.size()):
 					n_goodies += 1
 					cell.die()
-					add_goodie()
 				else:
 					n_blocks += 1
 					cell.die()
@@ -97,7 +96,6 @@ func check_combo():
 func eaten_goodie(color):
 	Globals.score += 10
 	$Players/Player.increase_length(color)
-	add_goodie()
 	$HUD.update_score(Globals.score)
 
 func trigger_combo(n_body_parts, n_goodies):
@@ -114,6 +112,7 @@ func _physics_process(_delta):
 		check_combo()
 	$Players/Player.move()
 	$HUD.update_fps()
+	add_goodies()
 	if $WinCondition.check_win() == 1 and !level_defeated:
 		Globals.score = 0
 		level_defeated = true
@@ -132,8 +131,6 @@ func start_game():
 	Globals.score = 0
 	if Globals.level_config.start_cell.length() > 0:
 		$Players/Player.position = Globals.CELL_SIZE * (Globals.level_config.start_cell)
-	for _i in range(Globals.level_config.n_goodies):
-		add_goodie()
 	$Players/Player.init(Globals.level_config.start_length)
 	randomize_blocks()
 	var intro_text = $WinCondition.get_introduction_text()
