@@ -3,6 +3,7 @@ extends "res://scenes/Cell.gd"
 func _ready():
 	$CollisionShape2D.disabled = true
 	$Timer.start()
+	active = false
 
 func initialize(position, new_color_index):
 	self.position = position
@@ -23,3 +24,4 @@ func move_to(tween, new_position):
 
 func _on_Timer_timeout():
 	$CollisionShape2D.disabled = false
+	active = true

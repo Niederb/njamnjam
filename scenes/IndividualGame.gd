@@ -8,4 +8,4 @@ func _on_MainMenuButton_pressed():
 
 func _on_StartButton_pressed():
 	$CenterContainer/VBoxContainer/Options.apply()
-	Globals.change_level("res://scenes/Levels/IndividualGameLevel.tscn")
+	Globals.change_scene("res://scenes/Levels/IndividualGameLevel.tscn")

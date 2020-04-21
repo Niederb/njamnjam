@@ -8,3 +8,5 @@ func _ready():
 	start_game()
 
 
+func get_tutorial_text():
+	return "Square blocks cannot be collected, but they can be part of a combo"

@@ -36,13 +36,12 @@ func get_valid_position() -> Vector2:
 		var position = Vector2(Globals.CELL_SIZE * x, Globals.CELL_SIZE * y)
 		var intersection = space_state.intersect_point(position + offset)
 		if !intersection and head_distance(position) > 2*Globals.CELL_SIZE:
-			#print(position)
 			return position
 	return Vector2()
 
 func find_sub_graph(cell, cells, graph_index, graphs):
 	for current_cell in cells:
-		if !current_cell.processed():
+		if !current_cell.processed() and current_cell.is_active():
 			var distance = (current_cell.global_position - cell.global_position).length()
 			if head_distance(current_cell.global_position) > Globals.CELL_SIZE and distance <= Globals.CELL_SIZE and current_cell.get_color_index() == cell.get_color_index():
 				current_cell.sub_graph_id = graph_index
@@ -58,7 +57,7 @@ func determine_sub_graphs(cells):
 		
 	var graph_index = 0
 	for cell in cells:
-		if cell.processed():
+		if cell.processed() or !cell.is_active():
 			continue
 		var graph = []
 		sub_graphs.push_back(graph)
