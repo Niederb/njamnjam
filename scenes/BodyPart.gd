@@ -2,6 +2,7 @@ extends "res://scenes/Cell.gd"
 
 func _ready():
 	$CollisionShape2D.disabled = true
+	$Timer.wait_time = 2*Globals.level_config.get_time_interval()
 	$Timer.start()
 	active = false
 
