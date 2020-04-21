@@ -56,4 +56,4 @@ shadow_enabled = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Create"
 anims/Create = SubResource( 2 )
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

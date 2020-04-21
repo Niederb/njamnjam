@@ -16,7 +16,7 @@ script = ExtResource( 2 )
 
 [node name="Body" type="Node2D" parent="."]
 
-[node name="Head" type="KinematicBody2D" parent="."]
+[node name="Head" type="Area2D" parent="."]
 collision_mask = 7
 
 [node name="Sprite" type="Sprite" parent="Head"]
@@ -37,4 +37,6 @@ pitch_scale = 2.0
 
 [node name="DieSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+[connection signal="area_entered" from="Head" to="." method="_on_Head_area_entered"]
+[connection signal="body_entered" from="Head" to="." method="_on_Head_body_entered"]
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]

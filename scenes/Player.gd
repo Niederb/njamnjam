@@ -39,21 +39,11 @@ func wrap_position(position):
 	if position.y > MAX.y:
 		position.y = ZERO.y - position.y
 	return position
-		
-func check_collision(position):
-	var space_state = get_world_2d().get_direct_space_state()
-	#var globalpos = self.global_position
-	var intersection = space_state.intersect_point(position)
-	if intersection:
-		get_tree().call_group("Gamestate", "game_over")
-		$DieSFX.play()
-		dead = true
-		return
 
 func move_body():
 	var start_position = $Head.position
 	var end_position = $Head.position + Globals.CELL_SIZE * direction
-	check_collision(self.global_position + end_position)
+
 	if dead:
 		return
 	$Tween.interpolate_property($Head, "position",
@@ -89,8 +79,24 @@ func increase_length(color_index):
 func move_finished() -> bool:
 	return tween_done
 
+func die():
+	if !dead:
+		$DieSFX.play()
+		dead = true
+		get_tree().call_group("Gamestate", "game_over")
+
 func _on_Tween_tween_all_completed():
 #	$Head.global_position = wrap_position($Head.global_position)
 #	for body_part in $Body.get_children():
 #		body_part.global_position = wrap_position(body_part.global_position)
 	tween_done = true
+
+func _on_Head_body_entered(body):
+	if body.collision_layer == 8:
+		die()
+	print(body)
+
+func _on_Head_area_entered(area):
+	if area.collision_layer == 4:
+		die()
+	print(area)

@@ -15,7 +15,7 @@ func update_color():
 	$Sprite.modulate = color
 	$Light.color = color
 	
-func _on_Area2D_body_entered(_body):
+func _on_Area2D_area_entered(area):
 	if active:
 		get_tree().call_group("Gamestate", "eaten_goodie", color_index)
 		active = false
