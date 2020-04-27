@@ -1,25 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/LevelTemplate.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Levels/Level7.gd" type="Script" id=2]
-[ext_resource path="res://scenes/Goodie.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/Block.tscn" type="PackedScene" id=4]
 
 [node name="Level7" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-
-[node name="Goodie" parent="Goodies" index="0" instance=ExtResource( 3 )]
-position = Vector2( 64, 192 )
-color_index = 0
-
-[node name="Goodie2" parent="Goodies" index="1" instance=ExtResource( 3 )]
-position = Vector2( 64, 384 )
-color_index = 1
-
-[node name="Goodie3" parent="Goodies" index="2" instance=ExtResource( 3 )]
-position = Vector2( 64, 512 )
-color_index = 0
-
-[node name="Block" parent="Blocks" index="0" instance=ExtResource( 4 )]
-position = Vector2( 896, 448 )
-color_index = 0

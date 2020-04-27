@@ -5,7 +5,7 @@ func _ready():
 	Globals.level_config.n_goodies = 3
 	load_map("FourPillarsMap")
 	level_number = 8
-	$WinCondition.config.score = 500
+	$WinCondition.config.score = 200
 	start_game()
 
 func get_tutorial_text():
