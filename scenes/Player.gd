@@ -15,6 +15,7 @@ func init(length):
 		position_offset += Globals.CELL_SIZE
 		body_part.initialize(Vector2(), color_index)
 		body_part.position.y -= position_offset
+		body_part.connect("area_entered", self, "_on_Head_area_entered")
 		$Body.add_child(body_part)
 		
 func remove_body_parts(indeces):
@@ -76,6 +77,7 @@ func increase_length(color_index):
 	length += 1
 	var body_part = load("res://scenes/BodyPart.tscn").instance()
 	body_part.initialize($Head.position, color_index)
+	body_part.connect("area_entered", self, "_on_Head_area_entered")
 	$Body.add_child(body_part)
 
 func move_finished() -> bool:
@@ -93,6 +95,7 @@ func _on_Tween_tween_all_completed():
 #		body_part.global_position = wrap_position(body_part.global_position)
 	tween_done = true
 
+# Wall collision
 func _on_Head_body_entered(body):
 	if body.collision_layer == 8:
 		die()

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://gfx/player.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.gd" type="Script" id=2]
 [ext_resource path="res://sfx/laser5.ogg" type="AudioStream" id=3]
 [ext_resource path="res://sfx/highDown.ogg" type="AudioStream" id=4]
+[ext_resource path="res://scenes/Head.gd" type="Script" id=5]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( 26, -23, 23, -26, -23, -26, -26, -23, -26, 23, -23, 26, 23, 26, 26, 23 )
@@ -18,6 +19,7 @@ script = ExtResource( 2 )
 
 [node name="Head" type="Area2D" parent="."]
 collision_mask = 7
+script = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="Head"]
 texture = ExtResource( 1 )

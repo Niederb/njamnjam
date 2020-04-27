@@ -30,4 +30,3 @@ shape = SubResource( 2 )
 [node name="Light" type="Light2D" parent="."]
 texture = ExtResource( 3 )
 energy = 1.2
-[connection signal="body_entered" from="." to="." method="_on_Block_body_entered"]

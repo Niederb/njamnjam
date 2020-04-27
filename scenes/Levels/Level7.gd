@@ -9,5 +9,3 @@ func _ready():
 	$WinCondition.config.zero_length = true
 	start_game()
 
-func get_success_text():
-	return "Campaign finished. \n !!Congratulations!! \n Going back to main menu..."

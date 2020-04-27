@@ -22,7 +22,6 @@ func move_to(tween, new_position):
 		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	return current_position
 
-
 func _on_Timer_timeout():
 	$CollisionShape2D.disabled = false
 	active = true
