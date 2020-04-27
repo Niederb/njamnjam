@@ -7,6 +7,3 @@ func _ready():
 	Globals.level_config.start_cell = Vector2(1, 1)
 	$WinCondition.config.remove_all_blocks = true
 	start_game()
-
-func get_success_text():
-	return "Campaign finished. \n !!Congratulations!! \n Going back to main menu..."

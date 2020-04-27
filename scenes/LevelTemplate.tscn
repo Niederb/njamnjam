@@ -22,6 +22,7 @@ position = Vector2( 32, 32 )
 
 [node name="Player" parent="Players" instance=ExtResource( 3 )]
 position = Vector2( 640, 384 )
+player_id = 0
 
 [node name="Goodies" type="Node2D" parent="."]
 position = Vector2( 32, 32 )

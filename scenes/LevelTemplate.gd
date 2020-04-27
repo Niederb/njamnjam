@@ -11,7 +11,7 @@ func _ready():
 func randomize_blocks() -> void:
 	for b in $Blocks.get_children():
 		if b.color_index == -1:
-			var color_index = randi() % Globals.level_config.n_colors
+			var color_index = Globals.get_random_color_index()
 			b.modulate_color(color_index)
 		else:
 			b.apply_color()
@@ -40,10 +40,15 @@ func get_valid_position() -> Vector2:
 	return Vector2()
 
 func find_sub_graph(cell, cells, graph_index, graphs):
+	var cell_tile_coordinates = $Map.world_to_map(cell.global_position)
 	for current_cell in cells:
 		if !current_cell.processed() and current_cell.is_active():
-			var distance = (current_cell.global_position - cell.global_position).length()
-			if head_distance(current_cell.global_position) > Globals.CELL_SIZE and distance <= Globals.CELL_SIZE and current_cell.get_color_index() == cell.get_color_index():
+			var current_cell_tile_coordinates = $Map.world_to_map(current_cell.global_position)
+			var distance = current_cell_tile_coordinates.distance_squared_to(cell_tile_coordinates)
+			if head_distance(current_cell.global_position) > 1 and distance <= 1 and current_cell.get_color_index() == cell.get_color_index():
+#				print("match")
+#				print(cell_tile_coordinates)
+#				print(current_cell_tile_coordinates)
 				current_cell.sub_graph_id = graph_index
 				graphs[graph_index].push_back(current_cell.id)
 				find_sub_graph(current_cell, cells, graph_index, graphs)
@@ -109,6 +114,8 @@ func _physics_process(_delta):
 		$Players/Player.direction = Vector2()
 		
 	if $Players/Player.move_finished():
+		var cell_tile_coordinates = $Map.world_to_map($Players/Player.position + $Players/Player/Head.position)
+		print(cell_tile_coordinates)
 		check_combo()
 	$Players/Player.move()
 	$HUD.update_fps()
@@ -139,6 +146,7 @@ func start_game():
 func load_map(map_name):
 	var new_map = load("res://scenes/Maps/%s.tscn" % map_name)
 	var new_instance = new_map.instance()
+	new_instance.name = "Map"
 	$Map.replace_by(new_instance)
 
 func _on_NextLevelTimer_timeout():

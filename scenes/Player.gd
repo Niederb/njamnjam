@@ -11,7 +11,9 @@ func init(length):
 	var position_offset = 0
 	for _i in range(length):
 		var body_part = load("res://scenes/BodyPart.tscn").instance()
+		var color_index = Globals.get_random_color_index()
 		position_offset += Globals.CELL_SIZE
+		body_part.initialize(Vector2(), color_index)
 		body_part.position.y -= position_offset
 		$Body.add_child(body_part)
 		
