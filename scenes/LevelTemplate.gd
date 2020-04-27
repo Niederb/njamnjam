@@ -120,6 +120,8 @@ func trigger_combo(n_body_parts, n_goodies):
 func _physics_process(_delta):
 	if pause_movement:
 		$Players/Player.direction = Vector2()
+	elif $Players/Player.direction != Vector2():
+		$LevelInstructions.fade_out()
 		
 	if $Players/Player.move_finished():
 		var cell_tile_coordinates = $Map.world_to_map($Players/Player.position + $Players/Player/Head.position)
