@@ -17,3 +17,6 @@ func processed():
 func reset(new_id):
 	id = new_id
 	sub_graph_id = -1
+
+func verify_combo(combo_elements) -> bool:
+	return true

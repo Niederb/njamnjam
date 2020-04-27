@@ -1,0 +1,14 @@
+extends "res://scenes/LevelTemplate.gd"
+
+func _ready():
+	Globals.level_config.n_goodies = 0
+	#load_map("FourPillarsMap")
+	level_number = 9
+	$WinCondition.config.remove_all_blocks = true
+	start_game()
+
+func get_tutorial_text():
+	return "For some blocks you need bigger combos to destroy them. The number on the block tells you how big the combo needs to be."
+
+func get_success_text():
+	return "Campaign finished. \n !!Congratulations!! \n Going back to main menu..."

@@ -80,7 +80,15 @@ func check_combo():
 	var cells = body_parts + all_goodies + all_blocks
 	var sub_graphs = determine_sub_graphs(cells)
 	for graph in sub_graphs:
-		if graph.size() >= Globals.level_config.min_combo_size:
+		var min_size_passed = graph.size() >= Globals.level_config.min_combo_size
+		if min_size_passed:
+			var elements_verified = true
+			for element in graph:
+				if !cells[element].verify_combo(graph):
+					elements_verified = false
+					break
+			if !elements_verified:
+				continue
 			$Players/Player.remove_body_parts(graph)
 			var n_goodies = 0
 			var n_body_parts = 0
