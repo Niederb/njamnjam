@@ -9,6 +9,3 @@ func _ready():
 
 func get_tutorial_text():
 	return "For some blocks you need bigger combos to destroy them. The number on the block tells you how big the combo needs to be."
-
-func get_success_text():
-	return "Campaign finished. \n !!Congratulations!! \n Going back to main menu..."
