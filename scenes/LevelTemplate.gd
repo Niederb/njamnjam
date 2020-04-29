@@ -125,7 +125,7 @@ func _physics_process(_delta):
 		
 	if $Players/Player.move_finished():
 		var cell_tile_coordinates = $Map.world_to_map($Players/Player.position + $Players/Player/Head.position)
-		print(cell_tile_coordinates)
+		#print(cell_tile_coordinates)
 		check_combo()
 	$Players/Player.move()
 	$HUD.update_fps()
@@ -134,6 +134,7 @@ func _physics_process(_delta):
 		Globals.score = 0
 		level_defeated = true
 		pause_movement = true
+		$Players/Player.direction = Vector2()
 		var text = get_success_text()
 		$LevelInstructions.show_text(text)
 		$NextLevelTimer.start()
@@ -148,7 +149,7 @@ func start_game():
 	Globals.score = 0
 	if Globals.level_config.start_cell.length() > 0:
 		$Players/Player.position = Globals.CELL_SIZE * (Globals.level_config.start_cell)
-	$Players/Player.init(Globals.level_config.start_length)
+	$Players/Player.init()
 	randomize_blocks()
 	var intro_text = $WinCondition.get_introduction_text()
 	$LevelInstructions.show_level_start(get_level_name(), intro_text, get_tutorial_text())

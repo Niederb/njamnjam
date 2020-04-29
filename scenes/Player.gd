@@ -1,22 +1,13 @@
 extends Node2D
 
 var direction := Vector2()
-var length: int = 0
 var dead: bool = false
 var tween_done: bool = true
 export var player_id: int = 1
 
-func init(length):
-	self.length = length
-	var position_offset = 0
-	for _i in range(length):
-		var body_part = load("res://scenes/BodyPart.tscn").instance()
-		var color_index = Globals.get_random_color_index()
-		position_offset += Globals.CELL_SIZE
-		body_part.initialize(Vector2(), color_index)
-		body_part.position.y -= position_offset
-		body_part.connect("area_entered", self, "_on_Head_area_entered")
-		$Body.add_child(body_part)
+func init():
+	for child in $Body.get_children():
+		child.connect("area_entered", self, "_on_Head_area_entered")
 		
 func remove_body_parts(indeces):
 	var children = []
@@ -29,6 +20,9 @@ func remove_body_parts(indeces):
 	
 func get_body_parts():
 	return $Body.get_children()
+
+func get_length():
+	return $Body.get_child_count()
 
 func wrap_position(position):
 	var ZERO = Vector2()
@@ -74,7 +68,6 @@ func _input(_delta):
 
 func increase_length(color_index):
 	$GoodieSFX.play()
-	length += 1
 	var body_part = load("res://scenes/BodyPart.tscn").instance()
 	body_part.initialize($Head.position, color_index)
 	body_part.connect("area_entered", self, "_on_Head_area_entered")

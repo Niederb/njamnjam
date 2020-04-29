@@ -5,12 +5,17 @@ func _ready():
 	$Timer.wait_time = 2*Globals.level_config.get_time_interval()
 	$Timer.start()
 	active = false
+	apply_color()
 
 func initialize(position, new_color_index):
 	self.position = position
-	color_index = new_color_index
-	var color = Globals.colors[color_index]
-	$Sprite.modulate = color
+	self.color_index = new_color_index
+	apply_color()
+	
+func apply_color():
+	if self.color_index != -1:
+		var color = Globals.colors[color_index]
+		$Sprite.modulate = color
 
 func die():
 	queue_free()

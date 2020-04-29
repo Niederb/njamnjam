@@ -18,7 +18,6 @@ func show_level_start(level_name, introduction_text, tutorial_text):
 	visible = true
 
 func show_text(text):
-	faded = false
 	$TextContainer/GoalLabel.text = text
 	$TextContainer/CountdownLabel.visible = false
 	$TextContainer/TutorialLabel.visible = false
@@ -28,11 +27,12 @@ func _on_CountdownTimer_timeout():
 	if count_down == 0:
 		$CountdownTimer.stop()
 		$StartSFX.play()
+		$TextContainer/CountdownLabel.text = "GO"
 		get_tree().call_group("Gamestate", "start_movement")
 	else:
 		count_down -= 1
 		$CountdownSFX.play()
-	$TextContainer/CountdownLabel.text = str(count_down)
+		$TextContainer/CountdownLabel.text = str(count_down)
 
 func fade_out():
 	if !faded:

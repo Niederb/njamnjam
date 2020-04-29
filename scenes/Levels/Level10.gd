@@ -4,7 +4,6 @@ func _ready():
 	Globals.level_config.movement_speed = 4
 	Globals.level_config.n_goodies = 0
 	Globals.level_config.n_colors = 2
-	Globals.level_config.start_length = 0
 	#load_map("FourPillarsMap")
 	level_number = 10
 	$WinCondition.config.combo_count = 3
