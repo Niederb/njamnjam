@@ -8,9 +8,14 @@ func set_reached_level(level: int) -> void:
 	if level > Globals.NUMBER_OF_LEVELS:
 		return
 	data["reached_level"] = level
+	save()
 
-func set_high_score(high_score: int) -> void:
-	data["high_score"] = high_score
+func verify_high_score(score: int) -> bool:
+	if score > get_high_score():
+		data["high_score"] = score
+		save()
+		return true
+	return false
 
 func get_reached_level() -> int:
 	if data.has("reached_level"):

@@ -27,18 +27,18 @@ func get_introduction_text() -> String:
 		return "Reduce the snake lenght to zero"
 	return "Collect as many points as possible!"
 
-func check_win() -> int:
+func check_win(player) -> int:
 	if config.no_goal():
 		return WinStatus.CONTINUE
-	var snake_length = get_parent().get_node("Players/Player").get_length() >= config.snake_length;
-	var score = Globals.score >= config.score;
-	var combo = get_parent().combo_count >= config.combo_count;
+	var snake_length = player.get_length() >= config.snake_length;
+	var score = player.score >= config.score;
+	var combo = player.combo_count >= config.combo_count;
 	var remove_blocks = true
 	if config.remove_all_blocks:
 		remove_blocks = get_parent().get_node("Blocks").get_child_count() == 0
 	var zero_length = true
 	if config.zero_length:
-		remove_blocks = get_parent().get_node("Players/Player/Body").get_child_count() == 0
+		remove_blocks = player.get_length() == 0
 	if snake_length and score and combo and remove_blocks and zero_length:
 		return WinStatus.SUCCESS
 	return WinStatus.CONTINUE

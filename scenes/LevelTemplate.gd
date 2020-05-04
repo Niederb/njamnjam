@@ -3,7 +3,8 @@ extends Node2D
 var level_number: int
 var level_defeated: bool = false
 var pause_movement: bool = true
-var combo_count: int = 0
+
+onready var player = $Players/Player
 
 func _ready():
 	add_to_group("Gamestate")
@@ -24,7 +25,7 @@ func add_goodies() -> void:
 		$Goodies.create_new_goodie(position, color_index)
 
 func head_distance(point) -> float:
-	return $Players/Player/Head.position.distance_to(point)
+	return player.get_node("Head").position.distance_to(point)
 	
 func get_valid_position() -> Vector2:
 	randomize()
@@ -74,7 +75,7 @@ func determine_sub_graphs(cells):
 	return sub_graphs
 
 func check_combo():
-	var body_parts = $Players/Player.get_body_parts()
+	var body_parts = player.get_body_parts()
 	var all_goodies = $Goodies.get_current_goodies()
 	var all_blocks = $Blocks.get_children()
 	var cells = body_parts + all_goodies + all_blocks
@@ -89,7 +90,7 @@ func check_combo():
 					break
 			if !elements_verified:
 				continue
-			$Players/Player.remove_body_parts(graph)
+			player.remove_body_parts(graph)
 			var n_goodies = 0
 			var n_body_parts = 0
 			var n_blocks = 0
@@ -107,49 +108,48 @@ func check_combo():
 			trigger_combo(n_body_parts, n_goodies)
 
 func eaten_goodie(color):
-	Globals.score += 10
-	$Players/Player.increase_length(color)
-	$HUD.update_score(Globals.score)
+	player.score += 10
+	player.increase_length(color)
+	$HUD.update_score(player.score)
 
 func trigger_combo(n_body_parts, n_goodies):
-	Globals.score += 10 * n_body_parts * (n_goodies + 1)
-	$HUD.update_score(Globals.score)
+	player.score += 10 * n_body_parts * (n_goodies + 1)
+	$HUD.update_score(player.score)
 	$ComboSFX.play()
-	combo_count += 1
+	player.combo_count += 1
 
 func _physics_process(_delta):
 	if pause_movement:
-		$Players/Player.direction = Vector2()
-	elif $Players/Player.direction != Vector2():
+		player.direction = Vector2()
+	elif player.direction != Vector2():
 		$LevelInstructions.fade_out()
 		
-	if $Players/Player.move_finished():
-		var cell_tile_coordinates = $Map.world_to_map($Players/Player.position + $Players/Player/Head.position)
+	if player.move_finished():
+		var cell_tile_coordinates = $Map.world_to_map(player.position + player.get_node("Head").position)
 		#print(cell_tile_coordinates)
 		check_combo()
-	$Players/Player.move()
+	player.move()
 	$HUD.update_fps()
 	add_goodies()
-	if $WinCondition.check_win() == 1 and !level_defeated:
-		Globals.score = 0
+	if $WinCondition.check_win(player) == 1 and !level_defeated:
+		player.score = 0
 		level_defeated = true
 		pause_movement = true
-		$Players/Player.direction = Vector2()
+		player.direction = Vector2()
 		var text = get_success_text()
 		$LevelInstructions.show_text(text)
 		$NextLevelTimer.start()
 		
 func game_over():
-	$Players/Player.dead = true
+	player.dead = true
 	$LevelInstructions.show_text("Ooops :-( \n Try again!")
 	if $NextLevelTimer.is_stopped():
 		$NextLevelTimer.start()
 
 func start_game():
-	Globals.score = 0
 	if Globals.level_config.start_cell.length() > 0:
-		$Players/Player.position = Globals.CELL_SIZE * (Globals.level_config.start_cell)
-	$Players/Player.init()
+		player.position = Globals.CELL_SIZE * (Globals.level_config.start_cell)
+	player.init()
 	randomize_blocks()
 	var intro_text = $WinCondition.get_introduction_text()
 	$LevelInstructions.show_level_start(get_level_name(), intro_text, get_tutorial_text())
@@ -164,11 +164,10 @@ func _on_NextLevelTimer_timeout():
 	if level_defeated:
 		if is_campaign_level():
 			Globals.save_game.set_reached_level(level_number + 1)
-			Globals.save_game.save()
 		var next_scene = Globals.get_scene(level_number + 1)
 		Globals.change_level(next_scene)
 	else:
-		Globals.set_new_score(Globals.score)
+		Globals.save_game.verify_high_score(player.score)
 		Globals.change_scene("res://scenes/Menu/GameOver.tscn")
 
 func start_movement():
