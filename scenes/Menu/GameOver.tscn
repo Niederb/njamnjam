@@ -1,8 +1,9 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/Menu/GameOver.gd" type="Script" id=1]
-[ext_resource path="res://scenes/Menu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Menu/Menu.tscn" type="PackedScene" id=3]
 [ext_resource path="res://gfx/UITheme.tres" type="Theme" id=4]
+
 
 
 [node name="GameOver" instance=ExtResource( 3 )]
