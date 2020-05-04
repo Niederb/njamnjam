@@ -33,7 +33,7 @@ func change_scene(new_scene: String):
 
 func get_scene(level_number):
 	if level_number > NUMBER_OF_LEVELS:
-		return "res://scenes/MainMenu.tscn"
+		return "res://scenes/Menu/MainMenu.tscn"
 	else:
 		return "res://scenes/Levels/Level%s.tscn" % (level_number)
 

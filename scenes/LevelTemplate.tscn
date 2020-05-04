@@ -5,10 +5,11 @@
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://sfx/Chiptune_Adventures_1.ogg" type="AudioStream" id=4]
 [ext_resource path="res://scenes/LevelTemplate.gd" type="Script" id=5]
-[ext_resource path="res://scenes/GUI.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Menu/GUI.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Goodies.gd" type="Script" id=8]
 [ext_resource path="res://sfx/powerUp4.ogg" type="AudioStream" id=9]
 [ext_resource path="res://scenes/WinCondition.gd" type="Script" id=10]
+
 
 [node name="LevelTemplate" type="Node2D"]
 script = ExtResource( 5 )

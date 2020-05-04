@@ -169,7 +169,7 @@ func _on_NextLevelTimer_timeout():
 		Globals.change_level(next_scene)
 	else:
 		Globals.set_new_score(Globals.score)
-		Globals.change_scene("res://scenes/GameOver.tscn")
+		Globals.change_scene("res://scenes/Menu/GameOver.tscn")
 
 func start_movement():
 	pause_movement = false
