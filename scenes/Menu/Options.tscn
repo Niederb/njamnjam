@@ -25,7 +25,7 @@ margin_left = 382.0
 margin_right = 682.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 300, 100 )
-items = [ "DiagonalPillarsMap", null, false, "FourPillarsMap", null, false, "MarinaMap", null, false, "TwoHMap", null, false ]
+items = [ "DiagonalPillarsMap", null, false, "FourPillarsMap", null, false, "MarinaMap", null, false, "TwoHMap", null, false, "ZickZackMap", null, false, "RectangleMap", null, false, "FourRoomsMap", null, false ]
 
 [node name="MinimalComboSizeLabel2" type="Label" parent="."]
 margin_top = 115.0
