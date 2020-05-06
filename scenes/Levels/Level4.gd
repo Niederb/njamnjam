@@ -1,7 +1,7 @@
 extends "res://scenes/LevelTemplate.gd"
 
 func _ready():
-	load_map("MarinaMap")
+	Globals.level_config.map_name = "MarinaMap"
 	level_number = 4
 	Globals.level_config.n_colors = 3
 	$WinCondition.config.combo_count = 3

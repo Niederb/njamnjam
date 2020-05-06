@@ -14,60 +14,74 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MinimalComboSizeLabel" type="Label" parent="."]
-margin_top = 5.0
+[node name="LevelLabel" type="Label" parent="."]
+margin_top = 35.0
 margin_right = 332.0
-margin_bottom = 34.0
+margin_bottom = 64.0
+text = "Map:"
+
+[node name="Level" type="ItemList" parent="."]
+margin_left = 382.0
+margin_right = 682.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 300, 100 )
+items = [ "DiagonalPillarsMap", null, false, "FourPillarsMap", null, false, "MarinaMap", null, false, "TwoHMap", null, false ]
+
+[node name="MinimalComboSizeLabel2" type="Label" parent="."]
+margin_top = 115.0
+margin_right = 332.0
+margin_bottom = 144.0
 text = "Minimal combo size:"
 
 [node name="MinimalComboSize" type="LineEdit" parent="."]
 margin_left = 382.0
-margin_right = 464.0
-margin_bottom = 39.0
+margin_top = 110.0
+margin_right = 682.0
+margin_bottom = 149.0
 text = "3"
 align = 2
 
 [node name="NumberColorsLabel" type="Label" parent="."]
-margin_top = 54.0
+margin_top = 164.0
 margin_right = 332.0
-margin_bottom = 83.0
+margin_bottom = 193.0
 text = "Number of Colors:"
 
 [node name="NumberColors" type="LineEdit" parent="."]
 margin_left = 382.0
-margin_top = 49.0
-margin_right = 464.0
-margin_bottom = 88.0
+margin_top = 159.0
+margin_right = 682.0
+margin_bottom = 198.0
 rect_min_size = Vector2( 0, 30 )
 size_flags_horizontal = 3
 text = "3"
 align = 2
 
 [node name="NumberGoodiesLabel" type="Label" parent="."]
-margin_top = 103.0
+margin_top = 213.0
 margin_right = 332.0
-margin_bottom = 132.0
+margin_bottom = 242.0
 text = "Number of goodies:"
 
 [node name="NumberGoodies" type="LineEdit" parent="."]
 margin_left = 382.0
-margin_top = 98.0
-margin_right = 464.0
-margin_bottom = 137.0
+margin_top = 208.0
+margin_right = 682.0
+margin_bottom = 247.0
 rect_min_size = Vector2( 20, 0 )
 text = "3"
 align = 2
 
 [node name="MovementSpeedLabel" type="Label" parent="."]
-margin_top = 152.0
+margin_top = 262.0
 margin_right = 332.0
-margin_bottom = 181.0
+margin_bottom = 291.0
 text = "Movement speed:"
 
 [node name="MovementSpeed" type="LineEdit" parent="."]
 margin_left = 382.0
-margin_top = 147.0
-margin_right = 464.0
-margin_bottom = 186.0
+margin_top = 257.0
+margin_right = 682.0
+margin_bottom = 296.0
 text = "4"
 align = 2

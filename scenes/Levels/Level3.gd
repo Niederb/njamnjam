@@ -1,7 +1,7 @@
 extends "res://scenes/LevelTemplate.gd"
 
 func _ready():
-	load_map("TwoHMap")
+	Globals.level_config.map_name = "TwoHMap"
 	level_number = 3
 	Globals.level_config.n_colors = 1
 	Globals.level_config.n_goodies = 0

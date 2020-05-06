@@ -1,7 +1,7 @@
 extends "res://scenes/LevelTemplate.gd"
 
 func _ready():
-	load_map("DiagonalPillarsMap")
+	Globals.level_config.map_name = "DiagonalPillarsMap"
 	level_number = 2
 	Globals.level_config.n_colors = 1
 	$WinCondition.config.combo_count = 2

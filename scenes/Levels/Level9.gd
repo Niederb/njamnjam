@@ -2,7 +2,6 @@ extends "res://scenes/LevelTemplate.gd"
 
 func _ready():
 	Globals.level_config.n_goodies = 0
-	#load_map("FourPillarsMap")
 	level_number = 9
 	$WinCondition.config.remove_all_blocks = true
 	start_game()
