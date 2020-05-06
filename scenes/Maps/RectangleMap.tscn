@@ -67,7 +67,7 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 3/z_index = 0
 script = SubResource( 3 )
 
-[node name="Map" type="TileMap"]
+[node name="RectangleMap" type="TileMap"]
 tile_set = SubResource( 4 )
 cell_quadrant_size = 32
 format = 1

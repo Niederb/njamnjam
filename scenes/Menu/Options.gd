@@ -5,7 +5,7 @@ func _ready():
 	
 func update_GUI() -> void:
 	for i in $Level.get_item_count():
-		if $Level.get_item_text() == Globals.level_name:
+		if $Level.get_item_text(i) == Globals.level_config.map_name:
 			$Level.select(i)
 	
 	$NumberColors.text = str(Globals.level_config.n_colors)
