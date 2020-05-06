@@ -11,7 +11,7 @@ func init(position, new_color_index):
 	$AnimationPlayer.play()
 	
 func update_color():
-	var color = Globals.colors[color_index]
+	var color = Globals.get_gameplay_color(color_index)
 	$Sprite.modulate = color
 	$Light.color = color
 	

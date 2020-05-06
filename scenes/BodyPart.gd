@@ -14,7 +14,7 @@ func initialize(position, new_color_index):
 	
 func apply_color():
 	if self.color_index != -1:
-		var color = Globals.colors[color_index]
+		var color = Globals.get_gameplay_color(color_index)
 		$Sprite.modulate = color
 
 func die():

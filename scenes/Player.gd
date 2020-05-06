@@ -5,6 +5,10 @@ var dead: bool = false
 var tween_done: bool = true
 export var player_id: int = 1
 
+var steps: int = 0
+var score: int = 0
+var combo_count: int = 0
+
 func init():
 	for child in $Body.get_children():
 		child.connect("area_entered", self, "_on_Head_area_entered")
@@ -54,6 +58,7 @@ func move_body():
 
 func move():
 	if tween_done and !dead and direction.length() > 0:
+		steps += 1
 		move_body()		
 
 func _input(_delta):

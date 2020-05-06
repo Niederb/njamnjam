@@ -11,7 +11,7 @@ func update_GUI() -> void:
 
 func apply() -> void:
 	var new_n_colors = convert_to_int($NumberColors.text, Globals.level_config.n_colors)
-	Globals.level_config.n_colors = min(Globals.colors.size(), max(1, new_n_colors))
+	Globals.level_config.n_colors = min(Globals.get_number_gameplay_colors(), max(1, new_n_colors))
 		
 	var new_n_goodies = convert_to_int($NumberGoodies.text, Globals.level_config.n_goodies)
 	Globals.level_config.n_goodies = max(1, new_n_goodies)

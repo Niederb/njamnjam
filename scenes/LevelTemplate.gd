@@ -21,7 +21,7 @@ func add_goodies() -> void:
 	var child_count = $Goodies.get_child_count()
 	for _i in range(child_count, Globals.level_config.n_goodies):
 		var position = get_valid_position()
-		var color_index = randi() % Globals.level_config.n_colors
+		var color_index = Globals.get_random_color_index()
 		$Goodies.create_new_goodie(position, color_index)
 
 func head_distance(point) -> float:

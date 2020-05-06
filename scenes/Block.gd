@@ -10,7 +10,7 @@ func modulate_color(new_color_index):
 	
 func apply_color():
 	if color_index >= 0:
-		var color = Globals.colors[color_index]
+		var color = Globals.get_gameplay_color(color_index)
 		$Sprite.self_modulate = color
 		#$Sprite.modulate = color
 		$Light.color = color
