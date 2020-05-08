@@ -5,7 +5,7 @@ onready var number_goodies = $GridContainer/NumberGoodies
 onready var minimal_combo_size = $GridContainer/MinimalComboSize
 onready var movement_speed = $GridContainer/MovementSpeed
 
-var map_names = ["FourPillarsMap", "DiagonalPillarsMap", "FourRoomsMap", "TwoHMap"]
+var map_names = ["RectangleMap", "FourPillarsMap", "DiagonalPillarsMap", "FourRoomsMap", "TwoHMap"]
 
 func _ready():
 	var index = 0
