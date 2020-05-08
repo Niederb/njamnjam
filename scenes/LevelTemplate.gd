@@ -189,6 +189,7 @@ func is_campaign_level() -> bool:
 
 func pause():
 	get_tree().paused = !get_tree().paused
+	$HUD.pause(get_tree().paused)
 
 func _input(_delta):
 	if Input.is_action_just_pressed("pause"):

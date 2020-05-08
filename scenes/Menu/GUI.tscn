@@ -3,7 +3,6 @@
 [ext_resource path="res://scenes/Menu/GUI.gd" type="Script" id=1]
 [ext_resource path="res://gfx/UITheme.tres" type="Theme" id=2]
 
-
 [node name="GUI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -13,18 +12,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_right = 144.0
-margin_bottom = 29.0
+custom_constants/separation = 50
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="Status" type="Label" parent="HBoxContainer"]
+margin_top = 16.0
+margin_right = 200.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 200, 0 )
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer"]
+margin_left = 250.0
+margin_right = 423.0
+margin_bottom = 62.0
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreLabel" type="Label" parent="HBoxContainer/GridContainer"]
 margin_right = 119.0
 margin_bottom = 29.0
 text = "Score: "
@@ -32,35 +43,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Score" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="Score" type="Label" parent="HBoxContainer/GridContainer"]
 margin_left = 123.0
-margin_right = 144.0
+margin_right = 173.0
 margin_bottom = 29.0
 text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+[node name="FpsLabel" type="Label" parent="HBoxContainer/GridContainer"]
 margin_top = 33.0
-margin_right = 144.0
+margin_right = 119.0
 margin_bottom = 62.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="FpsLabel" type="Label" parent="VBoxContainer/HBoxContainer2"]
-margin_right = 77.0
-margin_bottom = 29.0
 text = "FPS: "
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FPS" type="Label" parent="VBoxContainer/HBoxContainer2"]
-margin_left = 81.0
-margin_right = 131.0
-margin_bottom = 29.0
+[node name="FPS" type="Label" parent="HBoxContainer/GridContainer"]
+margin_left = 123.0
+margin_top = 33.0
+margin_right = 173.0
+margin_bottom = 62.0
 text = "0.0"
 __meta__ = {
 "_edit_use_anchors_": false

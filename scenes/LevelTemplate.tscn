@@ -21,7 +21,6 @@ collision_mask = 7
 position = Vector2( 32, 32 )
 
 [node name="Player" parent="Players" instance=ExtResource( 3 )]
-pause_mode = 1
 position = Vector2( 640, 384 )
 player_id = 0
 
@@ -37,10 +36,10 @@ script = ExtResource( 10 )
 
 [node name="HUD" parent="." instance=ExtResource( 6 )]
 anchor_top = 1.0
-margin_left = 608.0
-margin_top = 840.0
-margin_right = 608.0
-margin_bottom = 840.0
+margin_left = 349.372
+margin_top = 841.587
+margin_right = 349.372
+margin_bottom = 841.587
 
 [node name="LevelInstructions" parent="." instance=ExtResource( 2 )]
 anchor_left = 0.5
