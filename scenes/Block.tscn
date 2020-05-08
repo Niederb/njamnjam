@@ -12,6 +12,7 @@ polygon = PoolVector2Array( -29, -24, -29, 25, -24, 29, 24, 29, 29, 24, 29, -24,
 extents = Vector2( 29, 29 )
 
 [node name="Block" type="Area2D"]
+pause_mode = 1
 collision_layer = 4
 collision_mask = 5
 script = ExtResource( 2 )

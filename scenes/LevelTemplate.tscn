@@ -10,20 +10,18 @@
 [ext_resource path="res://sfx/powerUp4.ogg" type="AudioStream" id=9]
 [ext_resource path="res://scenes/WinCondition.gd" type="Script" id=10]
 
-
-
-
 [node name="LevelTemplate" type="Node2D"]
+pause_mode = 2
 script = ExtResource( 5 )
 
 [node name="Map" parent="." instance=ExtResource( 1 )]
-collision_layer = 8
 collision_mask = 7
 
 [node name="Players" type="Node2D" parent="."]
 position = Vector2( 32, 32 )
 
 [node name="Player" parent="Players" instance=ExtResource( 3 )]
+pause_mode = 1
 position = Vector2( 640, 384 )
 player_id = 0
 

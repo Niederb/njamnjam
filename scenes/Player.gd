@@ -85,7 +85,7 @@ func die():
 	if !dead:
 		$DieSFX.play()
 		dead = true
-		get_tree().call_group("Gamestate", "game_over")
+		get_tree().call_group("LevelTemplate", "game_over")
 
 func _on_Tween_tween_all_completed():
 #	$Head.global_position = wrap_position($Head.global_position)

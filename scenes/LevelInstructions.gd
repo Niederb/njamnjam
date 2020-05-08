@@ -28,7 +28,7 @@ func _on_CountdownTimer_timeout():
 		$CountdownTimer.stop()
 		$StartSFX.play()
 		$TextContainer/CountdownLabel.text = "GO"
-		get_tree().call_group("Gamestate", "start_movement")
+		get_tree().call_group("LevelTemplate", "start_movement")
 	else:
 		count_down -= 1
 		$CountdownSFX.play()

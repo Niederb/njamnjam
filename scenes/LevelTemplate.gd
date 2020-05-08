@@ -7,7 +7,7 @@ var pause_movement: bool = true
 onready var player = $Players/Player
 
 func _ready():
-	add_to_group("Gamestate")
+	add_to_group("LevelTemplate")
 
 func randomize_blocks() -> void:
 	for b in $Blocks.get_children():
@@ -186,3 +186,10 @@ func get_tutorial_text() -> String:
 
 func is_campaign_level() -> bool:
 	return true
+
+func pause():
+	get_tree().paused = !get_tree().paused
+
+func _input(_delta):
+	if Input.is_action_just_pressed("pause"):
+		pause()

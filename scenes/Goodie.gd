@@ -17,7 +17,7 @@ func update_color():
 	
 func _on_Area2D_area_entered(area):
 	if active and area.collision_layer == 1:
-		get_tree().call_group("Gamestate", "eaten_goodie", color_index)
+		get_tree().call_group("LevelTemplate", "eaten_goodie", color_index)
 		active = false
 		$Sprite.visible = false
 		die()

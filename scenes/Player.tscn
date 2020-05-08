@@ -13,6 +13,7 @@ polygon = PoolVector2Array( 26, -23, 23, -26, -23, -26, -26, -23, -26, 23, -23, 
 extents = Vector2( 8, 8 )
 
 [node name="Player" type="Node2D"]
+pause_mode = 1
 script = ExtResource( 2 )
 
 [node name="Body" type="Node2D" parent="."]
