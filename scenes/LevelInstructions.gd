@@ -3,11 +3,12 @@ extends Control
 const WAIT_COUNT_DOWN: int  = 3
 var count_down: int = WAIT_COUNT_DOWN
 var faded: bool
+var level_template: String
 
 func _ready():
 	$TextContainer/CountdownLabel.text = str(count_down)
 
-func show_level_start(level_name, introduction_text, tutorial_text):
+func show_level_start(level_name, introduction_text, tutorial_text, level_template):
 	faded = false
 	$TextContainer/LevelLabel.text = level_name
 	$TextContainer/GoalLabel.text = introduction_text
@@ -16,6 +17,7 @@ func show_level_start(level_name, introduction_text, tutorial_text):
 	$CountdownTimer.start()
 	$AnimationPlayer.play("fade_in")
 	visible = true
+	self.level_template = level_template
 
 func show_text(text):
 	$TextContainer/GoalLabel.text = text
@@ -28,7 +30,7 @@ func _on_CountdownTimer_timeout():
 		$CountdownTimer.stop()
 		$StartSFX.play()
 		$TextContainer/CountdownLabel.text = "GO"
-		get_tree().call_group("LevelTemplate", "start_movement")
+		get_tree().call_group(level_template, "start_movement")
 	else:
 		count_down -= 1
 		$CountdownSFX.play()

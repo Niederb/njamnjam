@@ -7,7 +7,7 @@ var pause_movement: bool = true
 onready var player = $Players/Player
 
 func _ready():
-	add_to_group("LevelTemplate")
+	add_to_group(self.name)
 
 func randomize_blocks() -> void:
 	for b in $Blocks.get_children():
@@ -22,7 +22,7 @@ func add_goodies() -> void:
 	for _i in range(child_count, Globals.level_config.n_goodies):
 		var position = get_valid_position()
 		var color_index = Globals.get_random_color_index()
-		$Goodies.create_new_goodie(position, color_index)
+		$Goodies.create_new_goodie(position, color_index, self.name)
 
 func head_distance(point) -> float:
 	return player.get_node("Head").position.distance_to(point)
@@ -154,7 +154,7 @@ func start_game():
 	randomize_blocks()
 	
 	var intro_text = $WinCondition.get_introduction_text()
-	$LevelInstructions.show_level_start(get_level_name(), intro_text, get_tutorial_text())
+	$LevelInstructions.show_level_start(get_level_name(), intro_text, get_tutorial_text(), self.name)
 
 func load_map(map_name):
 	var new_map = load("res://scenes/Maps/%s.tscn" % map_name)

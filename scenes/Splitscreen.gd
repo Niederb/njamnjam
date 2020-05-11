@@ -7,4 +7,4 @@ func _ready():
 	#level_number = 1
 	#$WinCondition.config.snake_length = 2
 	$LevelTemplate.start_game()
-	#$LevelTemplate2.start_game()
+	$LevelTemplate2.start_game()
