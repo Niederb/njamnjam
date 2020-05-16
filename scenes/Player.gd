@@ -8,10 +8,12 @@ export var player_id: int = 1
 var steps: int = 0
 var score: int = 0
 var combo_count: int = 0
+var level_instance: String
 
-func init():
+func init(level_instance):
 	for child in $Body.get_children():
 		child.connect("area_entered", self, "_on_Head_area_entered")
+	self.level_instance = level_instance
 		
 func remove_body_parts(indeces):
 	var children = []
@@ -85,7 +87,7 @@ func die():
 	if !dead:
 		$DieSFX.play()
 		dead = true
-		get_tree().call_group("LevelTemplate", "game_over")
+		get_tree().call_group(level_instance, "game_over")
 
 func _on_Tween_tween_all_completed():
 #	$Head.global_position = wrap_position($Head.global_position)

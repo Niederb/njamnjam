@@ -8,4 +8,4 @@ func _ready():
 	start_game()
 
 func get_tutorial_text():
-	return "Collect the round goodies to make your snake longer"
+	return "Collecting goodies\n\nCollect the round goodies to make your snake longer"

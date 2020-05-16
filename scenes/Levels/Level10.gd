@@ -1,6 +1,7 @@
 extends "res://scenes/LevelTemplate.gd"
 
 func _ready():
+	Globals.level_config.map_name = ""
 	Globals.level_config.movement_speed = 4
 	Globals.level_config.n_goodies = 0
 	Globals.level_config.n_colors = 2

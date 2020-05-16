@@ -74,10 +74,9 @@ text = "Level 0"
 align = 1
 
 [node name="GoalLabel" type="Label" parent="TextContainer"]
-margin_top = 118.0
+margin_top = 33.0
 margin_right = 500.0
-margin_bottom = 147.0
-size_flags_vertical = 6
+margin_bottom = 62.0
 theme = ExtResource( 3 )
 text = "hello world"
 align = 1
@@ -88,10 +87,10 @@ __meta__ = {
 }
 
 [node name="CountdownLabel" type="Label" parent="TextContainer"]
-margin_top = 237.0
+margin_top = 172.0
 margin_right = 500.0
-margin_bottom = 287.0
-rect_min_size = Vector2( 50, 50 )
+margin_bottom = 201.0
+size_flags_vertical = 6
 theme = ExtResource( 3 )
 text = "3"
 align = 1
@@ -102,10 +101,10 @@ __meta__ = {
 }
 
 [node name="TutorialLabel" type="Label" parent="TextContainer"]
-margin_top = 291.0
+margin_top = 312.0
 margin_right = 500.0
 margin_bottom = 341.0
-rect_min_size = Vector2( 50, 50 )
+grow_vertical = 0
 theme = ExtResource( 3 )
 text = "3"
 align = 1

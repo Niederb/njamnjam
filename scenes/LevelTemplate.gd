@@ -150,13 +150,15 @@ func start_game():
 	load_map(Globals.level_config.map_name)
 	if Globals.level_config.start_cell.length() > 0:
 		player.position = Globals.CELL_SIZE * (Globals.level_config.start_cell)
-	player.init()
+	player.init(self.name)
 	randomize_blocks()
 	
 	var intro_text = $WinCondition.get_introduction_text()
 	$LevelInstructions.show_level_start(get_level_name(), intro_text, get_tutorial_text(), self.name)
 
-func load_map(map_name):
+func load_map(map_name: String):
+	if map_name.length() == 0:
+		return
 	var new_map = load("res://scenes/Maps/%s.tscn" % map_name)
 	var new_instance = new_map.instance()
 	new_instance.name = "Map"

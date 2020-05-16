@@ -9,4 +9,4 @@ func _ready():
 	start_game()
 
 func get_tutorial_text():
-	return "Combos can be triggered by having multiple elements with the same color next to each other."
+	return "Combos II\n\nCombos can be triggered by having multiple elements with the same color next to each other."

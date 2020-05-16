@@ -9,4 +9,4 @@ func _ready():
 
 
 func get_tutorial_text():
-	return "Square blocks cannot be collected, but they can be part of a combo"
+	return "Blocks\n\nSquare blocks cannot be collected, but they can be part of a combo"

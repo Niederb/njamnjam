@@ -8,4 +8,4 @@ func _ready():
 	start_game()
 
 func get_tutorial_text():
-	return "If your snake has three body parts of the same color it will trigger a combo and the body parts will disappear"
+	return "Combos\n\nIf your snake has three body parts of the same color it will trigger a combo and the body parts will disappear"

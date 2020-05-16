@@ -9,4 +9,4 @@ func _ready():
 	start_game()
 
 func get_tutorial_text():
-	return "Avoid the moving blocks!"
+	return "Moving blocks\n\nAvoid the moving blocks!"

@@ -7,4 +7,4 @@ func _ready():
 	start_game()
 
 func get_tutorial_text():
-	return "For some blocks you need bigger combos to destroy them. The number on the block tells you how big the combo needs to be."
+	return "Numbered blocks\n\nFor some blocks you need bigger combos to destroy them. The number on the block tells you how big the combo needs to be."
