@@ -20,9 +20,9 @@ func show_level_start(level_name, introduction_text, tutorial_text, level_templa
 	self.level_template = level_template
 
 func show_text(text):
-	$TextContainer/GoalLabel.text = text
-	$TextContainer/CountdownLabel.visible = false
-	$TextContainer/TutorialLabel.visible = false
+	$TextContainer/GoalLabel.text = ""
+	$TextContainer/CountdownLabel.text = text
+	$TextContainer/TutorialLabel.text = ""
 	$AnimationPlayer.play("fade_in")
 
 func _on_CountdownTimer_timeout():
