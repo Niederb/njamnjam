@@ -72,6 +72,8 @@ func _input(_delta):
 		direction = Vector2(0, 1)
 	elif Input.is_action_just_pressed("up_%s"%player_id):
 		direction = Vector2(0, -1)
+	elif Input.is_action_just_pressed("add_block"):
+		increase_length(0)
 
 func increase_length(color_index):
 	$GoodieSFX.play()
