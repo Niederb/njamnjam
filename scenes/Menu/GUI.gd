@@ -1,5 +1,8 @@
 extends Control
 
+func _ready():
+	update_block_action(3)
+
 func update_score(score):
 	$HBoxContainer/GridContainer/Score.text = str(score)
 	
@@ -10,4 +13,9 @@ func pause(paused: bool):
 	var text = ""
 	if paused:
 		text = "Paused"
-	$HBoxContainer/Status.text = text
+	$HBoxContainer/GridContainer/Status.text = text
+
+func update_block_action(number: int):
+	$HBoxContainer/GridContainer/BlockCounter.clear()
+	for b in range(number):
+		$HBoxContainer/GridContainer/BlockCounter.add_icon_item(load("res://gfx/block.png"), false)

@@ -117,6 +117,11 @@ func trigger_combo(n_body_parts, n_goodies):
 	$HUD.update_score(player.score)
 	$ComboSFX.play()
 	player.combo_count += 1
+	player.block_actions = min(3, player.block_actions + 1)
+	update_block_action()
+	
+func update_block_action():
+	$HUD.update_block_action(player.block_actions)
 
 func _physics_process(_delta):
 	if pause_movement:

@@ -36,10 +36,12 @@ script = ExtResource( 10 )
 
 [node name="HUD" parent="." instance=ExtResource( 6 )]
 anchor_top = 1.0
-margin_left = 349.372
-margin_top = 841.587
-margin_right = 349.372
-margin_bottom = 841.587
+margin_left = 35.0
+margin_top = 843.0
+margin_right = 1328.0
+margin_bottom = 949.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="LevelInstructions" parent="." instance=ExtResource( 2 )]
 anchor_left = 0.5

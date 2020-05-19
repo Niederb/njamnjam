@@ -9,6 +9,7 @@ var steps: int = 0
 var score: int = 0
 var combo_count: int = 0
 var level_instance: String
+var block_actions: int = 0
 
 func init(level_instance):
 	for child in $Body.get_children():
@@ -73,7 +74,10 @@ func _input(_delta):
 	elif Input.is_action_just_pressed("up_%s"%player_id):
 		direction = Vector2(0, -1)
 	elif Input.is_action_just_pressed("add_block"):
-		increase_length(0)
+		if block_actions > 0:
+			block_actions -= 1
+			increase_length(0)
+			get_tree().call_group(level_instance, "update_block_action")
 
 func increase_length(color_index):
 	$GoodieSFX.play()

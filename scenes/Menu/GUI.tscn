@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/Menu/GUI.gd" type="Script" id=1]
 [ext_resource path="res://gfx/UITheme.tres" type="Theme" id=2]
+[ext_resource path="res://gfx/dotGreen.png" type="Texture" id=3]
+[ext_resource path="res://gfx/block.png" type="Texture" id=4]
+[ext_resource path="res://gfx/dot_shadow.png" type="Texture" id=5]
 
-[node name="GUI" type="Control"]
+[node name="HUD" type="Control" groups=[
+"HUD",
+]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 2 )
@@ -13,30 +18,34 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_constants/separation = 50
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Status" type="Label" parent="HBoxContainer"]
-margin_top = 16.0
-margin_right = 200.0
-margin_bottom = 45.0
-rect_min_size = Vector2( 200, 0 )
-
 [node name="GridContainer" type="GridContainer" parent="HBoxContainer"]
-margin_left = 250.0
-margin_right = 423.0
-margin_bottom = 62.0
-columns = 2
+margin_right = 1344.0
+margin_bottom = 960.0
+size_flags_horizontal = 3
+custom_constants/vseparation = 20
+custom_constants/hseparation = 50
+columns = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Status" type="Label" parent="HBoxContainer/GridContainer"]
+margin_right = 200.0
+margin_bottom = 29.0
+rect_min_size = Vector2( 200, 0 )
+
 [node name="ScoreLabel" type="Label" parent="HBoxContainer/GridContainer"]
-margin_right = 119.0
+margin_left = 250.0
+margin_right = 369.0
 margin_bottom = 29.0
 text = "Score: "
 __meta__ = {
@@ -44,29 +53,71 @@ __meta__ = {
 }
 
 [node name="Score" type="Label" parent="HBoxContainer/GridContainer"]
-margin_left = 123.0
-margin_right = 173.0
+margin_left = 419.0
+margin_right = 469.0
 margin_bottom = 29.0
 text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="CooldownLabel" type="Label" parent="HBoxContainer/GridContainer"]
+margin_left = 519.0
+margin_right = 816.0
+margin_bottom = 29.0
+text = "Combo cooldown:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cooldown" type="TextureProgress" parent="HBoxContainer/GridContainer"]
+margin_left = 866.0
+margin_right = 1344.0
+margin_bottom = 29.0
+value = 33.0
+texture_under = ExtResource( 5 )
+texture_progress = ExtResource( 3 )
+fill_mode = 4
+
+[node name="Dummy" type="Label" parent="HBoxContainer/GridContainer"]
+margin_top = 49.0
+margin_right = 200.0
+margin_bottom = 78.0
+
 [node name="FpsLabel" type="Label" parent="HBoxContainer/GridContainer"]
-margin_top = 33.0
-margin_right = 119.0
-margin_bottom = 62.0
+margin_left = 250.0
+margin_top = 49.0
+margin_right = 369.0
+margin_bottom = 78.0
 text = "FPS: "
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="FPS" type="Label" parent="HBoxContainer/GridContainer"]
-margin_left = 123.0
-margin_top = 33.0
-margin_right = 173.0
-margin_bottom = 62.0
+margin_left = 419.0
+margin_top = 49.0
+margin_right = 469.0
+margin_bottom = 78.0
 text = "0.0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="BlockLabel" type="Label" parent="HBoxContainer/GridContainer"]
+margin_left = 519.0
+margin_top = 49.0
+margin_right = 816.0
+margin_bottom = 78.0
+text = "Blocks:"
+
+[node name="BlockCounter" type="ItemList" parent="HBoxContainer/GridContainer"]
+margin_left = 866.0
+margin_top = 49.0
+margin_right = 1344.0
+margin_bottom = 78.0
+size_flags_horizontal = 3
+items = [ "", ExtResource( 4 ), false, "", ExtResource( 4 ), false ]
+max_columns = 6
+icon_mode = 0
+icon_scale = 0.4
