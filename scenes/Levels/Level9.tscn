@@ -10,26 +10,26 @@ script = ExtResource( 2 )
 
 [node name="Goodie" parent="Goodies" index="0" instance=ExtResource( 4 )]
 position = Vector2( 256, 512 )
-color_index = 0
+color_index = 1
 
 [node name="Goodie4" parent="Goodies" index="1" instance=ExtResource( 4 )]
 position = Vector2( 640, 704 )
-color_index = 1
+color_index = 2
 
 [node name="Goodie2" parent="Goodies" index="2" instance=ExtResource( 4 )]
 position = Vector2( 640, 512 )
-color_index = 0
+color_index = 1
 
 [node name="Goodie3" parent="Goodies" index="3" instance=ExtResource( 4 )]
 position = Vector2( 1024, 512 )
-color_index = 0
+color_index = 1
 
 [node name="Block" parent="Blocks" index="0" instance=ExtResource( 3 )]
 position = Vector2( 704, 192 )
-color_index = 0
+color_index = 1
 min_combo_size = 5
 
 [node name="Block2" parent="Blocks" index="1" instance=ExtResource( 3 )]
 position = Vector2( 576, 192 )
-color_index = 0
+color_index = 1
 min_combo_size = 5

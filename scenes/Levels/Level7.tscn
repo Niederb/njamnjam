@@ -9,14 +9,14 @@ script = ExtResource( 2 )
 
 [node name="BodyPart" parent="Players/Player/Body" index="0" instance=ExtResource( 3 )]
 position = Vector2( 0, -64 )
-color_index = 0
+color_index = 1
 
 [node name="BodyPart2" parent="Players/Player/Body" index="1" instance=ExtResource( 3 )]
 position = Vector2( 0, -128 )
-color_index = 1
+color_index = 2
 
 [node name="BodyPart3" parent="Players/Player/Body" index="2" instance=ExtResource( 3 )]
 position = Vector2( 0, -192 )
-color_index = 0
+color_index = 1
 
 [editable path="Players/Player"]
