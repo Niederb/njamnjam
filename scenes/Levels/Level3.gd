@@ -9,4 +9,4 @@ func _ready():
 	start_game()
 
 func get_tutorial_text():
-	return "Combos II\n\nCombos can be triggered by having multiple elements with the same color next to each other."
+	return "Combos II\n\nYou can use the goodies in a combo without eating them. Just move alongside a goodie and if you line it up with your body parts you can trigger a combo."

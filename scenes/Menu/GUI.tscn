@@ -81,13 +81,13 @@ texture_under = ExtResource( 5 )
 texture_progress = ExtResource( 3 )
 fill_mode = 4
 
-[node name="BlockLabel" type="Label" parent="HBoxContainer/GridContainer"]
+[node name="SeparatorLabel" type="Label" parent="HBoxContainer/GridContainer"]
 margin_left = 519.0
 margin_right = 653.0
 margin_bottom = 29.0
 text = "Blocks:"
 
-[node name="BlockCounter" type="ItemList" parent="HBoxContainer/GridContainer"]
+[node name="SeparatorCounter" type="ItemList" parent="HBoxContainer/GridContainer"]
 margin_left = 703.0
 margin_right = 1344.0
 margin_bottom = 29.0

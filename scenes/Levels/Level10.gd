@@ -8,6 +8,3 @@ func _ready():
 	level_number = 10
 	$WinCondition.config.combo_count = 3
 	start_game()
-
-func get_success_text():
-	return "Campaign finished. \n !!Congratulations!! \n Going back to main menu..."

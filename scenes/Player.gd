@@ -77,7 +77,7 @@ func _input(_delta):
 		if block_actions > 0:
 			block_actions -= 1
 			increase_length(0)
-			get_tree().call_group(level_instance, "update_block_action")
+			get_tree().call_group(level_instance, "update_separator_action")
 
 func increase_length(color_index):
 	$GoodieSFX.play()

@@ -118,10 +118,10 @@ func trigger_combo(n_body_parts, n_goodies):
 	$ComboSFX.play()
 	player.combo_count += 1
 	player.block_actions = min(3, player.block_actions + 1)
-	update_block_action()
+	update_separator_action()
 	
-func update_block_action():
-	$HUD.update_block_action(player.block_actions)
+func update_separator_action():
+	$HUD.update_separator_action(player.block_actions)
 
 func _physics_process(_delta):
 	if pause_movement:

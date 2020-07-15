@@ -1,7 +1,7 @@
 extends Control
 
 func _ready():
-	update_block_action(0)
+	update_separator_action(0)
 
 func update_score(score):
 	$HBoxContainer/GridContainer/Score.text = str(score)
@@ -15,7 +15,7 @@ func pause(paused: bool):
 		text = "Paused"
 	$HBoxContainer/GridContainer/Status.text = text
 
-func update_block_action(number: int):
-	$HBoxContainer/GridContainer/BlockCounter.clear()
+func update_separator_action(number: int):
+	$HBoxContainer/GridContainer/SeparatorCounter.clear()
 	for b in range(number):
-		$HBoxContainer/GridContainer/BlockCounter.add_icon_item(load("res://gfx/block.png"), false)
+		$HBoxContainer/GridContainer/SeparatorCounter.add_icon_item(load("res://gfx/block.png"), false)
