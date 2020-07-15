@@ -12,6 +12,3 @@ func _ready():
 
 func get_tutorial_text():
 	return "Separators\n\nEat goodies with different colors in the right order to trigger combos"
-
-func get_success_text():
-	return "Campaign finished. \n !!Congratulations!! \n Going back to main menu..."
