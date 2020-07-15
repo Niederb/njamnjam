@@ -1,7 +1,7 @@
 extends Control
 
 func _ready():
-	update_block_action(3)
+	update_block_action(0)
 
 func update_score(score):
 	$HBoxContainer/GridContainer/Score.text = str(score)

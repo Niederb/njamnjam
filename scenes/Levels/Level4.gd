@@ -8,4 +8,4 @@ func _ready():
 	start_game()
 
 func get_tutorial_text():
-	return "Multiple colors\n\nMultiple colors need to be collected in the right order to trigger combos"
+	return "Different colors\n\nEat goodies with different colors in the right order to trigger combos"
