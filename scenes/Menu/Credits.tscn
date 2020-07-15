@@ -16,21 +16,38 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" index="0"]
-margin_left = 580.0
-margin_top = 460.0
-margin_right = 763.0
-margin_bottom = 499.0
-
-[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer" index="0"]
-margin_right = 183.0
+margin_left = 422.0
+margin_top = 357.0
+margin_right = 922.0
+margin_bottom = 602.0
+rect_min_size = Vector2( 500, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
-bbcode_text = "Programming and Designasdf"
-text = "Programming and Designasdf"
+custom_constants/separation = 30
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer" index="0"]
+margin_right = 500.0
+margin_bottom = 180.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "[color=blue]Design and Programming[/color]
+[color=black]Thomas Niederberger[/color]
+[color=blue]Testing[/color]
+[color=black]Marina Escala Pascual[/color]
+[color=blue]Tools[/color]
+[color=black]Godot engine[/color]"
+text = "Design and Programming
+Thomas Niederberger
+Testing
+Marina Escala Pascual
+Tools
+Godot engine"
+fit_content_height = true
 
 [node name="MainMenuButton" type="Button" parent="CenterContainer/VBoxContainer" index="1"]
-margin_top = 4.0
-margin_right = 183.0
-margin_bottom = 39.0
+margin_top = 210.0
+margin_right = 500.0
+margin_bottom = 245.0
 text = "Main menu"
 [connection signal="pressed" from="CenterContainer/VBoxContainer/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
