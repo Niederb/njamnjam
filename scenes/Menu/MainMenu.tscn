@@ -9,7 +9,6 @@ theme = ExtResource( 2 )
 script = ExtResource( 3 )
 
 [node name="VBoxContainer" parent="BackgroundPanel" index="0"]
-margin_bottom = -50.0
 custom_constants/separation = 25
 
 [node name="Campaign" type="Button" parent="BackgroundPanel/VBoxContainer" index="1"]
