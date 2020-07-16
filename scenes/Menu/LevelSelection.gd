@@ -10,7 +10,7 @@ func init_levels(max_level: int) -> void:
 		b.rect_min_size = Vector2(100, 0)
 		b.text = "%s" % i
 		b.connect("pressed", self, "level_button_clicked", [ i ])
-		$CenterContainer/VBoxContainer/Levels.add_child(b)
+		$BackgroundPanel/VBoxContainer/CenterContainer/Levels.add_child(b)
 
 func level_button_clicked(level_number):
 	var scene = Globals.get_scene(level_number)

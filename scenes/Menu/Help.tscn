@@ -12,122 +12,118 @@
 theme = ExtResource( 6 )
 script = ExtResource( 7 )
 
-[node name="CenterContainer" type="CenterContainer" parent="." index="2"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" index="0"]
-margin_left = 474.0
-margin_top = 273.0
-margin_right = 869.0
-margin_bottom = 687.0
-custom_constants/separation = 20
-
-[node name="ControlsLabel" type="Label" parent="CenterContainer/VBoxContainer" index="0"]
-margin_right = 395.0
-margin_bottom = 29.0
+[node name="ControlsLabel" type="Label" parent="BackgroundPanel/VBoxContainer" index="1"]
+margin_top = 100.0
+margin_right = 544.0
+margin_bottom = 132.0
 text = "controls"
 align = 1
 
-[node name="GridContainer" type="GridContainer" parent="CenterContainer/VBoxContainer" index="1"]
-margin_top = 49.0
-margin_right = 395.0
-margin_bottom = 359.0
+[node name="CenterContainer" type="CenterContainer" parent="BackgroundPanel/VBoxContainer" index="2"]
+margin_top = 136.0
+margin_right = 544.0
+margin_bottom = 464.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="BackgroundPanel/VBoxContainer/CenterContainer" index="0"]
+margin_left = 156.0
+margin_right = 387.0
+margin_bottom = 328.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_constants/vseparation = 20
 custom_constants/hseparation = 20
 columns = 2
 
-[node name="UpLabel" type="Label" parent="CenterContainer/VBoxContainer/GridContainer" index="0"]
+[node name="UpLabel" type="Label" parent="BackgroundPanel/VBoxContainer/CenterContainer/GridContainer" index="0"]
 margin_top = 3.0
-margin_right = 258.0
-margin_bottom = 32.0
+margin_right = 143.0
+margin_bottom = 35.0
 text = "Up	"
 
-[node name="UpButton" type="Button" parent="CenterContainer/VBoxContainer/GridContainer" index="1"]
-margin_left = 278.0
-margin_right = 395.0
-margin_bottom = 35.0
+[node name="UpButton" type="Button" parent="BackgroundPanel/VBoxContainer/CenterContainer/GridContainer" index="1"]
+margin_left = 163.0
+margin_right = 231.0
+margin_bottom = 38.0
 disabled = true
 icon = ExtResource( 2 )
 expand_icon = true
 
-[node name="LeftLabel" type="Label" parent="CenterContainer/VBoxContainer/GridContainer" index="2"]
-margin_top = 58.0
-margin_right = 258.0
-margin_bottom = 87.0
+[node name="LeftLabel" type="Label" parent="BackgroundPanel/VBoxContainer/CenterContainer/GridContainer" index="2"]
+margin_top = 61.0
+margin_right = 143.0
+margin_bottom = 93.0
 text = "Left"
 
-[node name="LeftButton" type="Button" parent="CenterContainer/VBoxContainer/GridContainer" index="3"]
-margin_left = 278.0
-margin_top = 55.0
-margin_right = 395.0
-margin_bottom = 90.0
+[node name="LeftButton" type="Button" parent="BackgroundPanel/VBoxContainer/CenterContainer/GridContainer" index="3"]
+margin_left = 163.0
+margin_top = 58.0
+margin_right = 231.0
+margin_bottom = 96.0
 disabled = true
 icon = ExtResource( 3 )
 expand_icon = true
 
-[node name="DownLabel" type="Label" parent="CenterContainer/VBoxContainer/GridContainer" index="4"]
-margin_top = 113.0
-margin_right = 258.0
-margin_bottom = 142.0
+[node name="DownLabel" type="Label" parent="BackgroundPanel/VBoxContainer/CenterContainer/GridContainer" index="4"]
+margin_top = 119.0
+margin_right = 143.0
+margin_bottom = 151.0
 text = "Down"
 
-[node name="DownButton" type="Button" parent="CenterContainer/VBoxContainer/GridContainer" index="5"]
-margin_left = 278.0
-margin_top = 110.0
-margin_right = 395.0
-margin_bottom = 145.0
+[node name="DownButton" type="Button" parent="BackgroundPanel/VBoxContainer/CenterContainer/GridContainer" index="5"]
+margin_left = 163.0
+margin_top = 116.0
+margin_right = 231.0
+margin_bottom = 154.0
 disabled = true
 icon = ExtResource( 4 )
 expand_icon = true
 
-[node name="RightLabel" type="Label" parent="CenterContainer/VBoxContainer/GridContainer" index="6"]
-margin_top = 168.0
-margin_right = 258.0
-margin_bottom = 197.0
+[node name="RightLabel" type="Label" parent="BackgroundPanel/VBoxContainer/CenterContainer/GridContainer" index="6"]
+margin_top = 177.0
+margin_right = 143.0
+margin_bottom = 209.0
 text = "Right"
 
-[node name="RightButton" type="Button" parent="CenterContainer/VBoxContainer/GridContainer" index="7"]
-margin_left = 278.0
-margin_top = 165.0
-margin_right = 395.0
-margin_bottom = 200.0
+[node name="RightButton" type="Button" parent="BackgroundPanel/VBoxContainer/CenterContainer/GridContainer" index="7"]
+margin_left = 163.0
+margin_top = 174.0
+margin_right = 231.0
+margin_bottom = 212.0
 disabled = true
 icon = ExtResource( 5 )
 expand_icon = true
 
-[node name="SeparatorLabel" type="Label" parent="CenterContainer/VBoxContainer/GridContainer" index="8"]
-margin_top = 223.0
-margin_right = 258.0
-margin_bottom = 252.0
+[node name="SeparatorLabel" type="Label" parent="BackgroundPanel/VBoxContainer/CenterContainer/GridContainer" index="8"]
+margin_top = 235.0
+margin_right = 143.0
+margin_bottom = 267.0
 text = "Add separator"
 
-[node name="SeparatorButton" type="Button" parent="CenterContainer/VBoxContainer/GridContainer" index="9"]
-margin_left = 278.0
-margin_top = 220.0
-margin_right = 395.0
-margin_bottom = 255.0
+[node name="SeparatorButton" type="Button" parent="BackgroundPanel/VBoxContainer/CenterContainer/GridContainer" index="9"]
+margin_left = 163.0
+margin_top = 232.0
+margin_right = 231.0
+margin_bottom = 270.0
 text = "space"
 
-[node name="PauseLabel" type="Label" parent="CenterContainer/VBoxContainer/GridContainer" index="10"]
-margin_top = 278.0
-margin_right = 258.0
-margin_bottom = 307.0
+[node name="PauseLabel" type="Label" parent="BackgroundPanel/VBoxContainer/CenterContainer/GridContainer" index="10"]
+margin_top = 293.0
+margin_right = 143.0
+margin_bottom = 325.0
 text = "Pause Game"
 
-[node name="PauseButton" type="Button" parent="CenterContainer/VBoxContainer/GridContainer" index="11"]
-margin_left = 278.0
-margin_top = 275.0
-margin_right = 395.0
-margin_bottom = 310.0
+[node name="PauseButton" type="Button" parent="BackgroundPanel/VBoxContainer/CenterContainer/GridContainer" index="11"]
+margin_left = 163.0
+margin_top = 290.0
+margin_right = 231.0
+margin_bottom = 328.0
 text = "esc"
 
-[node name="MainMenuButton" type="Button" parent="CenterContainer/VBoxContainer" index="2"]
-margin_top = 379.0
-margin_right = 395.0
-margin_bottom = 414.0
+[node name="MainMenuButton" type="Button" parent="BackgroundPanel/VBoxContainer" index="3"]
+margin_top = 622.0
+margin_right = 544.0
+margin_bottom = 660.0
 text = "Main menu"
-[connection signal="pressed" from="CenterContainer/VBoxContainer/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
+[connection signal="pressed" from="BackgroundPanel/VBoxContainer/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]

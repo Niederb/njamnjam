@@ -32,13 +32,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title" type="Label" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -260.0
-margin_top = 119.0
-margin_right = 260.0
-margin_bottom = 204.0
+[node name="VBoxContainer" type="VBoxContainer" parent="BackgroundPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 100.0
+margin_top = 50.0
+margin_right = -100.0
+margin_bottom = -50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="BackgroundPanel/VBoxContainer"]
+margin_right = 544.0
+margin_bottom = 96.0
 custom_fonts/font = SubResource( 1 )
 text = "njamnjam"
 align = 1
