@@ -43,7 +43,7 @@ script = ExtResource( 2 )
 
 [node name="Block" parent="Blocks" index="0" instance=ExtResource( 3 )]
 position = Vector2( 448, 192 )
-color_index = -2
+color_index = 0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Blocks/Block" index="4"]
 autoplay = "move"
@@ -51,7 +51,7 @@ anims/move = SubResource( 1 )
 
 [node name="Block2" parent="Blocks" index="1" instance=ExtResource( 3 )]
 position = Vector2( 832, 192 )
-color_index = -2
+color_index = 0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Blocks/Block2" index="4"]
 autoplay = "move"
