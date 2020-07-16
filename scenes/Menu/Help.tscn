@@ -21,14 +21,21 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" index="0"]
 margin_left = 474.0
-margin_top = 297.0
+margin_top = 273.0
 margin_right = 869.0
-margin_bottom = 662.0
+margin_bottom = 687.0
 custom_constants/separation = 20
 
-[node name="GridContainer" type="GridContainer" parent="CenterContainer/VBoxContainer" index="0"]
+[node name="ControlsLabel" type="Label" parent="CenterContainer/VBoxContainer" index="0"]
 margin_right = 395.0
-margin_bottom = 310.0
+margin_bottom = 29.0
+text = "controls"
+align = 1
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/VBoxContainer" index="1"]
+margin_top = 49.0
+margin_right = 395.0
+margin_bottom = 359.0
 custom_constants/vseparation = 20
 custom_constants/hseparation = 20
 columns = 2
@@ -118,9 +125,9 @@ margin_right = 395.0
 margin_bottom = 310.0
 text = "esc"
 
-[node name="MainMenuButton" type="Button" parent="CenterContainer/VBoxContainer" index="1"]
-margin_top = 330.0
+[node name="MainMenuButton" type="Button" parent="CenterContainer/VBoxContainer" index="2"]
+margin_top = 379.0
 margin_right = 395.0
-margin_bottom = 365.0
+margin_bottom = 414.0
 text = "Main menu"
 [connection signal="pressed" from="CenterContainer/VBoxContainer/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]

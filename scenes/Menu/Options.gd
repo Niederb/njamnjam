@@ -11,15 +11,15 @@ func _ready():
 	var index = 0
 	for map in map_names:
 		var icon = load("res://gfx/Maps/%s.png" % map)
-		$Level.add_icon_item(icon)
-		$Level.set_item_metadata(index, map)
+		$Map.add_icon_item(icon)
+		$Map.set_item_metadata(index, map)
 		index += 1
 	update_GUI()
 	
 func update_GUI() -> void:
-	for i in $Level.get_item_count():
-		if $Level.get_item_metadata(i) == Globals.level_config.map_name:
-			$Level.select(i)
+	for i in $Map.get_item_count():
+		if $Map.get_item_metadata(i) == Globals.level_config.map_name:
+			$Map.select(i)
 	
 	number_colors.text = str(Globals.level_config.n_colors)
 	number_goodies.text = str(Globals.level_config.n_goodies)
@@ -27,8 +27,8 @@ func update_GUI() -> void:
 	movement_speed.text = str(Globals.level_config.movement_speed)
 
 func apply() -> void:
-	for i in $Level.get_selected_items():
-		Globals.level_config.map_name = $Level.get_item_metadata(i)
+	for i in $Map.get_selected_items():
+		Globals.level_config.map_name = $Map.get_item_metadata(i)
 		
 	var new_n_colors = convert_to_int(number_colors.text, Globals.level_config.n_colors)
 	Globals.level_config.n_colors = min(Globals.get_number_gameplay_colors(), max(1, new_n_colors))
