@@ -9,37 +9,27 @@ rect_pivot_offset = Vector2( -480, -56 )
 theme = ExtResource( 4 )
 script = ExtResource( 1 )
 
-[node name="CenterContainer" type="CenterContainer" parent="." index="1"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" index="0"]
-margin_left = 469.0
-margin_top = 433.0
-margin_right = 874.0
-margin_bottom = 527.0
-custom_constants/separation = 30
-
-[node name="GameOverLabel" type="Label" parent="CenterContainer/VBoxContainer" index="0"]
-margin_right = 405.0
-margin_bottom = 29.0
+[node name="GameOverLabel" type="Label" parent="BackgroundPanel/VBoxContainer" index="1"]
+margin_top = 100.0
+margin_right = 544.0
+margin_bottom = 618.0
+size_flags_vertical = 7
 text = "Game over!"
 align = 1
+valign = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer" index="1"]
+[node name="HBoxContainer" type="HBoxContainer" parent="BackgroundPanel/VBoxContainer" index="2"]
 visible = false
-margin_top = 59.0
-margin_right = 405.0
-margin_bottom = 88.0
+margin_left = 131.0
+margin_top = 339.0
+margin_right = 536.0
+margin_bottom = 371.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FinalScoreLabel" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer" index="0"]
+[node name="FinalScoreLabel" type="Label" parent="BackgroundPanel/VBoxContainer/HBoxContainer" index="0"]
 margin_left = 84.0
 margin_right = 295.0
 margin_bottom = 29.0
@@ -50,7 +40,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FinalScore" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer" index="1"]
+[node name="FinalScore" type="Label" parent="BackgroundPanel/VBoxContainer/HBoxContainer" index="1"]
 margin_left = 299.0
 margin_right = 320.0
 margin_bottom = 29.0
@@ -61,27 +51,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/VBoxContainer" index="2"]
-margin_top = 59.0
-margin_right = 405.0
-margin_bottom = 94.0
+[node name="HBoxContainer2" type="HBoxContainer" parent="BackgroundPanel/VBoxContainer" index="3"]
+margin_top = 622.0
+margin_right = 544.0
+margin_bottom = 660.0
 custom_constants/separation = 50
 
-[node name="MainMenuButton" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer2" index="0"]
-margin_right = 183.0
-margin_bottom = 35.0
+[node name="MainMenuButton" type="Button" parent="BackgroundPanel/VBoxContainer/HBoxContainer2" index="0"]
+margin_right = 247.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
 text = "Main menu"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TryAgainButton2" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer2" index="1"]
-margin_left = 233.0
-margin_right = 405.0
-margin_bottom = 35.0
+[node name="TryAgainButton2" type="Button" parent="BackgroundPanel/VBoxContainer/HBoxContainer2" index="1"]
+margin_left = 297.0
+margin_right = 544.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
 text = "Try Again"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer2/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer2/TryAgainButton2" to="." method="_on_TryAgainButton_pressed"]
+[connection signal="pressed" from="BackgroundPanel/VBoxContainer/HBoxContainer2/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
+[connection signal="pressed" from="BackgroundPanel/VBoxContainer/HBoxContainer2/TryAgainButton2" to="." method="_on_TryAgainButton_pressed"]
