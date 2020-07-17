@@ -40,22 +40,22 @@ __meta__ = {
 
 [node name="Status" type="Label" parent="HBoxContainer/GridContainer"]
 margin_right = 200.0
-margin_bottom = 29.0
+margin_bottom = 32.0
 rect_min_size = Vector2( 200, 0 )
 
 [node name="ScoreLabel" type="Label" parent="HBoxContainer/GridContainer"]
 margin_left = 250.0
-margin_right = 369.0
-margin_bottom = 29.0
+margin_right = 314.0
+margin_bottom = 32.0
 text = "Score: "
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Score" type="Label" parent="HBoxContainer/GridContainer"]
-margin_left = 419.0
-margin_right = 469.0
-margin_bottom = 29.0
+margin_left = 364.0
+margin_right = 397.0
+margin_bottom = 32.0
 text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -82,15 +82,15 @@ texture_progress = ExtResource( 3 )
 fill_mode = 4
 
 [node name="SeparatorLabel" type="Label" parent="HBoxContainer/GridContainer"]
-margin_left = 519.0
-margin_right = 653.0
-margin_bottom = 29.0
-text = "Blocks:"
+margin_left = 447.0
+margin_right = 562.0
+margin_bottom = 32.0
+text = "Separators:"
 
 [node name="SeparatorCounter" type="ItemList" parent="HBoxContainer/GridContainer"]
-margin_left = 703.0
+margin_left = 612.0
 margin_right = 1344.0
-margin_bottom = 29.0
+margin_bottom = 32.0
 size_flags_horizontal = 3
 items = [ "", ExtResource( 4 ), false, "", ExtResource( 4 ), false ]
 max_columns = 6
@@ -98,25 +98,25 @@ icon_mode = 0
 icon_scale = 0.4
 
 [node name="Dummy" type="Label" parent="HBoxContainer/GridContainer"]
-margin_top = 49.0
+margin_top = 52.0
 margin_right = 200.0
-margin_bottom = 78.0
+margin_bottom = 84.0
 
 [node name="FpsLabel" type="Label" parent="HBoxContainer/GridContainer"]
 margin_left = 250.0
-margin_top = 49.0
-margin_right = 369.0
-margin_bottom = 78.0
+margin_top = 52.0
+margin_right = 314.0
+margin_bottom = 84.0
 text = "FPS: "
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="FPS" type="Label" parent="HBoxContainer/GridContainer"]
-margin_left = 419.0
-margin_top = 49.0
-margin_right = 469.0
-margin_bottom = 78.0
+margin_left = 364.0
+margin_top = 52.0
+margin_right = 397.0
+margin_bottom = 84.0
 text = "0.0"
 __meta__ = {
 "_edit_use_anchors_": false

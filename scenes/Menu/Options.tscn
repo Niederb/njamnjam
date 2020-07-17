@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://gfx/UITheme.tres" type="Theme" id=1]
 [ext_resource path="res://scenes/Menu/Options.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.392157, 0.0941176, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.392157, 0.0941176, 0, 1 )
 
 [node name="Options" type="VBoxContainer"]
 rect_min_size = Vector2( 300, 0 )
@@ -22,11 +28,15 @@ margin_top = 36.0
 margin_right = 300.0
 margin_bottom = 236.0
 rect_min_size = Vector2( 300, 200 )
-max_columns = 3
+custom_styles/selected_focus = SubResource( 2 )
+custom_styles/selected = SubResource( 1 )
+auto_height = true
+max_columns = 5
 same_column_width = true
 fixed_column_width = 125
 icon_mode = 0
-fixed_icon_size = Vector2( 120, 80 )
+icon_scale = 0.8
+fixed_icon_size = Vector2( 100, 80 )
 
 [node name="GridContainer" type="GridContainer" parent="."]
 margin_top = 240.0
@@ -35,11 +45,10 @@ margin_bottom = 453.0
 custom_constants/vseparation = 15
 columns = 2
 
-[node name="MinimalComboSizeLabel2" type="RichTextLabel" parent="GridContainer"]
+[node name="MinimalComboSizeLabel2" type="Label" parent="GridContainer"]
+margin_top = 5.0
 margin_right = 231.0
-margin_bottom = 42.0
-bbcode_enabled = true
-bbcode_text = "[color=black]Minimal combo size:[/color]"
+margin_bottom = 37.0
 text = "Minimal combo size:"
 
 [node name="MinimalComboSize" type="LineEdit" parent="GridContainer"]
@@ -55,7 +64,7 @@ caret_blink_speed = 0.5
 margin_top = 62.0
 margin_right = 231.0
 margin_bottom = 94.0
-text = "Number of Colors:"
+text = "Number of colors:"
 
 [node name="NumberColors" type="LineEdit" parent="GridContainer"]
 margin_left = 235.0
