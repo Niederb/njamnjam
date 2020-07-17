@@ -6,5 +6,8 @@ func _ready():
 	$WinCondition.config.remove_all_blocks = true
 	start_game()
 
+func get_tutorial_title():
+	return "Numbered blocks"
+
 func get_tutorial_text():
-	return "Numbered blocks\n\nFor some blocks you need bigger combos to destroy them. The number on the block tells you how big the combo needs to be."
+	return "For some blocks you need bigger combos to destroy them. The number on the block tells you how big the combo needs to be."

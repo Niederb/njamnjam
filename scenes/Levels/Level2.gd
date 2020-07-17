@@ -7,5 +7,8 @@ func _ready():
 	$WinCondition.config.combo_count = 2
 	start_game()
 
+func get_tutorial_title():
+	return "Combos"
+
 func get_tutorial_text():
-	return "Combos\n\nCollect three goodies of the same color in a row in order to trigger a combo and remove the body parts"
+	return "Collect three goodies of the same color in a row in order to trigger a combo and remove the body parts"

@@ -8,5 +8,8 @@ func _ready():
 	$WinCondition.config.score = 200
 	start_game()
 
+func get_tutorial_title():
+	return "Moving blocks"
+
 func get_tutorial_text():
-	return "Moving blocks\n\nAvoid the moving blocks!"
+	return "Avoid the moving blocks!"

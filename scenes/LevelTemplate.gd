@@ -160,7 +160,7 @@ func start_game():
 	randomize_blocks()
 	
 	var intro_text = $WinCondition.get_introduction_text()
-	$LevelInstructions.show_level_start(get_level_name(), intro_text, get_tutorial_text(), self.name)
+	$LevelInstructions.show_level_start(get_level_name(), intro_text, get_tutorial_title(), get_tutorial_text(), self.name)
 
 func load_map(map_name: String):
 	if map_name.length() == 0:
@@ -187,7 +187,10 @@ func get_success_text() -> String:
 	return "Level defeated. Congratulations! \n Next level coming up..."
 	
 func get_level_name() -> String:
-	return "Level %s" % level_number
+	return "Level %s:" % level_number
+
+func get_tutorial_title() -> String:
+	return ""
 
 func get_tutorial_text() -> String:
 	return ""

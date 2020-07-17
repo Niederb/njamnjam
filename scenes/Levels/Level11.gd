@@ -10,5 +10,8 @@ func _ready():
 	$WinCondition.config.remove_all_blocks = true
 	start_game()
 
+func get_tutorial_title():
+	return "Separators"
+
 func get_tutorial_text():
-	return "Separators\n\nEat goodies with different colors in the right order to trigger combos"
+	return "Eat goodies with different colors in the right order to trigger combos"

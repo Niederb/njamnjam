@@ -8,5 +8,8 @@ func _ready():
 	$WinCondition.config.combo_count = 2
 	start_game()
 
+func get_tutorial_title():
+	return "Combos II"
+
 func get_tutorial_text():
-	return "Combos II\n\nYou can use the goodies in a combo without eating them. Just move alongside a goodie and if you line it up with your body parts you can trigger a combo."
+	return "You can use the goodies in a combo without eating them. Just move alongside a goodie and if you line it up with your body parts you can trigger a combo."

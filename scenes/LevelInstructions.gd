@@ -8,10 +8,11 @@ var level_template: String
 func _ready():
 	$TextContainer/CountdownLabel.text = str(count_down)
 
-func show_level_start(level_name, introduction_text, tutorial_text, level_template):
+func show_level_start(level_name, introduction_text, tutorial_title, tutorial_text, level_template):
 	faded = false
 	$TextContainer/LevelLabel.text = level_name
 	$TextContainer/GoalLabel.text = introduction_text
+	$TextContainer/TutorialTitle.text = tutorial_title
 	$TextContainer/TutorialLabel.text = tutorial_text
 	count_down = WAIT_COUNT_DOWN
 	$CountdownTimer.start()

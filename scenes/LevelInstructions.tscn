@@ -1,9 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://sfx/laser1.ogg" type="AudioStream" id=1]
 [ext_resource path="res://sfx/zap1.ogg" type="AudioStream" id=2]
 [ext_resource path="res://gfx/UITheme.tres" type="Theme" id=3]
 [ext_resource path="res://scenes/LevelInstructions.gd" type="Script" id=4]
+[ext_resource path="res://gfx/Acme-Regular.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="DynamicFont" id=2]
+size = 35
+outline_color = Color( 1, 0.298039, 0.298039, 1 )
+font_data = ExtResource( 5 )
 
 [sub_resource type="Animation" id=1]
 resource_name = "fade_in"
@@ -87,11 +93,26 @@ __meta__ = {
 }
 
 [node name="CountdownLabel" type="Label" parent="TextContainer"]
-margin_top = 172.0
+margin_top = 148.0
 margin_right = 500.0
-margin_bottom = 204.0
+margin_bottom = 180.0
 size_flags_vertical = 6
 theme = ExtResource( 3 )
+text = "3"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TutorialTitle" type="Label" parent="TextContainer"]
+margin_top = 260.0
+margin_right = 500.0
+margin_bottom = 305.0
+grow_vertical = 0
+size_flags_vertical = 8
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "3"
 align = 1
 valign = 1
@@ -105,6 +126,7 @@ margin_top = 309.0
 margin_right = 500.0
 margin_bottom = 341.0
 grow_vertical = 0
+size_flags_vertical = 8
 theme = ExtResource( 3 )
 text = "3"
 align = 1

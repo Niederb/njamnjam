@@ -11,5 +11,8 @@ func _ready():
 func get_success_text():
 	return "Campaign finished. \n !!Congratulations!! \n Going back to main menu..."
 
+func get_tutorial_title():
+	return "Removing black blocks"
+
 func get_tutorial_text():
-	return "Removing black blocks\n\nRemove the black block by using the separators."
+	return "Remove the black block by using the separators."

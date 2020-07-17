@@ -7,5 +7,8 @@ func _ready():
 	$WinCondition.config.combo_count = 3
 	start_game()
 
+func get_tutorial_title():
+	return "Multiple colors"
+
 func get_tutorial_text():
-	return "Different colors\n\nEat goodies with different colors in the right order to trigger combos"
+	return "Eat goodies with different colors in the right order to trigger combos"
