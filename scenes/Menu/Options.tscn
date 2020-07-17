@@ -4,10 +4,10 @@
 [ext_resource path="res://scenes/Menu/Options.gd" type="Script" id=2]
 
 [sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.392157, 0.0941176, 0, 1 )
+bg_color = Color( 0.419608, 0.368627, 0.137255, 1 )
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.392157, 0.0941176, 0, 1 )
+bg_color = Color( 0.419608, 0.368627, 0.137255, 1 )
 
 [node name="Options" type="VBoxContainer"]
 rect_min_size = Vector2( 300, 0 )
@@ -35,7 +35,6 @@ max_columns = 5
 same_column_width = true
 fixed_column_width = 125
 icon_mode = 0
-icon_scale = 0.8
 fixed_icon_size = Vector2( 100, 80 )
 
 [node name="GridContainer" type="GridContainer" parent="."]
@@ -53,8 +52,9 @@ text = "Minimal combo size:"
 
 [node name="MinimalComboSize" type="LineEdit" parent="GridContainer"]
 margin_left = 235.0
-margin_right = 300.0
+margin_right = 293.0
 margin_bottom = 42.0
+size_flags_horizontal = 0
 text = "3"
 align = 2
 caret_blink = true
@@ -69,10 +69,10 @@ text = "Number of colors:"
 [node name="NumberColors" type="LineEdit" parent="GridContainer"]
 margin_left = 235.0
 margin_top = 57.0
-margin_right = 300.0
+margin_right = 293.0
 margin_bottom = 99.0
 rect_min_size = Vector2( 0, 30 )
-size_flags_horizontal = 3
+size_flags_horizontal = 0
 text = "3"
 align = 2
 caret_blink = true
@@ -87,9 +87,10 @@ text = "Number of goodies:"
 [node name="NumberGoodies" type="LineEdit" parent="GridContainer"]
 margin_left = 235.0
 margin_top = 114.0
-margin_right = 300.0
+margin_right = 293.0
 margin_bottom = 156.0
 rect_min_size = Vector2( 20, 0 )
+size_flags_horizontal = 0
 text = "3"
 align = 2
 caret_blink = true
@@ -104,8 +105,9 @@ text = "Movement speed (1-15):"
 [node name="MovementSpeed" type="LineEdit" parent="GridContainer"]
 margin_left = 235.0
 margin_top = 171.0
-margin_right = 300.0
+margin_right = 293.0
 margin_bottom = 213.0
+size_flags_horizontal = 0
 text = "4"
 align = 2
 caret_blink = true

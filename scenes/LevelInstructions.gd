@@ -23,6 +23,7 @@ func show_level_start(level_name, introduction_text, tutorial_title, tutorial_te
 func show_text(text):
 	$TextContainer/GoalLabel.text = ""
 	$TextContainer/CountdownLabel.text = text
+	$TextContainer/TutorialTitle.text = ""
 	$TextContainer/TutorialLabel.text = ""
 	$AnimationPlayer.play("fade_in")
 

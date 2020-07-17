@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/Menu/GUI.gd" type="Script" id=1]
 [ext_resource path="res://gfx/UITheme.tres" type="Theme" id=2]
 [ext_resource path="res://gfx/dotGreen.png" type="Texture" id=3]
 [ext_resource path="res://gfx/block.png" type="Texture" id=4]
 [ext_resource path="res://gfx/dot_shadow.png" type="Texture" id=5]
+[ext_resource path="res://gfx/big-font.tres" type="DynamicFont" id=6]
 
 [node name="HUD" type="Control" groups=[
 "HUD",
@@ -39,23 +40,26 @@ __meta__ = {
 }
 
 [node name="Status" type="Label" parent="HBoxContainer/GridContainer"]
+margin_top = 19.0
 margin_right = 200.0
-margin_bottom = 32.0
+margin_bottom = 51.0
 rect_min_size = Vector2( 200, 0 )
 
 [node name="ScoreLabel" type="Label" parent="HBoxContainer/GridContainer"]
 margin_left = 250.0
-margin_right = 314.0
-margin_bottom = 32.0
+margin_right = 390.0
+margin_bottom = 70.0
+custom_fonts/font = ExtResource( 6 )
 text = "Score: "
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Score" type="Label" parent="HBoxContainer/GridContainer"]
-margin_left = 364.0
-margin_right = 397.0
-margin_bottom = 32.0
+margin_left = 440.0
+margin_right = 471.0
+margin_bottom = 70.0
+custom_fonts/font = ExtResource( 6 )
 text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -82,41 +86,44 @@ texture_progress = ExtResource( 3 )
 fill_mode = 4
 
 [node name="SeparatorLabel" type="Label" parent="HBoxContainer/GridContainer"]
-margin_left = 447.0
-margin_right = 562.0
-margin_bottom = 32.0
+margin_left = 521.0
+margin_right = 774.0
+margin_bottom = 70.0
+custom_fonts/font = ExtResource( 6 )
 text = "Separators:"
 
 [node name="SeparatorCounter" type="ItemList" parent="HBoxContainer/GridContainer"]
-margin_left = 612.0
+margin_left = 824.0
 margin_right = 1344.0
-margin_bottom = 32.0
+margin_bottom = 70.0
+grow_horizontal = 2
 size_flags_horizontal = 3
 items = [ "", ExtResource( 4 ), false, "", ExtResource( 4 ), false ]
-max_columns = 6
+max_columns = 3
 icon_mode = 0
-icon_scale = 0.4
 
 [node name="Dummy" type="Label" parent="HBoxContainer/GridContainer"]
-margin_top = 52.0
+margin_top = 90.0
 margin_right = 200.0
-margin_bottom = 84.0
+margin_bottom = 122.0
 
 [node name="FpsLabel" type="Label" parent="HBoxContainer/GridContainer"]
+visible = false
 margin_left = 250.0
-margin_top = 52.0
-margin_right = 314.0
-margin_bottom = 84.0
+margin_top = 90.0
+margin_right = 390.0
+margin_bottom = 122.0
 text = "FPS: "
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="FPS" type="Label" parent="HBoxContainer/GridContainer"]
-margin_left = 364.0
-margin_top = 52.0
-margin_right = 397.0
-margin_bottom = 84.0
+visible = false
+margin_left = 250.0
+margin_top = 90.0
+margin_right = 390.0
+margin_bottom = 122.0
 text = "0.0"
 __meta__ = {
 "_edit_use_anchors_": false
