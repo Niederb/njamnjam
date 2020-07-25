@@ -119,4 +119,5 @@ add_block={
 
 quality/driver/driver_name="GLES2"
 quality/2d/use_pixel_snap=true
+environment/default_clear_color=Color( 0.419608, 0.368627, 0.137255, 1 )
 environment/default_environment="res://default_env.tres"

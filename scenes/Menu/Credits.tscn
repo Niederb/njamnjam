@@ -20,13 +20,21 @@ bbcode_text = "[color=blue]Design and Programming[/color]
 [color=blue]Testing[/color]
 [color=black]Marina Escala Pascual[/color]
 [color=blue]Tools[/color]
-[color=black]Godot engine[/color]"
+[color=black]Godot game engine (www.godotengine.org)[/color]
+[color=blue]Graphic and sound assets[/color]
+[color=black]Kenney (www.kenney.nl)[/color]
+[color=blue]Font[/color]
+[color=black]Acme by Huerta Tipográfica[/color]"
 text = "Design and Programming
 Thomas Niederberger
 Testing
 Marina Escala Pascual
 Tools
-Godot engine"
+Godot game engine (www.godotengine.org)
+Graphic and sound assets
+Kenney (www.kenney.nl)
+Font
+Acme by Huerta Tipográfica"
 fit_content_height = true
 
 [node name="MainMenuButton" type="Button" parent="BackgroundPanel/VBoxContainer" index="2"]
