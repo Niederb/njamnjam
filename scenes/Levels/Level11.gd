@@ -14,4 +14,4 @@ func get_tutorial_title():
 	return "Separators"
 
 func get_tutorial_text():
-	return "Eat goodies with different colors in the right order to trigger combos"
+	return "For each combo you trigger you can grow a separator body part by hitting the <space> key. Use this to create bigger combos."
