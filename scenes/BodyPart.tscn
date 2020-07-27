@@ -10,6 +10,7 @@ polygon = PoolVector2Array( -26, -23, -26, 23, -23, 26, 23, 26, 26, 23, 26, -23,
 extents = Vector2( 8, 8 )
 
 [node name="BodyPart" type="Area2D"]
+collision_layer = 16
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]

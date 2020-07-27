@@ -110,10 +110,11 @@ add_block={
 
 [layer_names]
 
-2d_physics/layer_1="Player"
+2d_physics/layer_1="Head"
 2d_physics/layer_2="Goodies"
 2d_physics/layer_3="Blocks"
 2d_physics/layer_4="Map"
+2d_physics/layer_5="BodyParts"
 
 [rendering]
 
