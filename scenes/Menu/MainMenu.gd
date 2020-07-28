@@ -1,5 +1,8 @@
 extends Control
 
+func _ready():
+	$BackgroundPanel/VBoxContainer/Campaign.grab_focus()
+
 func _on_Campaign_pressed():
 	Globals.change_level("res://scenes/Menu/LevelSelection.tscn")
 

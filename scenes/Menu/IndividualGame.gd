@@ -2,6 +2,7 @@ extends Control
 
 func _ready():
 	$BackgroundPanel/VBoxContainer/HBoxContainer2/HighScore.text = str(Globals.save_game.get_high_score())
+	$BackgroundPanel/VBoxContainer/HBoxContainer/StartButton.grab_focus()
 	
 func _on_MainMenuButton_pressed():
 	Globals.change_scene("res://scenes/Menu/MainMenu.tscn")
