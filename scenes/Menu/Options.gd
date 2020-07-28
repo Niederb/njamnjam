@@ -21,29 +21,17 @@ func update_GUI() -> void:
 		if $Map.get_item_metadata(i) == Globals.level_config.map_name:
 			$Map.select(i)
 	
-	number_colors.text = str(Globals.level_config.n_colors)
-	number_goodies.text = str(Globals.level_config.n_goodies)
-	minimal_combo_size.text = str(Globals.level_config.min_combo_size)
-	movement_speed.text = str(Globals.level_config.movement_speed)
+	number_colors.value = Globals.level_config.n_colors
+	number_goodies.value = Globals.level_config.n_goodies
+	minimal_combo_size.value = Globals.level_config.min_combo_size
+	movement_speed.value = Globals.level_config.movement_speed
 
 func apply() -> void:
 	for i in $Map.get_selected_items():
 		Globals.level_config.map_name = $Map.get_item_metadata(i)
 		
-	var new_n_colors = convert_to_int(number_colors.text, Globals.level_config.n_colors)
-	Globals.level_config.n_colors = min(Globals.get_number_gameplay_colors(), max(1, new_n_colors))
+	Globals.level_config.n_colors = min(Globals.get_number_gameplay_colors(), number_colors.value)
 		
-	var new_n_goodies = convert_to_int(number_goodies.text, Globals.level_config.n_goodies)
-	Globals.level_config.n_goodies = max(1, new_n_goodies)
-	
-	var new_min_combo_size = convert_to_int(minimal_combo_size.text, Globals.level_config.min_combo_size)
-	Globals.level_config.min_combo_size = max(2, new_min_combo_size)
-	
-	var new_movement_speed = convert_to_int(movement_speed.text, Globals.level_config.movement_speed)
-	Globals.level_config.movement_speed = max(1, new_movement_speed)
-
-func convert_to_int(text, default) -> int:
-	if text.is_valid_integer():
-		return int(text)
-	else:
-		return default
+	Globals.level_config.n_goodies = number_goodies.value
+	Globals.level_config.min_combo_size = minimal_combo_size.value
+	Globals.level_config.movement_speed = movement_speed.value
