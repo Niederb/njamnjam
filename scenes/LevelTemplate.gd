@@ -25,7 +25,7 @@ func add_goodies() -> void:
 		$Goodies.create_new_goodie(position, color_index, self.name)
 
 func head_distance(point) -> float:
-	return player.get_node("Head").position.distance_to(point)
+	return player.get_node("Head").global_position.distance_to(point)
 	
 func get_valid_position() -> Vector2:
 	randomize()
@@ -36,8 +36,25 @@ func get_valid_position() -> Vector2:
 		var y = randi() % int(Globals.LEVEL_SIZE.y)
 		var position = Vector2(Globals.CELL_SIZE * x, Globals.CELL_SIZE * y)
 		var intersection = space_state.intersect_point(position + offset)
-		if !intersection and head_distance(position) > 2*Globals.CELL_SIZE:
-			return position
+		var head_distance = head_distance(position)
+		
+		if !intersection and head_distance > 2*Globals.CELL_SIZE:
+			print("Head position %s" % player.get_node("Head").position)
+			print("Head distance %s/position %s" % [head_distance, position])
+			var new_cell = Vector2(x, y)
+			var cells = player.get_cells()
+			var valid = true
+			for current_cell in cells:
+				var cell_tile_coordinates = $Map.world_to_map(current_cell.global_position)
+				var cell_distance = cell_tile_coordinates.distance_squared_to(new_cell)
+				#print("Cell distance %s/cell_coordinates %s/new cell %s" % [cell_distance, cell_tile_coordinates, new_cell])
+				if cell_distance < 4:
+					valid = false
+					break
+			if valid:
+				return position
+			else:
+				print("Ooopsi")
 	return Vector2()
 
 func find_sub_graph(cell, cells, graph_index, graphs):
@@ -47,9 +64,6 @@ func find_sub_graph(cell, cells, graph_index, graphs):
 			var current_cell_tile_coordinates = $Map.world_to_map(current_cell.global_position)
 			var distance = current_cell_tile_coordinates.distance_squared_to(cell_tile_coordinates)
 			if head_distance(current_cell.global_position) > 1 and distance <= 1 and current_cell.get_color_index() == cell.get_color_index():
-#				print("match")
-#				print(cell_tile_coordinates)
-#				print(current_cell_tile_coordinates)
 				current_cell.sub_graph_id = graph_index
 				graphs[graph_index].push_back(current_cell.id)
 				find_sub_graph(current_cell, cells, graph_index, graphs)

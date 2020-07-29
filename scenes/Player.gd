@@ -16,15 +16,18 @@ func init(level_instance):
 		child.connect("area_entered", self, "_on_Head_area_entered")
 	self.level_instance = level_instance
 		
-func remove_body_parts(indeces):
+func remove_body_parts(indices):
 	var children = []
-	for i in indeces:
+	for i in indices:
 		if i < $Body.get_child_count():
 			children.push_back($Body.get_child(i))
 	for c in children:
 		c.die()
 		$Body.remove_child(c)
-	
+
+func get_cells():
+	return get_body_parts()
+
 func get_body_parts():
 	return $Body.get_children()
 
