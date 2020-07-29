@@ -54,7 +54,7 @@ text = "Minimal combo size:"
 
 [node name="MinimalComboSize" type="HSlider" parent="GridContainer"]
 margin_left = 261.0
-margin_right = 533.0
+margin_right = 397.0
 margin_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -65,9 +65,10 @@ max_value = 10.0
 value = 3.0
 
 [node name="MinimalComboSizeValue" type="Label" parent="GridContainer"]
-margin_left = 563.0
+margin_left = 427.0
 margin_right = 563.0
 margin_bottom = 32.0
+size_flags_horizontal = 3
 
 [node name="NumberColorsLabel" type="Label" parent="GridContainer"]
 margin_top = 47.0
@@ -78,7 +79,7 @@ text = "Number of colors:"
 [node name="NumberColors" type="HSlider" parent="GridContainer"]
 margin_left = 261.0
 margin_top = 47.0
-margin_right = 533.0
+margin_right = 397.0
 margin_bottom = 79.0
 rect_min_size = Vector2( 0, 30 )
 size_flags_vertical = 1
@@ -87,7 +88,7 @@ max_value = 6.0
 value = 1.0
 
 [node name="NumberColorsValue" type="Label" parent="GridContainer"]
-margin_left = 563.0
+margin_left = 427.0
 margin_top = 47.0
 margin_right = 563.0
 margin_bottom = 79.0
@@ -101,7 +102,7 @@ text = "Number of goodies:"
 [node name="NumberGoodies" type="HSlider" parent="GridContainer"]
 margin_left = 261.0
 margin_top = 94.0
-margin_right = 533.0
+margin_right = 397.0
 margin_bottom = 126.0
 rect_min_size = Vector2( 20, 0 )
 size_flags_vertical = 1
@@ -110,7 +111,7 @@ max_value = 20.0
 value = 1.0
 
 [node name="NumberGoodiesValue" type="Label" parent="GridContainer"]
-margin_left = 563.0
+margin_left = 427.0
 margin_top = 94.0
 margin_right = 563.0
 margin_bottom = 126.0
@@ -124,7 +125,7 @@ text = "Movement speed (1-15):"
 [node name="MovementSpeed" type="HSlider" parent="GridContainer"]
 margin_left = 261.0
 margin_top = 141.0
-margin_right = 533.0
+margin_right = 397.0
 margin_bottom = 173.0
 size_flags_vertical = 1
 min_value = 1.0
@@ -132,7 +133,7 @@ max_value = 15.0
 value = 1.0
 
 [node name="MovementSpeedValue" type="Label" parent="GridContainer"]
-margin_left = 563.0
+margin_left = 427.0
 margin_top = 141.0
 margin_right = 563.0
 margin_bottom = 173.0
