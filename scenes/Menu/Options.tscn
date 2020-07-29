@@ -19,15 +19,16 @@ __meta__ = {
 }
 
 [node name="MapLabel" type="Label" parent="."]
-margin_right = 335.0
-margin_bottom = 32.0
+margin_top = 15.0
+margin_right = 563.0
+margin_bottom = 47.0
 text = "Map"
 align = 1
 
 [node name="Map" type="ItemList" parent="."]
-margin_top = 36.0
-margin_right = 335.0
-margin_bottom = 236.0
+margin_top = 51.0
+margin_right = 563.0
+margin_bottom = 251.0
 rect_min_size = Vector2( 300, 200 )
 custom_styles/selected_focus = SubResource( 1 )
 custom_styles/selected = SubResource( 2 )
@@ -39,78 +40,103 @@ icon_mode = 0
 fixed_icon_size = Vector2( 100, 80 )
 
 [node name="GridContainer" type="GridContainer" parent="."]
-margin_top = 240.0
-margin_right = 335.0
-margin_bottom = 453.0
+margin_top = 255.0
+margin_right = 563.0
+margin_bottom = 428.0
 custom_constants/vseparation = 15
 custom_constants/hseparation = 30
-columns = 2
+columns = 3
 
-[node name="MinimalComboSizeLabel2" type="Label" parent="GridContainer"]
-margin_top = 5.0
+[node name="MinimalComboSizeLabel" type="Label" parent="GridContainer"]
 margin_right = 231.0
-margin_bottom = 37.0
+margin_bottom = 32.0
 text = "Minimal combo size:"
 
-[node name="MinimalComboSize" type="SpinBox" parent="GridContainer"]
+[node name="MinimalComboSize" type="HSlider" parent="GridContainer"]
 margin_left = 261.0
-margin_right = 335.0
-margin_bottom = 42.0
-size_flags_horizontal = 0
+margin_right = 533.0
+margin_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 min_value = 2.0
 max_value = 10.0
-value = 2.0
-align = 2
+value = 3.0
+
+[node name="MinimalComboSizeValue" type="Label" parent="GridContainer"]
+margin_left = 563.0
+margin_right = 563.0
+margin_bottom = 32.0
 
 [node name="NumberColorsLabel" type="Label" parent="GridContainer"]
-margin_top = 62.0
+margin_top = 47.0
 margin_right = 231.0
-margin_bottom = 94.0
+margin_bottom = 79.0
 text = "Number of colors:"
 
-[node name="NumberColors" type="SpinBox" parent="GridContainer"]
+[node name="NumberColors" type="HSlider" parent="GridContainer"]
 margin_left = 261.0
-margin_top = 57.0
-margin_right = 335.0
-margin_bottom = 99.0
+margin_top = 47.0
+margin_right = 533.0
+margin_bottom = 79.0
 rect_min_size = Vector2( 0, 30 )
-size_flags_horizontal = 0
+size_flags_vertical = 1
 min_value = 1.0
 max_value = 6.0
 value = 1.0
-align = 2
+
+[node name="NumberColorsValue" type="Label" parent="GridContainer"]
+margin_left = 563.0
+margin_top = 47.0
+margin_right = 563.0
+margin_bottom = 79.0
 
 [node name="NumberGoodiesLabel" type="Label" parent="GridContainer"]
-margin_top = 119.0
+margin_top = 94.0
 margin_right = 231.0
-margin_bottom = 151.0
+margin_bottom = 126.0
 text = "Number of goodies:"
 
-[node name="NumberGoodies" type="SpinBox" parent="GridContainer"]
+[node name="NumberGoodies" type="HSlider" parent="GridContainer"]
 margin_left = 261.0
-margin_top = 114.0
-margin_right = 335.0
-margin_bottom = 156.0
+margin_top = 94.0
+margin_right = 533.0
+margin_bottom = 126.0
 rect_min_size = Vector2( 20, 0 )
-size_flags_horizontal = 0
+size_flags_vertical = 1
 min_value = 1.0
 max_value = 20.0
 value = 1.0
-align = 2
+
+[node name="NumberGoodiesValue" type="Label" parent="GridContainer"]
+margin_left = 563.0
+margin_top = 94.0
+margin_right = 563.0
+margin_bottom = 126.0
 
 [node name="MovementSpeedLabel" type="Label" parent="GridContainer"]
-margin_top = 176.0
+margin_top = 141.0
 margin_right = 231.0
-margin_bottom = 208.0
+margin_bottom = 173.0
 text = "Movement speed (1-15):"
 
-[node name="MovementSpeed" type="SpinBox" parent="GridContainer"]
+[node name="MovementSpeed" type="HSlider" parent="GridContainer"]
 margin_left = 261.0
-margin_top = 171.0
-margin_right = 335.0
-margin_bottom = 213.0
-size_flags_horizontal = 0
+margin_top = 141.0
+margin_right = 533.0
+margin_bottom = 173.0
+size_flags_vertical = 1
 min_value = 1.0
 max_value = 15.0
 value = 1.0
-align = 2
+
+[node name="MovementSpeedValue" type="Label" parent="GridContainer"]
+margin_left = 563.0
+margin_top = 141.0
+margin_right = 563.0
+margin_bottom = 173.0
+[connection signal="value_changed" from="GridContainer/MinimalComboSize" to="." method="_on_Slider_value_changed"]
+[connection signal="value_changed" from="GridContainer/NumberColors" to="." method="_on_Slider_value_changed"]
+[connection signal="value_changed" from="GridContainer/NumberGoodies" to="." method="_on_Slider_value_changed"]
+[connection signal="value_changed" from="GridContainer/MovementSpeed" to="." method="_on_Slider_value_changed"]

@@ -15,6 +15,7 @@ func _ready():
 		$Map.set_item_metadata(index, map)
 		index += 1
 	update_GUI()
+	update_value_labels()
 	
 func update_GUI() -> void:
 	for i in $Map.get_item_count():
@@ -35,3 +36,12 @@ func apply() -> void:
 	Globals.level_config.n_goodies = number_goodies.value
 	Globals.level_config.min_combo_size = minimal_combo_size.value
 	Globals.level_config.movement_speed = movement_speed.value
+
+func update_value_labels():
+	$GridContainer/NumberColorsValue.text = str(number_colors.value)
+	$GridContainer/NumberGoodiesValue.text = str(number_goodies.value)
+	$GridContainer/MinimalComboSizeValue.text = str(minimal_combo_size.value)
+	$GridContainer/MovementSpeedValue.text = str(movement_speed.value)
+
+func _on_Slider_value_changed(value):
+	update_value_labels()
