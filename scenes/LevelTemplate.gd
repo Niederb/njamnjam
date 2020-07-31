@@ -3,10 +3,15 @@ extends Node2D
 var level_number: int
 var level_defeated: bool = false
 var pause_movement: bool = true
+var occupied_cells = []
 
 onready var player = $Players/Player
 
 func _ready():
+	for x in range(Globals.LEVEL_SIZE.x):
+		occupied_cells.append([])
+		for y in range(Globals.LEVEL_SIZE.y):
+			occupied_cells[x].append(false)
 	add_to_group(self.name)
 
 func randomize_blocks() -> void:
@@ -38,23 +43,19 @@ func get_valid_position() -> Vector2:
 		var intersection = space_state.intersect_point(position + offset)
 		var head_distance = head_distance(position)
 		
-		if !intersection and head_distance > 2*Globals.CELL_SIZE:
-			print("Head position %s" % player.get_node("Head").position)
-			print("Head distance %s/position %s" % [head_distance, position])
+		if !intersection and head_distance > 2*Globals.CELL_SIZE and !occupied_cells[x][y]:
 			var new_cell = Vector2(x, y)
 			var cells = player.get_cells()
 			var valid = true
 			for current_cell in cells:
 				var cell_tile_coordinates = $Map.world_to_map(current_cell.global_position)
 				var cell_distance = cell_tile_coordinates.distance_squared_to(new_cell)
-				#print("Cell distance %s/cell_coordinates %s/new cell %s" % [cell_distance, cell_tile_coordinates, new_cell])
 				if cell_distance < 4:
 					valid = false
 					break
 			if valid:
+				occupied_cells[x][y] = true
 				return position
-			else:
-				print("Ooopsi")
 	return Vector2()
 
 func find_sub_graph(cell, cells, graph_index, graphs):
@@ -124,7 +125,9 @@ func check_combo():
 					
 			trigger_combo(n_body_parts, n_goodies)
 
-func eaten_goodie(color):
+func eaten_goodie(color, position):
+	var cell_location = $Map.world_to_map(position)
+	occupied_cells[cell_location.x][cell_location.y] = false
 	player.score += 10
 	player.increase_length(color)
 	$HUD.update_score(player.score)
