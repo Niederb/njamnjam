@@ -20,3 +20,6 @@ func reset(new_id):
 
 func verify_combo(combo_elements) -> bool:
 	return true
+
+func is_body_part() -> bool:
+	return false

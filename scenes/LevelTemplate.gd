@@ -98,11 +98,14 @@ func check_combo():
 		var min_size_passed = graph.size() >= Globals.level_config.min_combo_size
 		if min_size_passed:
 			var elements_verified = true
+			var has_body_part = false
 			for element in graph:
 				if !cells[element].verify_combo(graph):
 					elements_verified = false
 					break
-			if !elements_verified:
+				if cells[element].is_body_part():
+					has_body_part = true
+			if !elements_verified or !has_body_part:
 				continue
 			player.remove_body_parts(graph)
 			var n_goodies = 0

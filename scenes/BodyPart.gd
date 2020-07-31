@@ -30,3 +30,6 @@ func move_to(tween, new_position):
 func _on_Timer_timeout():
 	$CollisionShape2D.disabled = false
 	active = true
+
+func is_body_part() -> bool:
+	return true
