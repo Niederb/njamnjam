@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/LevelTemplate.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Levels/Level14.gd" type="Script" id=2]
+[ext_resource path="res://scenes/Block.tscn" type="PackedScene" id=3]
+
+[node name="Level14" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Block" parent="Blocks" index="0" instance=ExtResource( 3 )]
+position = Vector2( 128, 320 )
+color_index = 2
+min_combo_size = 4
+
+[node name="Block4" parent="Blocks" index="1" instance=ExtResource( 3 )]
+position = Vector2( 320, 320 )
+color_index = 2
+min_combo_size = 4
+
+[node name="Block2" parent="Blocks" index="2" instance=ExtResource( 3 )]
+position = Vector2( 128, 384 )
+color_index = 3
+min_combo_size = 4
+
+[node name="Block3" parent="Blocks" index="3" instance=ExtResource( 3 )]
+position = Vector2( 320, 384 )
+color_index = 3
+min_combo_size = 4

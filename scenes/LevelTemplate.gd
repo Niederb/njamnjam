@@ -95,6 +95,7 @@ func check_combo():
 	var all_blocks = $Blocks.get_children()
 	var cells = body_parts + all_goodies + all_blocks
 	var sub_graphs = determine_sub_graphs(cells)
+	var valid_sub_graphs = []
 	for graph in sub_graphs:
 		var min_size_passed = graph.size() >= Globals.level_config.min_combo_size
 		if min_size_passed:
@@ -108,22 +109,25 @@ func check_combo():
 					has_body_part = true
 			if !elements_verified or !has_body_part:
 				continue
-			player.remove_body_parts(graph)
-			var n_goodies = 0
-			var n_body_parts = 0
-			var n_blocks = 0
-			for cell_index in graph:
-				var cell = cells[cell_index]
-				if cell_index < body_parts.size():
-					n_body_parts += 1
-				elif cell_index < (body_parts.size() + all_goodies.size()):
-					n_goodies += 1
-					cell.die()
-				else:
-					n_blocks += 1
-					cell.die()
-					
-			trigger_combo(n_body_parts, n_goodies)
+			valid_sub_graphs.push_back(graph)
+	if valid_sub_graphs.size() > 0:
+		player.remove_body_parts(valid_sub_graphs)
+	for graph in valid_sub_graphs:
+		var n_goodies = 0
+		var n_body_parts = 0
+		var n_blocks = 0
+		for cell_index in graph:
+			var cell = cells[cell_index]
+			if cell_index < body_parts.size():
+				n_body_parts += 1
+			elif cell_index < (body_parts.size() + all_goodies.size()):
+				n_goodies += 1
+				cell.die()
+			else:
+				n_blocks += 1
+				cell.die()
+				
+		trigger_combo(n_body_parts, n_goodies)
 
 func eaten_goodie(color, position):
 	var cell_location = $Map.world_to_map(position)

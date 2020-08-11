@@ -21,11 +21,12 @@ func init(level_instance, initial_body_parts):
 		child.connect("area_entered", self, "_on_Head_area_entered")
 	self.level_instance = level_instance
 		
-func remove_body_parts(indices):
+func remove_body_parts(sub_graphs):
 	var children = []
-	for i in indices:
-		if i < $Body.get_child_count():
-			children.push_back($Body.get_child(i))
+	for graph in sub_graphs:
+		for i in graph:
+			if i < $Body.get_child_count():
+				children.push_back($Body.get_child(i))
 	for c in children:
 		c.die()
 		$Body.remove_child(c)
