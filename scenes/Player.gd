@@ -11,7 +11,12 @@ var combo_count: int = 0
 var level_instance: String
 var block_actions: int = 0
 
-func init(level_instance):
+func init(level_instance, initial_body_parts):
+	var next_position = $Head.position
+	for color_index in initial_body_parts:
+		next_position -= Vector2(Globals.CELL_SIZE, 0.0)
+		add_body_part(next_position, color_index)
+		
 	for child in $Body.get_children():
 		child.connect("area_entered", self, "_on_Head_area_entered")
 	self.level_instance = level_instance
@@ -82,12 +87,15 @@ func _input(_delta):
 			increase_length(0)
 			get_tree().call_group(level_instance, "update_separator_action")
 
-func increase_length(color_index):
-	$GoodieSFX.play()
+func add_body_part(position: Vector2, color_index: int):
 	var body_part = load("res://scenes/BodyPart.tscn").instance()
-	body_part.initialize($Head.position, color_index)
+	body_part.initialize(position, color_index)
 	body_part.connect("area_entered", self, "_on_Head_area_entered")
 	$Body.add_child(body_part)
+
+func increase_length(color_index):
+	$GoodieSFX.play()
+	add_body_part($Head.position, color_index)
 
 func move_finished() -> bool:
 	return tween_done

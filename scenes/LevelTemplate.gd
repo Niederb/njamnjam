@@ -176,7 +176,7 @@ func start_game():
 	if Globals.level_config.start_cell.length() > 0:
 		player.position = Globals.CELL_SIZE * (Globals.level_config.start_cell)
 	$Goodies.init(self.name)
-	player.init(self.name)
+	player.init(self.name, Globals.level_config.initial_body_parts)
 	randomize_blocks()
 	
 	var intro_text = $WinCondition.get_introduction_text()

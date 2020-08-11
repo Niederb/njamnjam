@@ -10,7 +10,7 @@ var color_palettes = {
 
 var current_color_palette = color_palettes["pastel"]
 const LEVEL_SIZE = Vector2(21, 13)
-const NUMBER_OF_LEVELS = 12
+const NUMBER_OF_LEVELS = 13
 
 var level_config
 var save_game

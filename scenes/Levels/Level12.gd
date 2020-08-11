@@ -8,9 +8,6 @@ func _ready():
 	$WinCondition.config.remove_all_blocks = true
 	start_game()
 
-func get_success_text():
-	return "Campaign finished. \n Congratulations! \n Going back to main menu..."
-
 func get_tutorial_title():
 	return "Removing black blocks"
 
