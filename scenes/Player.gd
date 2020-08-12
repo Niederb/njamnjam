@@ -8,6 +8,7 @@ export var player_id: int = 1
 var steps: int = 0
 var score: int = 0
 var combo_count: int = 0
+var multi_combo_count: int = 0
 var level_instance: String
 var block_actions: int = 0
 
@@ -16,9 +17,7 @@ func init(level_instance, initial_body_parts):
 	for color_index in initial_body_parts:
 		next_position -= Vector2(Globals.CELL_SIZE, 0.0)
 		add_body_part(next_position, color_index)
-		
-	for child in $Body.get_children():
-		child.connect("area_entered", self, "_on_Head_area_entered")
+
 	self.level_instance = level_instance
 		
 func remove_body_parts(sub_graphs):

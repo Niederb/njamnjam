@@ -127,7 +127,10 @@ func check_combo():
 				n_blocks += 1
 				cell.die()
 				
-		trigger_combo(n_body_parts, n_goodies)
+		trigger_combo(n_body_parts, n_goodies, n_blocks)
+	var number_of_combos = valid_sub_graphs.size()
+	if number_of_combos > 1:
+		trigger_multi_combo(number_of_combos)
 
 func eaten_goodie(color, position):
 	var cell_location = $Map.world_to_map(position)
@@ -136,13 +139,18 @@ func eaten_goodie(color, position):
 	player.increase_length(color)
 	$HUD.update_score(player.score)
 
-func trigger_combo(n_body_parts, n_goodies):
-	player.score += 10 * n_body_parts * (n_goodies + 1)
+func trigger_combo(n_body_parts, n_goodies, n_blocks):
+	player.score += 10 * n_body_parts * (n_goodies + 1) * (n_blocks + 1)
 	$HUD.update_score(player.score)
 	$ComboSFX.play()
 	player.combo_count += 1
 	player.block_actions = min(3, player.block_actions + 1)
 	update_separator_action()
+
+func trigger_multi_combo(number_of_combos):
+	player.score += 100 * number_of_combos
+	$HUD.update_score(player.score)
+	player.multi_combo_count += 1
 	
 func update_separator_action():
 	$HUD.update_separator_action(player.block_actions)
